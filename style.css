@@ -1,0 +1,96 @@
+:root{
+  --ink:#111; 
+  --bg:#fff; 
+  --muted:#555; 
+  --link:#0645ad; 
+  --rule:#e6e6e6; 
+  --highlight:#dd2f2f;
+  --btn-bg:#0f67ff;
+  --btn-ink:#fff;
+  --radius:10px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0f1115;
+    --ink:#e7e7ea;
+    --muted:#a9acb3;
+    --rule:#232530;
+    --link:#7fb0ff;
+    --btn-bg:#2f6fff;
+    --btn-ink:#fff;
+    --highlight:#ff6b6b;
+  }
+}
+
+html,body{
+  background:var(--bg); color:var(--ink);
+  margin:0; padding:0; height:100%;
+}
+
+body{
+  max-width:1100px; margin:0 auto; padding:16px;
+  font:16px/1.6 Georgia, "Times New Roman", serif;
+  display:flex; flex-direction:column; 
+  min-height:100vh; 
+}
+
+header{
+  border-bottom:1px solid var(--rule); margin-bottom:18px;
+}
+
+.header-wrap{
+  display:flex; align-items:flex-start; justify-content:space-between; gap:20px;
+}
+
+h1{font-size:24px; line-height:1.2; margin:0 0 4px;}
+.sub{color:var(--muted); font-size:14px; margin-bottom:8px;}
+
+nav{font-size:15px; margin:10px 0; display:flex; flex-wrap:wrap; gap:12px}
+nav a{color:var(--link); text-decoration:none;}
+nav a:hover{text-decoration:underline;}
+
+.portrait{
+  max-width:150px; height:auto; border-radius:8px; flex:0 0 auto;
+  box-shadow:0 6px 16px rgba(0,0,0,.08);
+}
+
+main{ flex:1; }
+main section{ margin:26px 0; }
+h2{ font-size:20px; margin:0 0 10px; padding-top:8px; border-top:1px solid var(--rule); }
+
+ul{margin:8px 0 0 1.1rem;}
+li{margin:4px 0;}
+.muted{color:var(--muted);}
+.highlight{color:var(--highlight);}
+a{color:var(--link);}
+
+/* Bouton CV */
+.btn{
+  display:inline-block;
+  background:var(--btn-bg); 
+  color:var(--btn-ink);
+  padding:10px 14px;
+  border-radius:var(--radius);
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 6px 16px rgba(0,0,0,.08);
+  transition:transform .08s ease, box-shadow .2s ease, opacity .2s;
+}
+.btn:hover{ transform: translateY(-1px); }
+.btn:active{ transform: translateY(0); opacity:.9; }
+
+/* Footer collé en bas */
+footer{
+  border-top:1px solid var(--rule);
+  margin-top:28px; padding-top:10px;
+  font-size:14px; color:var(--muted);
+  text-align:center;
+}
+
+/* Responsive */
+@media (max-width:700px){
+  body{ padding:14px; }
+  .header-wrap{ flex-direction:column; align-items:flex-start; }
+  .portrait{ max-width:120px; }
+}
