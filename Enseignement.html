@@ -7,7 +7,7 @@
   <meta name="description" content="Ressources (3ème et 4ème).">
   <style>
     :root{
-      --ink:#111; --bg:#fff; --muted:#555; --link:#0645ad; --rule:#e6e6e6; --highlight:#dd2f2f;
+      --ink:#111; --bg:#fff; --muted:#555; --link:#0645ad; --rule:#e6e6e6;
     }
     html,body{
       background:var(--bg); color:var(--ink);
@@ -29,10 +29,12 @@
     main{ flex:1; }
     main section{margin:26px 0;}
     h2{font-size:20px; margin:0 0 6px; padding-top:8px; border-top:1px solid var(--rule);}
-    ul{margin:8px 0 0 1.1rem;}
-    li{margin:4px 0;}
+    ul{margin:8px 0 0 1.1rem; list-style:disc;}
+    li{margin:6px 0;}
     .muted{color:var(--muted);}
     a{color:var(--link); text-decoration:underline;}
+    .links{font-size:14px; color:var(--muted);}
+    .links a{margin-right:10px;}
     footer{
       border-top:1px solid var(--rule);
       margin-top:28px; padding-top:10px;
@@ -53,7 +55,7 @@
       <nav aria-label="Navigation principale">
         <a href="index.html">Home</a>
         <a href="enseignement.html">Enseignement</a>
-        <a href="CV.html">CV</a>
+        <a href="cv.html">CV</a>
         <a href="index.html#papers">Papers</a>
         <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
         <a href="index.html#other">Others</a>
@@ -67,7 +69,7 @@
     <h2>Enseignement</h2>
     <p class="muted">
       Vous trouverez ici des supports concis pour réviser les notions essentielles, ainsi que des feuilles d’exercices 
-      corrigées. Les documents sont pensés pour un travail autonome, avec un accent sur la méthode et la clarté.
+      corrigées. Chaque ressource est disponible en <b>PDF</b> et en <b>LaTeX</b>.
     </p>
   </section>
 
@@ -75,8 +77,20 @@
     <h2>4<sup>ème</sup></h2>
     <p class="muted">Sélection de chapitres clés (calcul numérique, fractions, géométrie, proportionnalité).</p>
     <ul>
-      <li><a href="4e_Chapitre_Fractions_Proportionnalite.pdf" download>Fractions &amp; proportionnalité (PDF)</a></li>
-      <li><a href="4e_Geometrie_Triangles_Theoremes.pdf" download>Géométrie — Triangles &amp; théorèmes (PDF)</a></li>
+      <li>
+        Algèbre — Fractions &amp; proportionnalité 
+        <span class="links">
+          [<a href="4e_Chapitre_Fractions_Proportionnalite.pdf" download>PDF</a>] 
+          [<a href="4e_Chapitre_Fractions_Proportionnalite.tex" download>LaTeX</a>]
+        </span>
+      </li>
+      <li>
+        Géométrie — Triangles &amp; théorèmes 
+        <span class="links">
+          [<a href="4e_Geometrie_Triangles_Theoremes.pdf" download>PDF</a>] 
+          [<a href="4e_Geometrie_Triangles_Theoremes.tex" download>LaTeX</a>]
+        </span>
+      </li>
     </ul>
   </section>
 
@@ -84,8 +98,20 @@
     <h2>3<sup>ème</sup></h2>
     <p class="muted">Révisions ciblées : calcul littéral, identités remarquables, Thalès, Pythagore, fonctions.</p>
     <ul>
-      <li><a href="3e_Algebre_Identites_Remarquables.pdf" download>Algèbre — Identités remarquables (PDF)</a></li>
-      <li><a href="3e_Fonctions_Lineaires_Affines.pdf" download>Fonctions — Linéaires et affines (PDF)</a></li>
+      <li>
+        Algèbre — Identités remarquables 
+        <span class="links">
+          [<a href="3e_Algebre_Identites_Remarquables.pdf" download>PDF</a>] 
+          [<a href="3e_Algebre_Identites_Remarquables.tex" download>LaTeX</a>]
+        </span>
+      </li>
+      <li>
+        Fonctions — Linéaires et affines 
+        <span class="links">
+          [<a href="3e_Fonctions_Lineaires_Affines.pdf" download>PDF</a>] 
+          [<a href="3e_Fonctions_Lineaires_Affines.tex" download>LaTeX</a>]
+        </span>
+      </li>
     </ul>
   </section>
 </main>
