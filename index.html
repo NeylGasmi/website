@@ -5,48 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Neyl Gasmi — Page personnelle</title>
   <meta name="description" content="Page personnelle de Neyl Gasmi">
-  <style>
-    :root{
-      --ink:#111; --bg:#fff; --muted:#555; --link:#0645ad; --rule:#e6e6e6; --highlight:#dd2f2f;
-    }
-    html,body{
-      background:var(--bg); color:var(--ink);
-      margin:0; padding:0;
-      height:100%; /* important */
-    }
-    body{
-      max-width:1100px; margin:0 auto; padding:16px;
-      font:16px/1.6 Georgia, "Times New Roman", serif;
-      display:flex; flex-direction:column; 
-      min-height:100vh; 
-    }
-    header{border-bottom:1px solid var(--rule); margin-bottom:18px;}
-    h1{font-size:24px; line-height:1.2; margin:0 0 4px;}
-    .sub{color:var(--muted); font-size:14px; margin-bottom:8px;}
-    nav{font-size:15px; margin:10px 0;}
-    nav a{color:var(--link); text-decoration:none; margin-right:12px;}
-    nav a:hover{text-decoration:underline;}
-    main{
-      flex:1; 
-    }
-    main section{margin:26px 0;}
-    h2{font-size:20px; margin:0 0 6px; padding-top:8px; border-top:1px solid var(--rule);}    
-    ul{margin:8px 0 0 1.1rem;}
-    li{margin:4px 0;}
-    .muted{color:var(--muted);}    
-    .highlight{color:var(--highlight);}    
-    a{color:var(--link);}    
-    footer{
-      border-top:1px solid var(--rule);
-      margin-top:28px; padding-top:10px;
-      font-size:14px; color:var(--muted);
-      text-align:center;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
-  <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+  <div class="header-wrap">
     <div>
       <h1>Neyl Gasmi</h1>
       <div class="sub">
@@ -58,33 +21,35 @@
         <a href="#enseignement">Enseignement</a>
         <a href="#cv">CV</a>
         <a href="#papers">Papers</a>
-        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/REPLACE-ME" rel="noopener" target="_blank">LinkedIn</a>
         <a href="#other">Others</a>
       </nav>
     </div>
+
+    <!-- Optionnel : photo à droite -->
+    <!-- <img src="photo_neyl.jpg" alt="Photo de Neyl Gasmi" class="portrait"> -->
   </div>
 </header>
 
-
-  <main>
-    <section id="home">
-      <p>Bienvenue sur ma page personnelle. J'utilise cet espace pour partager des papiers sur des sujets qui m'interessent, les exercices donnés à mes élèves tout au long de l'année, des projets numériques...</p>
-      <p class="highlight">Je donne des cours particuliers de mathématiques du collège jusqu'à la L3. N'hésitez pas à me contacter dans la perspective d'un travail commun.</p>
-      <p>Centres d'intérêt : Calcul Stochastique, Physique et Informatique Quantique, Astronomie, Cosmologie, Programmation, M&A.</p>
-    </section>
-
-     <section id="cv">
-    <h2>CV</h2>
-    <p>Vous pouvez télécharger mon curriculum vitae en cliquant ci-dessous :</p>
-    <p>
-      <a href="Curriculum%20Vitae.pdf" download class="highlight">Télécharger mon CV (PDF)</a>
-    </p>
+<main>
+  <section id="home">
+    <p>Bienvenue sur ma page personnelle. J'utilise cet espace pour partager des papiers sur des sujets qui m'interessent, les exercices donnés à mes élèves tout au long de l'année, des projets numériques...</p>
+    <p class="highlight">Je donne des cours particuliers de mathématiques du collège jusqu'à la L3. N'hésitez pas à me contacter dans la perspective d'un travail commun.</p>
+    <p>Centres d'intérêt : Calcul Stochastique, Physique et Informatique Quantique, Astronomie, Cosmologie, Programmation, M&A.</p>
   </section>
 
-  </main>
+  <section id="cv">
+    <h2>CV</h2>
+    <p>Vous pouvez télécharger mon curriculum vitæ :</p>
+    <p>
+      <a href="Curriculum%20Vitae.pdf" download class="btn">📄 Télécharger mon CV (PDF)</a>
+      <!-- Si ton fichier contient des espaces : href="Curriculum%20Viatae.pdf" -->
+    </p>
+  </section>
+</main>
 
-  <footer>
-    © <span>2025</span> — Neyl Gasmi &nbsp;&middot;&nbsp; Paris
-  </footer>
+<footer>
+  © <span>2025</span> — Neyl Gasmi &nbsp;&middot;&nbsp; Paris
+</footer>
 </body>
 </html>
