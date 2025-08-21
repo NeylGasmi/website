@@ -8,29 +8,8 @@
   <meta name="author" content="Neyl Gasmi">
   <link rel="canonical" href="https://neylgasmi.github.io/website/index.html">
 
-  <!-- Données structurées Schema.org pour le référencement -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Neyl Gasmi",
-    "url": "https://neylgasmi.github.io/website/index.html",
-    "sameAs": [
-      "https://www.linkedin.com/in/neylgasmi/"
-    ],
-    "alumniOf": [
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "Université Paris Dauphine – PSL"
-      },
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "EDHEC Business School"
-      }
-    ],
-    "knowsAbout": ["Mathématiques", "Finance", "Physique"]
-  }
-  </script>
+  <!-- Import de la police Fira Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -38,31 +17,36 @@
     }
     html,body{
       background:var(--bg); color:var(--ink);
-      margin:0; padding:0;
-      height:100%; 
+      margin:0; padding:0; height:100%;
     }
     body{
-      max-width:1100px; margin:0 auto; padding:16px;
-      font:16px/1.6 Georgia, "Times New Roman", serif;
-      display:flex; flex-direction:column; 
-      min-height:100vh; 
+      max-width:1100px; margin:0 auto; padding:20px;
+      font:15.5px/1.55 'Fira Sans', sans-serif; 
+      display:flex; flex-direction:column;
+      min-height:100vh;
     }
-    header{border-bottom:1px solid var(--rule); margin-bottom:18px;}
-    h1{font-size:24px; line-height:1.2; margin:0 0 4px;}
-    .sub{color:var(--muted); font-size:14px; margin-bottom:8px;}
-    nav{font-size:15px; margin:10px 0;}
-    nav a{color:var(--link); text-decoration:none; margin-right:12px;}
+    header{border-bottom:1px solid var(--rule); margin-bottom:20px;}
+    h1{font-size:28px; margin:0 0 6px; line-height:1.2;}
+    .sub{color:var(--muted); font-size:16px; margin-bottom:10px;}
+    nav{font-size:15px; margin:12px 0;}
+    nav a{color:var(--link); text-decoration:none; margin-right:14px;}
     nav a:hover{text-decoration:underline;}
-    main{
-      flex:1; 
-    }
+    main{flex:1;}
     main section{margin:26px 0;}
-    h2{font-size:20px; margin:0 0 6px; padding-top:8px; border-top:1px solid var(--rule);}    
-    ul{margin:8px 0 0 1.1rem;}
-    li{margin:4px 0;}
-    .muted{color:var(--muted);}    
-    .highlight{color:var(--highlight);}    
-    a{color:var(--link);}    
+    h2{
+      font-size:15px; font-weight:600;
+      margin:0 0 6px; padding-top:8px;
+      border-top:1px solid var(--rule);
+    }
+    /* Spécifique à la section CV */
+    #cv h2 {
+      font-size:18px;  /* un peu plus grand */
+      font-weight:600;
+    }
+    p{margin:6px 0;}
+    .muted{color:var(--muted);}
+    .highlight{color:var(--highlight);}
+    a{color:var(--link);}
     footer{
       border-top:1px solid var(--rule);
       margin-top:28px; padding-top:10px;
@@ -73,32 +57,28 @@
 </head>
 <body>
 <header>
-  <div style="display:flex; align-items:flex-start; justify-content:space-between;">
-    <div>
-      <h1>Neyl Gasmi</h1>
-      <div class="sub">
-        Parcours Mathématiques, Actuariat, Finance à l'Université Paris Dauphine & 
-        PGE EDHEC Business School
-      </div>
-      <nav aria-label="Navigation principale">
-        <a href="index.html" style="font-weight:bold;">Home</a>
-        <a href="Enseignement.html">Enseignement</a>
-        <a href="CV.html">CV</a>
-        <a href="papers.html">Papers</a>
-        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
-        <a href="other.html">Others</a>
-      </nav>
+  <div>
+    <h1>Neyl Gasmi</h1>
+    <div class="sub">
+      Parcours Mathématiques, Actuariat, Finance à l'Université Paris Dauphine &amp; 
+      PGE EDHEC Business School
     </div>
+    <nav aria-label="Navigation principale">
+      <a href="index.html" style="font-weight:bold;">Home</a>
+      <a href="Enseignement.html">Enseignement</a>
+      <a href="CV.html">CV</a>
+      <a href="papers.html">Papers</a>
+      <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
+      <a href="other.html">Others</a>
+    </nav>
   </div>
 </header>
 
-
 <main>
   <section id="home">
-     <h2>Index</h2>
     <p>Bienvenue sur ma page personnelle. J'utilise cet espace pour partager des papiers sur des sujets qui m'intéressent, les exercices donnés à mes élèves tout au long de l'année, ainsi que divers projets numériques.</p>
     <p class="highlight">Je donne des cours particuliers de mathématiques du collège jusqu'à la L3. N'hésitez pas à me contacter dans la perspective d'un travail commun.</p>
-    <p>Centres d'intérêt : Calcul stochastique, Physique et Informatique quantique, Astronomie, Cosmologie, Programmation, M&A.</p>
+    <p>Centres d'intérêt : Calcul stochastique, Physique et Informatique quantique, Astronomie, Cosmologie, Programmation, M&amp;A.</p>
   </section>
 
   <section id="cv">
