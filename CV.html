@@ -5,139 +5,173 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Neyl Gasmi — CV</title>
   <meta name="description" content="Curriculum Vitae de Neyl Gasmi">
-  <!-- Import police Fira Sans -->
+  <!-- Import Fira Sans -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --ink:#111; --bg:#fff; --muted:#666; --rule:#ddd;
-    }
-    html,body{
-      background:var(--bg); color:var(--ink);
-      margin:0; padding:0; height:100%;
-    }
+    :root{ --ink:#111; --bg:#fff; --muted:#666; --rule:#e6e6e6; }
+    html,body{ background:var(--bg); color:var(--ink); margin:0; padding:0; height:100%; }
     body{
-      max-width:900px; margin:0 auto; padding:18px;
-      font:15px/1.55 'Fira Sans', sans-serif;
-      display:flex; flex-direction:column;
-      min-height:100vh;
+      max-width:1100px; margin:0 auto; padding:16px;
+      font:16px/1.6 Georgia, "Times New Roman", serif;
+      display:flex; flex-direction:column; min-height:100vh;
     }
-    header{border-bottom:1px solid var(--rule); margin-bottom:18px;}
-    h1{font-size:22px; margin:0 0 4px;}
+
+    /* ===== Header identique à Enseignement ===== */
+    header{border-bottom:1px solid var(--rule); margin-bottom:16px;}
+    h1{font-size:24px; line-height:1.2; margin:0 0 4px;}
     .sub{color:var(--muted); font-size:14px; margin-bottom:8px;}
-    nav{font-size:14px; margin:10px 0;}
-    nav a{color:var(--ink); text-decoration:none; margin-right:12px;}
+    nav{font-size:15px; margin:10px 0;}
+    nav a{color:#0645ad; text-decoration:none; margin-right:12px;}
     nav a:hover{text-decoration:underline;}
-    main{flex:1;}
-    main section{margin:22px 0;}
-    h2{
-      font-size:15px; font-weight:600; margin:0 0 4px;
-      display:flex; align-items:center; gap:6px;
+
+    /* ===== Contenu CV ===== */
+    main{ flex:1; font-family:'Fira Sans', sans-serif; font-size:15.5px; line-height:1.5; }
+    main section{ margin:22px 0; }
+    main h2{
+      font-size:15px; font-weight:600;
+      margin:0 0 6px; padding-top:10px;
+      border-top:1px solid var(--rule);
     }
-    h2::after{
-      content:"›"; font-size:14px; color:var(--muted); font-weight:400;
+
+    /* Header line for each entry */
+    .row{
+      display:flex; align-items:baseline; justify-content:space-between;
+      margin:4px 0 2px; gap:12px;
     }
-    p{margin:5px 0;}
-    b{font-weight:600;}
-    em{font-style:italic;}
+    .left{ font-weight:600; }
+    .right{ color:var(--muted); font-size:13.5px; white-space:nowrap; }
+
+    /* Bullets sobres */
+    .item{
+      position:relative; margin:5px 0 5px 20px;
+    }
+    .item::before{
+      content:"–";
+      position:absolute; left:-14px; top:0;
+      color:#999; font-size:14px; font-weight:400;
+    }
+
+    b{font-weight:600;} em{font-style:italic;}
+
     footer{
       border-top:1px solid var(--rule);
-      margin-top:28px; padding-top:10px;
-      font-size:13px; color:var(--muted); text-align:center;
+      margin-top:24px; padding-top:8px;
+      font-size:14px; color:var(--muted); text-align:center;
     }
   </style>
 </head>
 <body>
 <header>
-  <div>
-    <h1>Neyl Gasmi</h1>
-    <div class="sub">
-      Parcours Mathématiques, Actuariat, Finance à l'Université Paris Dauphine & 
-      PGE EDHEC Business School
+  <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+    <div>
+      <h1>Neyl Gasmi</h1>
+      <div class="sub">
+        Parcours Mathématiques, Actuariat, Finance à l'Université Paris Dauphine & 
+        PGE EDHEC Business School
+      </div>
+      <nav aria-label="Navigation principale">
+        <a href="index.html">Home</a>
+        <a href="Enseignement.html">Enseignement</a>
+        <a href="CV.html">CV</a>
+        <a href="papers.html">Papers</a>
+        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
+        <a href="other.html">Others</a>
+      </nav>
     </div>
-    <nav aria-label="Navigation principale">
-      <a href="index.html">Home</a>
-      <a href="Enseignement.html">Enseignement</a>
-      <a href="CV.html">CV</a>
-      <a href="papers.html">Papers</a>
-      <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
-      <a href="other.html">Others</a>
-    </nav>
   </div>
 </header>
 
 <main>
+
+  <!-- ===== EXPERIENCE ===== -->
   <section>
     <h2>Professional Experience</h2>
-    <p><b>Research Intern – EuroCTP, ESMA Consolidated Tape Candidate for Equities &amp; ETFs, Amsterdam</b><br>
-    <em>June–August 2025</em></p>
-    <p>Researched predictive microstructure signals using <b>Level 1–3 datasets</b> (billions of daily order book updates), applying time-series statistics to study liquidity fragmentation and trading cost dynamics.</p>
-    <p>Analysed microstructure behaviour across <b>20+ European venues</b>, quantifying latency asymmetries, liquidity fragmentation, and volume concentration.</p>
-    <p>Developed <b>Python pipelines</b> for scalable signal testing and performance benchmarking by MIC and instrument.</p>
-    <p>Applied anomaly detection and clustering to validate data integrity and uncover patterns in market activity.</p>
-    <p>Built automated dashboards for throughput, latency, and cross-venue attribution, supporting regulatory analysis and systematic research.</p>
+    <div class="row">
+      <div class="left">Research Intern — EuroCTP (ESMA Consolidated Tape Candidate for Equities &amp; ETFs)</div>
+      <div class="right">Amsterdam · Jun–Aug 2025</div>
+    </div>
+    <p class="item">Researched predictive microstructure signals using <b>Level 1–3 datasets</b> (billions of order book updates).</p>
+    <p class="item">Analysed microstructure across <b>20+ European venues</b>, quantifying latency asymmetries, fragmentation, and volume concentration.</p>
+    <p class="item">Developed <b>Python pipelines</b> for scalable signal testing and performance benchmarking by MIC and instrument.</p>
+    <p class="item">Applied anomaly detection and clustering to validate data integrity and uncover patterns in market activity.</p>
+    <p class="item">Built automated dashboards for throughput, latency, and cross-venue attribution supporting regulatory analysis.</p>
 
-    <p><b>Client Advisor – Galeries Lafayette, Marseille</b><br>
-    <em>Summers 2022–2024</em></p>
-    <p>Managed client relationships with discretion, service quality, and commercial outcomes.</p>
+    <div class="row sp">
+      <div class="left">Client Advisor — Galeries Lafayette</div>
+      <div class="right">Marseille · Summers 2022–2024</div>
+    </div>
+    <p class="item">Managed client relationships with discretion, service quality, and commercial outcomes.</p>
 
-    <p><b>Mathematics Tutor</b><br>
-    <em>2019 – Present</em></p>
-    <p>Prepared students for competitive exams and university-level quantitative courses.</p>
+    <div class="row sp">
+      <div class="left">Mathematics Tutor</div>
+      <div class="right">2019 – Present</div>
+    </div>
+    <p class="item">Prepared students for competitive exams and university-level quantitative courses.</p>
   </section>
 
+  <!-- ===== EDUCATION ===== -->
   <section>
     <h2>Education</h2>
-    <p><em>2025–2026</em> <b>Université Paris-Dauphine — Paris</b><br>
-    Bachelor in Mathematics, Finance &amp; Actuarial Science<br>
-    Optimisation, Derivatives, Statistical Modelling, Machine Learning, Linear Programming, Microeconomics, Quantitative Methods for Finance, R &amp; Python programming</p>
+    <div class="row">
+      <div class="left">Université Paris-Dauphine — Bachelor in Mathematics, Finance &amp; Actuarial Science</div>
+      <div class="right">Paris · 2025–2026</div>
+    </div>
+    <p class="item">Optimisation, Derivatives, Statistical Modelling, Machine Learning, Linear Programming, Microeconomics, Quantitative Methods for Finance, R &amp; Python programming</p>
 
-    <p><em>2024–2028</em> <b>EDHEC Business School — Lille</b><br>
-    MSc Grande École Programme<br>
-    Corporate Finance, Equity Valuation, Mergers &amp; Acquisitions, Financial Statement Analysis, Capital Markets Economics</p>
+    <div class="row sp">
+      <div class="left">EDHEC Business School — MSc Grande École Programme (M1 Finance)</div>
+      <div class="right">Lille · 2024–2028</div>
+    </div>
+    <p class="item">Corporate Finance, Equity Valuation, Mergers &amp; Acquisitions, Financial Statement Analysis, Capital Markets Economics</p>
 
-    <p><em>2024–2025</em> <b>Université de Lille</b><br>
-    Bachelor in Mathematics — Advanced Research Track (Ranked 2/57)<br>
-    Advanced Topology, Statistics, Measure Theory, Integration and Fourier Series, Numerical Analysis, Matrix Numerical Analysis, Group and Ring Theory, Differential Equations, Python Programming</p>
+    <div class="row sp">
+      <div class="left">Université de Lille — Bachelor in Mathematics (Advanced Research Track, Ranked 2/57)</div>
+      <div class="right">2024–2025</div>
+    </div>
+    <p class="item">Advanced Topology, Statistics, Measure Theory, Integration &amp; Fourier Series, Numerical Analysis, Matrix Numerical Analysis, Group &amp; Ring Theory, Differential Equations, Python Programming</p>
 
-    <p><em>2021–2024</em> <b>Classes Préparatoires — Lycée Notre-Dame de Sion, Marseille</b><br>
-    Intensive programme in Mathematics &amp; Physics (MPSI/MP)</p>
+    <div class="row sp">
+      <div class="left">Classes Préparatoires — Lycée Notre-Dame de Sion (MPSI/MP)</div>
+      <div class="right">Marseille · 2021–2024</div>
+    </div>
 
-    <p><em>2020–2021</em> <b>Lycée Périer — Marseille</b><br>
-    French Scientific Baccalauréat — <em>Mention Bien</em></p>
+    <div class="row sp">
+      <div class="left">Lycée Périer — Baccalauréat Scientifique (Mention Bien)</div>
+      <div class="right">Marseille · 2020–2021</div>
+    </div>
   </section>
 
+  <!-- ===== SKILLS ===== -->
   <section>
     <h2>Skills</h2>
-    <p><b>Finance:</b> Market microstructure, derivatives pricing, execution quality, liquidity analysis.</p>
-    <p><b>Data &amp; Analytics:</b> Python, SQL, PySpark, R, Machine Learning (Scikit-Learn), Data Visualisation (Matplotlib, Power BI).</p>
-    <p><b>Mathematics:</b> Probability, statistics, stochastic processes, econometrics, optimisation.</p>
-    <p><b>Languages:</b> French (native), English (C1), Arabic (conversational), Spanish (intermediate).</p>
+    <p class="item"><b>Finance:</b> Market microstructure, derivatives pricing, execution quality, liquidity analysis.</p>
+    <p class="item"><b>Data &amp; Analytics:</b> Python, SQL, PySpark, R, ML (Scikit-Learn), data visualisation (Matplotlib, Power BI).</p>
+    <p class="item"><b>Mathematics:</b> Probability, statistics, stochastic processes, econometrics, optimisation.</p>
+    <p class="item"><b>Languages:</b> French (native), English (C1), Arabic (conversational), Spanish (intermediate).</p>
   </section>
 
-  <section>
-    <h2>Certifications</h2>
-    <p><b>CFA Level I Candidate</b> — Exam scheduled February 2026</p>
-    <p>TOEIC 915/990</p>
-    <p>TOSA Excel 700/1000</p>
-    <p>PIX (Numerical Skills)</p>
-  </section>
+  <!-- ===== CERTIFICATIONS ===== -->
+ <section>
+  <h2>Certifications</h2>
+  <p class="item"><b>CFA Level I Candidate</b> — Exam Feb 2026</p>
+  <p class="item">TOEIC 915/990</p>
+  <p class="item">TOSA Excel 700/1000</p>
+  <p class="item">PIX (Numerical Skills)</p>
+</section>
 
+
+  <!-- ===== INTERESTS ===== -->
   <section>
     <h2>Interests</h2>
-    <p>Astronomy</p>
-    <p>Mathematics (conferences, research interest)</p>
-    <p>Reading</p>
-    <p>Sailing</p>
+    <p>Astronomy · Mathematics (conferences, research interest) · Reading · Sailing</p>
   </section>
 
+  <!-- ===== PERSONAL QUALITIES ===== -->
   <section>
     <h2>Personal Qualities</h2>
-    <p><b>Analytical mindset</b> — able to synthesise complex financial data into clear insights for decision-making.</p>
-    <p><b>Rigour and attention to detail</b> — ensuring accuracy under tight deadlines and high transaction volumes.</p>
-    <p><b>Adaptability</b> — quickly integrate into fast-paced deal environments and cross-border teams.</p>
-    <p><b>Communication skills</b> — confident in presenting ideas and collaborating with diverse stakeholders.</p>
-    <p><b>Initiative and reliability</b> — proactive in problem-solving, dependable in team delivery.</p>
+    <p>Analytical mindset · Rigour and attention to detail · Adaptability · Communication skills · Initiative and reliability</p>
   </section>
+
 </main>
 
 <footer>
