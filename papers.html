@@ -1,140 +1,102 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Audio — Curated Comps & Références</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neyl Gasmi — Papers</title>
+  <meta name="description" content="Papiers et notes de Neyl Gasmi.">
   <style>
-    :root{ --ink:#111; --bg:#fff; --muted:#666; --rule:#e6e6e6; --link:#0645ad; }
-    html,body{ margin:0; padding:0; background:var(--bg); color:var(--ink); }
-    body{ max-width:900px; margin:0 auto; padding:18px; font:16px/1.6 Georgia, "Times New Roman", serif; }
-    h1{ font-size:24px; margin:0 0 10px; }
-    section{ margin:18px 0; }
-    .card{ border:1px solid var(--rule); border-radius:8px; padding:12px 14px; }
-    details summary{ list-style:none; cursor:pointer; display:flex; gap:8px; align-items:flex-start; }
-    details summary::-webkit-details-marker{ display:none; }
-    details summary::before{ content:"▸"; color:var(--muted); margin-right:4px; }
-    details[open] summary::before{ content:"▾"; }
-    .title{ font-weight:700; }
-    .meta{ font-size:14px; color:var(--muted); margin-top:2px; }
-    .body{ margin-top:10px; }
-    .track{ border-top:1px solid var(--rule); padding-top:10px; margin-top:10px; }
-    .track .t{ font-weight:600; margin-bottom:6px; }
-    audio{ width:100%; display:block; margin:6px 0; }
-    .links a{ color:var(--link); text-decoration:underline; margin-right:14px; }
-    ul{ margin:6px 0 0 1.1rem; }
-    a{ color:var(--link); }
+    :root{
+      --ink:#111; --bg:#fff; --muted:#555; --link:#0645ad; --rule:#e6e6e6;
+    }
+    html,body{
+      background:var(--bg); color:var(--ink);
+      margin:0; padding:0; height:100%;
+    }
+    body{
+      max-width:1100px; margin:0 auto; padding:16px;
+      font:16px/1.6 Georgia, "Times New Roman", serif;
+      display:flex; flex-direction:column;
+      min-height:100vh;
+    }
+    header{border-bottom:1px solid var(--rule); margin-bottom:18px;}
+    h1{font-size:24px; line-height:1.2; margin:0 0 4px;}
+    .sub{color:var(--muted); font-size:14px; margin-bottom:8px;}
+    nav{font-size:15px; margin:10px 0;}
+    nav a{color:var(--link); text-decoration:none; margin-right:12px;}
+    nav a:hover{text-decoration:underline;}
+    main{flex:1;}
+    main section{margin:26px 0;}
+    h2{font-size:20px; margin:0 0 10px; padding-top:8px; border-top:1px solid var(--rule);}
+    .paper{margin-bottom:20px;}
+    .paper .title{font-weight:600; font-size:17px; margin-bottom:3px;}
+    .paper .meta{color:var(--muted); font-size:14px; margin-bottom:6px;}
+    .paper .links a{margin-right:14px; font-size:14px; color:var(--link);}
+    footer{
+      border-top:1px solid var(--rule);
+      margin-top:28px; padding-top:10px;
+      font-size:14px; color:var(--muted);
+      text-align:center;
+    }
   </style>
 </head>
 <body>
-
-  <h1>Audio & Références</h1>
-
-  <!-- Curated Comps : ouvre la liste des audios écoutables -->
-  <section>
-    <div class="card">
-      <details>
-        <summary>
-          <div>
-            <div class="title">Curated Comps</div>
-            <div class="meta">Sélection de pistes (lecteur intégré + téléchargement)</div>
-          </div>
-        </summary>
-        <div class="body">
-          <div class="track">
-            <div class="t">Kanye West — All Falls Down</div>
-            <audio controls>
-              <source src="02_All_Falls_Downmp3.mp3" type="audio/mpeg">
-              Votre navigateur ne supporte pas l’audio HTML5.
-            </audio>
-            <div class="links"><a href="02_All_Falls_Downmp3.mp3" download>Télécharger (MP3)</a></div>
-          </div>
-
-          <div class="track">
-            <div class="t">Kanye West — Spaceship</div>
-            <audio controls>
-              <source src="03.%20Spaceship.mp3" type="audio/mpeg">
-            </audio>
-            <div class="links"><a href="03.%20Spaceship.mp3" download>Télécharger (MP3)</a></div>
-          </div>
-
-          <div class="track">
-            <div class="t">Kanye West — Otis</div>
-            <audio controls>
-              <source src="04%20Otis.mp3" type="audio/mpeg">
-            </audio>
-            <div class="links"><a href="04%20Otis.mp3" download>Télécharger (MP3)</a></div>
-          </div>
-
-          <div class="track">
-            <div class="t">Kanye West — Roses</div>
-            <audio controls>
-              <source src="06.%20Roses.mp3" type="audio/mpeg">
-            </audio>
-            <div class="links"><a href="06.%20Roses.mp3" download>Télécharger (MP3)</a></div>
-          </div>
-
-          <div class="track">
-            <div class="t">Kanye West — Bring Me Down</div>
-            <audio controls>
-              <source src="07%20Bring%20Me%20Down.mp3" type="audio/mpeg">
-            </audio>
-            <div class="links"><a href="07%20Bring%20Me%20Down.mp3" download>Télécharger (MP3)</a></div>
-          </div>
-
-          <div class="track">
-            <div class="t">Kanye West — Through The Valley</div>
-            <audio controls>
-              <source src="07%20Through%20The%20Valley.mp3" type="audio/mpeg">
-            </audio>
-            <div class="links"><a href="07%20Through%20The%20Valley.mp3" download>Télécharger (MP3)</a></div>
-          </div>
-        </div>
-      </details>
+<header>
+  <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+    <div>
+      <h1>Neyl Gasmi</h1>
+      <div class="sub">
+        Parcours Mathématiques, Actuariat, Finance à l'Université Paris Dauphine & 
+        PGE EDHEC Business School
+      </div>
+      <nav aria-label="Navigation principale">
+        <a href="index.html">Home</a>
+        <a href="Enseignement.html">Enseignement</a>
+        <a href="CV.html">CV</a>
+        <a href="papers.html">Papers</a>
+        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
+        <a href="other.html">Others</a>
+      </nav>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- Liens intéressants : texte uniquement -->
-  <section>
-    <div class="card">
-      <details>
-        <summary>
-          <div>
-            <div class="title">Liens intéressants</div>
-            <div class="meta">Ressources musique & bases de données</div>
-          </div>
-        </summary>
-        <div class="body">
-          <ul>
-            <li><a href="https://www.whosampled.com/" target="_blank" rel="noopener">WhoSampled</a> — base de samples et références.</li>
-            <li><a href="https://www.discogs.com/" target="_blank" rel="noopener">Discogs</a> — discographies & pressages.</li>
-            <li><a href="https://www.allmusic.com/" target="_blank" rel="noopener">AllMusic</a> — revues, crédits, historiques.</li>
-          </ul>
-        </div>
-      </details>
+<main>
+  <section id="papers">
+    <h2>Papers</h2>
+
+    <div class="paper">
+      <div class="title">Notes sur l’Ising 2D et transitions de phase (survol computationnel)</div>
+      <div class="meta">Préprint, 2025 — Notes &amp; simulations Monte Carlo (Metropolis) — 18 pages</div>
+      <div class="links">
+        <a href="Ising2D_Notes.pdf" target="_blank" rel="noopener">Lire le PDF</a>
+        <a href="Ising2D_Notes.tex" download>Télécharger le LaTeX</a>
+      </div>
     </div>
-  </section>
 
-  <!-- Bibliographie : texte uniquement -->
-  <section>
-    <div class="card">
-      <details>
-        <summary>
-          <div>
-            <div class="title">Bibliographie</div>
-            <div class="meta">Sélection d’ouvrages & essais</div>
-          </div>
-        </summary>
-        <div class="body">
-          <ul>
-            <li>Philippe Astor, <em>Musique et streaming</em>, IRMA, 2019.</li>
-            <li>T. Katz, <em>Music and the Marketplace</em>, Routledge, 2021.</li>
-            <li>D. Byrne, <em>How Music Works</em>, McSweeney’s, 2012.</li>
-          </ul>
-        </div>
-      </details>
+    <div class="paper">
+      <div class="title">Market Microstructure &amp; Consolidated Tape</div>
+      <div class="meta">Rapport technique, 2025 — Analyse BMLL sur 20+ MIC européens</div>
+      <div class="links">
+        <a href="Microstructure_Report.pdf" target="_blank" rel="noopener">Lire le PDF</a>
+        <a href="Microstructure_Report.tex" download>Télécharger le LaTeX</a>
+      </div>
     </div>
-  </section>
 
+    <div class="paper">
+      <div class="title">Méthodes stochastiques et applications à la finance</div>
+      <div class="meta">Cours — 2024, Université de Lille, 42 pages</div>
+      <div class="links">
+        <a href="Stochastics_Finance.pdf" target="_blank" rel="noopener">Lire le PDF</a>
+        <a href="Stochastics_Finance.tex" download>Télécharger le LaTeX</a>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  © 2025 — Neyl Gasmi · Paris
+</footer>
 </body>
 </html>
