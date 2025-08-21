@@ -5,68 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Neyl Gasmi — CV</title>
   <meta name="description" content="Curriculum Vitae de Neyl Gasmi">
-  <!-- Import des polices LaTeX-like -->
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Import police Fira Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --ink:#111; --bg:#fff; --muted:#555; --link:#0645ad; --rule:#e6e6e6;
+      --ink:#111; --bg:#fff; --muted:#666; --rule:#ddd;
     }
     html,body{
       background:var(--bg); color:var(--ink);
-      margin:0; padding:0;
-      height:100%;
+      margin:0; padding:0; height:100%;
     }
     body{
-      max-width:1100px; margin:0 auto; padding:16px;
-      font:16px/1.55 "Palatino Linotype","Book Antiqua",Palatino,serif; /* équivalent mathpazo */
+      max-width:900px; margin:0 auto; padding:18px;
+      font:15px/1.55 'Fira Sans', sans-serif;
       display:flex; flex-direction:column;
       min-height:100vh;
     }
     header{border-bottom:1px solid var(--rule); margin-bottom:18px;}
-    h1{font-size:24px; line-height:1.2; margin:0 0 4px;
-       font-family:'Fira Sans',sans-serif;}
+    h1{font-size:22px; margin:0 0 4px;}
     .sub{color:var(--muted); font-size:14px; margin-bottom:8px;}
-    nav{font-size:15px; margin:10px 0; font-family:'Fira Sans',sans-serif;}
-    nav a{color:var(--link); text-decoration:none; margin-right:12px;}
+    nav{font-size:14px; margin:10px 0;}
+    nav a{color:var(--ink); text-decoration:none; margin-right:12px;}
     nav a:hover{text-decoration:underline;}
     main{flex:1;}
-    main section{margin:26px 0;}
+    main section{margin:22px 0;}
     h2{
-      font-size:18px; margin:0 0 6px; padding-top:8px;
-      border-top:1px solid var(--rule);
-      font-family:'Fira Sans',sans-serif; color:#2E86C1; /* couleur mainblue LaTeX */
+      font-size:15px; font-weight:600; margin:0 0 4px;
+      display:flex; align-items:center; gap:6px;
     }
-    p{margin:6px 0;}
-    b{font-weight:700;}
+    h2::after{
+      content:"›"; font-size:14px; color:var(--muted); font-weight:400;
+    }
+    p{margin:5px 0;}
+    b{font-weight:600;}
     em{font-style:italic;}
-    a{color:var(--link);}
     footer{
       border-top:1px solid var(--rule);
       margin-top:28px; padding-top:10px;
-      font-size:14px; color:var(--muted);
-      text-align:center;
-      font-family:'Fira Sans',sans-serif;
+      font-size:13px; color:var(--muted); text-align:center;
     }
   </style>
 </head>
 <body>
 <header>
-  <div style="display:flex; align-items:flex-start; justify-content:space-between;">
-    <div>
-      <h1>Neyl Gasmi</h1>
-      <div class="sub">
-        Parcours Mathématiques, Actuariat, Finance à l'Université Paris Dauphine & 
-        PGE EDHEC Business School
-      </div>
-      <nav aria-label="Navigation principale">
-        <a href="index.html">Home</a>
-        <a href="Enseignement.html">Enseignement</a>
-        <a href="CV.html">CV</a>
-        <a href="papers.html">Papers</a>
-        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
-        <a href="other.html">Others</a>
-      </nav>
+  <div>
+    <h1>Neyl Gasmi</h1>
+    <div class="sub">
+      Parcours Mathématiques, Actuariat, Finance à l'Université Paris Dauphine & 
+      PGE EDHEC Business School
     </div>
+    <nav aria-label="Navigation principale">
+      <a href="index.html">Home</a>
+      <a href="Enseignement.html">Enseignement</a>
+      <a href="CV.html">CV</a>
+      <a href="papers.html">Papers</a>
+      <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
+      <a href="other.html">Others</a>
+    </nav>
   </div>
 </header>
 
