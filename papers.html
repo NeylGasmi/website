@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neyl Gasmi — Papers</title>
+  <meta name="description" content="Compilation de travaux — articles, notes, projets.">
+  <style>
+    :root{
+      --ink:#111; --bg:#fff; --muted:#555; --link:#0645ad; --rule:#e6e6e6;
+    }
+    html,body{ background:var(--bg); color:var(--ink); margin:0; padding:0; height:100%; }
+    body{
+      max-width:1100px; margin:0 auto; padding:16px;
+      font:16px/1.6 Georgia, "Times New Roman", serif;
+      display:flex; flex-direction:column; min-height:100vh;
+    }
+    header{ border-bottom:1px solid var(--rule); margin-bottom:18px; }
+    h1{ font-size:24px; line-height:1.2; margin:0 0 4px; }
+    .sub{ color:var(--muted); font-size:14px; margin-bottom:8px; }
+    nav{ font-size:15px; margin:10px 0; }
+    nav a{ color:var(--link); text-decoration:none; margin-right:12px; }
+    nav a:hover{ text-decoration:underline; }
+    main{ flex:1; }
+    main section{ margin:26px 0; }
+    h2{ font-size:20px; margin:0 0 10px; padding-top:8px; border-top:1px solid var(--rule); }
+    .paper{ margin:14px 0 18px; }
+    .title{ font-weight:700; }
+    .meta{ color:var(--muted); font-size:14px; }
+    .links a{ margin-right:16px; color:var(--link); text-decoration:underline; }
+    details{ margin-top:6px; }
+    summary{ cursor:pointer; color:var(--link); }
+    footer{
+      border-top:1px solid var(--rule);
+      margin-top:28px; padding-top:10px;
+      font-size:14px; color:var(--muted); text-align:center;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+    <div>
+      <h1>Neyl Gasmi</h1>
+      <div class="sub">
+        Parcours Mathématiques, Actuariat, Finance à l'Université Paris Dauphine & 
+        PGE EDHEC Business School
+      </div>
+      <nav aria-label="Navigation principale">
+        <a href="index.html">Home</a>
+        <a href="Enseignement.html">Enseignement</a>
+        <a href="CV.html">CV</a>
+        <a href="papers.html">Papers</a>
+        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
+        <a href="index.html#other">Others</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="intro">
+    <h2>Papers</h2>
+    <p class="muted">
+      Compilation de travaux personnels&nbsp;: notes de cours, brouillons de recherche, comptes rendus de lectures
+      et projets numériques. Chaque document est accessible en <b>PDF</b> (lecture en ligne) et en <b>LaTeX</b> (téléchargement).
+    </p>
+  </section>
+
+  <!-- ===== Exemple par année ===== -->
+  <section id="y2025">
+    <h2>2025</h2>
+
+    <div class="paper">
+      <div class="title">Notes sur l’Ising 2D et transitions de phase (survol computationnel)</div>
+      <div class="meta">Préprint, 2025 — Notes &amp; simulations Monte Carlo (Metropolis) — 18 pages</div>
+      <div class="links">
+        <a href="Ising2D_Notes.pdf" target="_blank" rel="noopener">Lire le PDF</a>
+        <a href="Ising2D_Notes.tex" download>Télécharger le LaTeX</a>
+      </div>
+      <details>
+        <summary>Résumé</summary>
+        <p>Introduction au modèle d’Ising en 2D&nbsp;: magnétisation, température critique, dynamique des domaines
+        et courte revue des résultats classiques (sans démonstrations détaillées). Implémentation numérique basique
+        et figures issues de simulations.</p>
+      </details>
+    </div>
+
+    <div class="paper">
+      <div class="title">Petites fiches de probabilités — Variables aléatoires &amp; lois classiques</div>
+      <div class="meta">Note pédagogique, 2025 — Rappels, exercices courts — 12 pages</div>
+      <div class="links">
+        <a href="Fiches_Probabilites.pdf" target="_blank" rel="noopener">Lire le PDF</a>
+        <a href="Fiches_Probabilites.tex" download>Télécharger le LaTeX</a>
+      </div>
+      <details>
+        <summary>Résumé</summary>
+        <p>Rappels compacts sur l’espérance, la variance, les lois usuelles (Bernoulli, Binomiale, Poisson, Normale),
+        et quelques exercices d’entraînement avec solutions succinctes.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="y2024">
+    <h2>2024</h2>
+
+    <div class="paper">
+      <div class="title">Éléments de calcul stochastique — Itô en pratique</div>
+      <div class="meta">Brouillon de notes, 2024 — Itô, SDE, esquisses d’applications — 16 pages</div>
+      <div class="links">
+        <a href="Ito_Practice.pdf" target="_blank" rel="noopener">Lire le PDF</a>
+        <a href="Ito_Practice.tex" download>Télécharger le LaTeX</a>
+      </div>
+      <details>
+        <summary>Résumé</summary>
+        <p>Rappels de base du calcul d’Itô, exemples de SDE simples, schéma d’Euler-Maruyama et
+        remarques de stabilité numérique.</p>
+      </details>
+    </div>
+
+    <div class="paper">
+      <div class="title">Algèbre linéaire — Mini-recueil d’exercices corrigés</div>
+      <div class="meta">Recueil pédagogique, 2024 — 20 exercices — 14 pages</div>
+      <div class="links">
+        <a href="Algebre_Lineaire_Exos.pdf" target="_blank" rel="noopener">Lire le PDF</a>
+        <a href="Algebre_Lineaire_Exos.tex" download>Télécharger le LaTeX</a>
+      </div>
+      <details>
+        <summary>Résumé</summary>
+        <p>Sélection d’exercices courts sur noyau, image, diagonalisation (sans lourdeur de notation),
+        utiles pour des révisions rapides.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===== Exemple par thème (optionnel) =====
+  <section id="thematique">
+    <h2>Probabilités &amp; Modèles</h2>
+    ...
+  </section>
+  -->
+
+</main>
+
+<footer>
+  © <span>2025</span> — Neyl Gasmi &nbsp;&middot;&nbsp; Paris
+</footer>
+</body>
+</html>
