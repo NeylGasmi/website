@@ -3,182 +3,63 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Neyl Gasmi — Audio & Références</title>
-  <meta name="description" content="Papiers, audios et références de Neyl Gasmi.">
+  <title>Neyl Gasmi — Références</title>
+  <meta name="description" content="Références, bibliographie et sélections de Neyl Gasmi.">
   <style>
     :root{
       --ink:#111; --bg:#fff; --muted:#555; --link:#0645ad; --rule:#e6e6e6;
       --card:#fafafa; --focus:#cde3ff;
     }
-    html,body{background:var(--bg);color:var(--ink);margin:0;padding:0;height:100%;}
     body{
+      background:var(--bg); color:var(--ink);
       max-width:1100px; margin:0 auto; padding:16px;
       font:16px/1.6 Georgia,"Times New Roman",serif;
-      display:flex; flex-direction:column; min-height:100vh;
     }
-    a{color:var(--link); text-decoration:none}
-    a:hover{text-decoration:underline}
     header{border-bottom:1px solid var(--rule); margin-bottom:18px;}
-    h1{font-size:24px; line-height:1.2; margin:0 0 4px;}
+    h1{font-size:24px; margin:0 0 4px;}
     .sub{color:var(--muted); font-size:14px; margin-bottom:8px;}
-    nav{font-size:15px; margin:10px 0;}
-    nav a{margin-right:12px;}
-    main{flex:1;}
-    main > h1{font-size:22px; margin:6px 0 10px;}
+    nav a{color:var(--link); margin-right:12px; text-decoration:none;}
+    nav a:hover{text-decoration:underline;}
     section{margin:24px 0;}
-    h2{font-size:20px; margin:0 0 10px; padding-top:8px; border-top:1px solid var(--rule);}
-
-    /* Cards / details */
-    .card{
-      background:var(--card);
-      border:1px solid var(--rule);
-      border-radius:10px;
-      padding:10px 12px;
-    }
-    details{border-radius:8px;}
-    summary{
-      list-style:none; cursor:pointer;
-      display:flex; align-items:center; gap:10px;
-      padding:6px; margin:-6px; border-radius:8px;
-      outline:none;
-    }
-    summary::-webkit-details-marker{display:none}
-    .caret{
-      width:10px; height:10px; border-right:2px solid var(--muted); border-bottom:2px solid var(--muted);
-      transform:rotate(-45deg); transition:transform .2s ease;
-      margin-right:2px;
-    }
-    details[open] .caret{ transform:rotate(45deg); }
-    summary:focus-visible{ box-shadow:0 0 0 3px var(--focus); }
-    .title{font-weight:700; font-size:16px;}
+    .card{background:var(--card); border:1px solid var(--rule); border-radius:8px; padding:10px 12px;}
+    details summary{cursor:pointer; display:flex; align-items:center; gap:8px; font-weight:600;}
+    details summary::-webkit-details-marker{display:none}
+    .caret{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(-45deg);transition:.2s}
+    details[open] .caret{transform:rotate(45deg);}
     .meta{color:var(--muted); font-size:13px;}
     .body{margin-top:10px; padding-top:8px; border-top:1px dashed var(--rule);}
-
-    /* Tracks */
-    .track{
-      display:grid; grid-template-columns:1fr auto; gap:6px 16px;
-      padding:10px 0; border-bottom:1px solid var(--rule);
-    }
-    .track:last-child{border-bottom:none}
-    .track .t{font-weight:600;}
-    .track .links{font-size:14px; align-self:center;}
-    audio{max-width:360px; width:100%;}
-    @media (max-width:640px){
-      .track{grid-template-columns:1fr; gap:6px;}
-      audio{max-width:100%;}
-    }
-
-    footer{
-      border-top:1px solid var(--rule);
-      margin-top:28px; padding-top:10px;
-      font-size:14px; color:var(--muted); text-align:center;
-    }
+    ul{margin:0; padding-left:18px;}
+    .track{margin-bottom:16px;}
+    .track .t{font-weight:600; margin-bottom:4px;}
+    audio{width:100%; max-width:380px; display:block; margin:6px 0;}
+    .links{font-size:14px;}
+    footer{border-top:1px solid var(--rule); margin-top:28px; padding-top:10px; font-size:14px; color:var(--muted); text-align:center;}
   </style>
 </head>
 <body>
 <header>
-  <div style="display:flex; align-items:flex-start; justify-content:space-between;">
-    <div>
-      <h1>Neyl Gasmi</h1>
-      <div class="sub">
-        Parcours Mathématiques, Actuariat, Finance — Université Paris Dauphine & EDHEC Business School
-      </div>
-      <nav aria-label="Navigation principale">
-        <a href="index.html">Home</a>
-        <a href="Enseignement.html">Enseignement</a>
-        <a href="CV.html">CV</a>
-        <a href="papers.html" aria-current="page">Papers</a>
-        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
-        <a href="other.html">Others</a>
-      </nav>
-    </div>
+  <h1>Neyl Gasmi</h1>
+  <div class="sub">
+    Parcours Mathématiques, Actuariat, Finance — Université Paris Dauphine & EDHEC Business School
   </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Enseignement.html">Enseignement</a>
+    <a href="CV.html">CV</a>
+    <a href="papers.html" aria-current="page">Papers</a>
+    <a href="https://www.linkedin.com/in/neylgasmi/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="other.html">Others</a>
+  </nav>
 </header>
 
 <main>
-  <h1>Audio & Références</h1>
+  <h1>Références & Sélections</h1>
 
-  <!-- Curated Comps : ouvre la liste des audios écoutables -->
+  <!-- Liens intéressants -->
   <section>
     <div class="card">
       <details>
-        <summary>
-          <span class="caret" aria-hidden="true"></span>
-          <div>
-            <div class="title">Curated Comps</div>
-            <div class="meta">Sélection de pistes (lecteur intégré & téléchargement)</div>
-          </div>
-        </summary>
-        <div class="body" role="list">
-          <div class="track" role="listitem">
-            <div class="t">Kanye West — All Falls Down</div>
-            <audio controls preload="metadata" aria-label="Lecture — All Falls Down">
-              <source src="02_All_Falls_Downmp3.mp3" type="audio/mpeg">
-              Votre navigateur ne supporte pas l’audio HTML5.
-            </audio>
-            <div class="links"><a href="02_All_Falls_Downmp3.mp3" download>Télécharger (MP3)</a></div>
-          </div>
-
-          <div class="track" role="listitem">
-            <div class="t">Kanye West — Spaceship</div>
-            <audio controls preload="metadata" aria-label="Lecture — Spaceship">
-              <source src="03.%20Spaceship.mp3" type="audio/mpeg">
-              Votre navigateur ne supporte pas l’audio HTML5.
-            </audio>
-            <div class="links"><a href="03.%20Spaceship.mp3" download>Télécharger (MP3)</a></div>
-          </div>
-
-          <div class="track" role="listitem">
-            <div class="t">Kanye West — Otis</div>
-            <audio controls preload="metadata" aria-label="Lecture — Otis">
-              <source src="04%20Otis.mp3" type="audio/mpeg">
-              Votre navigateur ne supporte pas l’audio HTML5.
-            </audio>
-            <div class="links"><a href="04%20Otis.mp3" download>Télécharger (MP3)</a></div>
-          </div>
-
-          <div class="track" role="listitem">
-            <div class="t">Kanye West — Roses</div>
-            <audio controls preload="metadata" aria-label="Lecture — Roses">
-              <source src="06.%20Roses.mp3" type="audio/mpeg">
-              Votre navigateur ne supporte pas l’audio HTML5.
-            </audio>
-            <div class="links"><a href="06.%20Roses.mp3" download>Télécharger (MP3)</a></div>
-          </div>
-
-          <div class="track" role="listitem">
-            <div class="t">Kanye West — Bring Me Down</div>
-            <audio controls preload="metadata" aria-label="Lecture — Bring Me Down">
-              <source src="07%20Bring%20Me%20Down.mp3" type="audio/mpeg">
-              Votre navigateur ne supporte pas l’audio HTML5.
-            </audio>
-            <div class="links"><a href="07%20Bring%20Me%20Down.mp3" download>Télécharger (MP3)</a></div>
-          </div>
-
-          <div class="track" role="listitem">
-            <div class="t">Kanye West — Through The Valley</div>
-            <audio controls preload="metadata" aria-label="Lecture — Through The Valley">
-              <source src="07%20Through%20The%20Valley.mp3" type="audio/mpeg">
-              Votre navigateur ne supporte pas l’audio HTML5.
-            </audio>
-            <div class="links"><a href="07%20Through%20The%20Valley.mp3" download>Télécharger (MP3)</a></div>
-          </div>
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <!-- Liens intéressants : texte uniquement -->
-  <section>
-    <div class="card">
-      <details>
-        <summary>
-          <span class="caret" aria-hidden="true"></span>
-          <div>
-            <div class="title">Liens intéressants</div>
-            <div class="meta">Ressources musique & bases de données</div>
-          </div>
-        </summary>
+        <summary><span class="caret"></span> Liens intéressants <span class="meta">— ressources musique & bases</span></summary>
         <div class="body">
           <ul>
             <li><a href="https://www.whosampled.com/" target="_blank" rel="noopener">WhoSampled</a> — base de samples et références.</li>
@@ -190,22 +71,87 @@
     </div>
   </section>
 
-  <!-- Bibliographie : texte uniquement -->
+  <!-- Bibliographie -->
   <section>
     <div class="card">
       <details>
-        <summary>
-          <span class="caret" aria-hidden="true"></span>
-          <div>
-            <div class="title">Bibliographie</div>
-            <div class="meta">Sélection d’ouvrages & essais</div>
-          </div>
-        </summary>
+        <summary><span class="caret"></span> Bibliographie <span class="meta">— ouvrages & essais</span></summary>
         <div class="body">
           <ul>
             <li>Philippe Astor, <em>Musique et streaming</em>, IRMA, 2019.</li>
             <li>T. Katz, <em>Music and the Marketplace</em>, Routledge, 2021.</li>
             <li>D. Byrne, <em>How Music Works</em>, McSweeney’s, 2012.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Chaînes YouTube / Podcasts -->
+  <section>
+    <div class="card">
+      <details>
+        <summary><span class="caret"></span> Chaînes YouTube / Podcasts <span class="meta">— sélections audio-visuelles</span></summary>
+        <div class="body">
+          <ul>
+            <li><a href="https://www.youtube.com/@fantano" target="_blank" rel="noopener">The Needle Drop</a> — critiques & découvertes.</li>
+            <li><a href="https://www.youtube.com/@mixwiththemasters" target="_blank" rel="noopener">Mix With The Masters</a> — studio & production.</li>
+            <li><a href="https://open.spotify.com/show/3f1" target="_blank" rel="noopener">Song Exploder</a> — déconstruction de morceaux.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Curated Comps -->
+  <section>
+    <div class="card">
+      <details>
+        <summary><span class="caret"></span> Curated Comps <span class="meta">— sélection de pistes à écouter</span></summary>
+        <div class="body">
+          <div class="track">
+            <div class="t">Kanye West — All Falls Down</div>
+            <audio controls>
+              <source src="02_All_Falls_Downmp3.mp3" type="audio/mpeg">
+            </audio>
+            <div class="links"><a href="02_All_Falls_Downmp3.mp3" download>Télécharger (MP3)</a></div>
+          </div>
+          <div class="track">
+            <div class="t">Kanye West — Spaceship</div>
+            <audio controls>
+              <source src="03.%20Spaceship.mp3" type="audio/mpeg">
+            </audio>
+            <div class="links"><a href="03.%20Spaceship.mp3" download>Télécharger (MP3)</a></div>
+          </div>
+          <div class="track">
+            <div class="t">Kanye West — Otis</div>
+            <audio controls>
+              <source src="04%20Otis.mp3" type="audio/mpeg">
+            </audio>
+            <div class="links"><a href="04%20Otis.mp3" download>Télécharger (MP3)</a></div>
+          </div>
+          <div class="track">
+            <div class="t">Kanye West — Roses</div>
+            <audio controls>
+              <source src="06.%20Roses.mp3" type="audio/mpeg">
+            </audio>
+            <div class="links"><a href="06.%20Roses.mp3" download>Télécharger (MP3)</a></div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Astronomy -->
+  <section>
+    <div class="card">
+      <details>
+        <summary><span class="caret"></span> Astronomy <span class="meta">— ressources ciel & cosmos</span></summary>
+        <div class="body">
+          <ul>
+            <li><a href="https://apod.nasa.gov/apod/astropix.html" target="_blank" rel="noopener">NASA APOD</a> — Astronomy Picture of the Day.</li>
+            <li><a href="https://skyandtelescope.org/" target="_blank" rel="noopener">Sky & Telescope</a> — observation et actualités.</li>
+            <li><a href="https://www.esa.int/" target="_blank" rel="noopener">ESA</a> — missions spatiales européennes.</li>
           </ul>
         </div>
       </details>
@@ -218,7 +164,6 @@
 </footer>
 
 <script>
-  // Année dynamique dans le footer
   document.getElementById('y').textContent = new Date().getFullYear();
 </script>
 </body>
