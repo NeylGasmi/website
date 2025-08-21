@@ -5,22 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Neyl Gasmi — Références</title>
   <meta name="description" content="Références, bibliographie et sélections de Neyl Gasmi.">
+
+  <!-- Import de la police Fira Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --ink:#111; --bg:#fff; --muted:#555; --link:#0645ad; --rule:#e6e6e6;
-      --card:#fafafa; --focus:#cde3ff;
+      --card:#fafafa;
+    }
+    html,body{
+      background:var(--bg); color:var(--ink);
+      margin:0; padding:0; height:100%;
     }
     body{
-      background:var(--bg); color:var(--ink);
-      max-width:1100px; margin:0 auto; padding:16px;
-      font:16px/1.6 Georgia,"Times New Roman",serif;
+      max-width:1100px; margin:0 auto; padding:20px;
+      font:15.5px/1.55 'Fira Sans', sans-serif; 
+      display:flex; flex-direction:column;
+      min-height:100vh;
     }
-    header{border-bottom:1px solid var(--rule); margin-bottom:18px;}
-    h1{font-size:24px; margin:0 0 4px;}
-    .sub{color:var(--muted); font-size:14px; margin-bottom:8px;}
-    nav a{color:var(--link); margin-right:12px; text-decoration:none;}
+
+    /* Header (même style que la page perso) */
+    header{border-bottom:1px solid var(--rule); margin-bottom:20px;}
+    h1{font-size:28px; margin:0 0 6px; line-height:1.2;}
+    .sub{color:var(--muted); font-size:16px; margin-bottom:10px;}
+    nav{font-size:15px; margin:12px 0;}
+    nav a{color:var(--link); text-decoration:none; margin-right:14px;}
     nav a:hover{text-decoration:underline;}
-    section{margin:24px 0;}
+
+    /* Contenu */
+    main{flex:1;}
+    main section{margin:26px 0;}
+    h2{font-size:18px; font-weight:600; margin:0 0 10px; padding-top:8px; border-top:1px solid var(--rule);}
+
     .card{background:var(--card); border:1px solid var(--rule); border-radius:8px; padding:10px 12px;}
     details summary{cursor:pointer; display:flex; align-items:center; gap:8px; font-weight:600;}
     details summary::-webkit-details-marker{display:none}
@@ -29,72 +46,77 @@
     .meta{color:var(--muted); font-size:13px;}
     .body{margin-top:10px; padding-top:8px; border-top:1px dashed var(--rule);}
     ul{margin:0; padding-left:18px;}
-    .track{margin-bottom:16px;}
-    .track .t{font-weight:600; margin-bottom:4px;}
-    audio{width:100%; max-width:380px; display:block; margin:6px 0;}
-    .links{font-size:14px;}
-    footer{border-top:1px solid var(--rule); margin-top:28px; padding-top:10px; font-size:14px; color:var(--muted); text-align:center;}
+    li{margin:6px 0;}
+    footer{
+      border-top:1px solid var(--rule);
+      margin-top:28px; padding-top:10px;
+      font-size:14px; color:var(--muted);
+      text-align:center;
+    }
   </style>
 </head>
 <body>
 <header>
-  <h1>Neyl Gasmi</h1>
-  <div class="sub">
-    Parcours Mathématiques, Actuariat, Finance — Université Paris Dauphine & EDHEC Business School
+  <div>
+    <h1>Neyl Gasmi</h1>
+    <div class="sub">
+      Parcours Mathématiques, Actuariat, Finance à l'Université Paris Dauphine &amp; 
+      PGE EDHEC Business School
+    </div>
+    <nav aria-label="Navigation principale">
+      <a href="index.html">Home</a>
+      <a href="Enseignement.html">Enseignement</a>
+      <a href="CV.html">CV</a>
+      <a href="papers.html">Papers</a>
+      <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
+      <a href="other.html">Others</a>
+    </nav>
   </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="Enseignement.html">Enseignement</a>
-    <a href="CV.html">CV</a>
-    <a href="papers.html" aria-current="page">Papers</a>
-    <a href="https://www.linkedin.com/in/neylgasmi/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="other.html">Others</a>
-  </nav>
 </header>
 
 <main>
-  <h1>Références & Sélections</h1>
+  <h2>Références &amp; Sélections</h2>
 
  <section>
   <div class="card">
     <details>
       <summary><span class="caret"></span> Bibliographie <span class="meta"></span></summary>
       <div class="body">
-  <ul>
-  <li>Edith Wharton, <em>Le temps de l’innocence</em>, 1920.</li>
-  <li>Hubert Reeves, <em>Poussière d’étoiles</em>, 1984.</li>
-  <li>Marco Panza & Andrea Sereni, <em>Introduction à la philosophie des mathématiques</em>, 2016.</li>
-  <li>Trinh Xuan Thuan, <em>La plénitude du vide</em>, 2016.</li>
-  <li>Patrick Sobral, <em>Les Légendaires</em> (BD), première publication en 2004.</li>
-  <li>Kurt Vonnegut, <em>Slaughterhouse-Five</em>, 1969.</li>
-  <li>Cédric Villani, <em>Théorème vivant</em>, 2012.</li>
-  <li>Marvel Comics, <em>Silver Surfer</em>, première apparition 1966 – série principale 1968–1970 (relancée ensuite).</li>
-  <li>Theoni Pappas, <em>The Joy of Mathematics</em>, 1986.</li>
-  <li>Mike Brown, <em>How I Killed Pluto and Why It Had It Coming</em>, 2010.</li>
-  <li>Albert Camus, <em>La Chute</em>, 1956.</li>
-  <li>Gaston Leroux, <em>Le Fantôme de l’Opéra</em>, 1910.</li>
-  <li>Hannah Arendt, <em>La crise de la culture</em>, 1961.</li>
-  <li>Jean-Marie Souriau, <em>La géométrisation de la physique</em>, 1969.</li>
-</ul>
+        <ul>
+          <li>Edith Wharton, <em>Le temps de l’innocence</em>, 1920.</li>
+          <li>Hubert Reeves, <em>Poussière d’étoiles</em>, 1984.</li>
+          <li>Marco Panza & Andrea Sereni, <em>Introduction à la philosophie des mathématiques</em>, 2016.</li>
+          <li>Trinh Xuan Thuan, <em>La plénitude du vide</em>, 2016.</li>
+          <li>Patrick Sobral, <em>Les Légendaires</em> (BD), première publication en 2004.</li>
+          <li>Kurt Vonnegut, <em>Slaughterhouse-Five</em>, 1969.</li>
+          <li>Cédric Villani, <em>Théorème vivant</em>, 2012.</li>
+          <li>Marvel Comics, <em>Silver Surfer</em>, première apparition 1966 – série principale 1968–1970 (relancée ensuite).</li>
+          <li>Theoni Pappas, <em>The Joy of Mathematics</em>, 1986.</li>
+          <li>Mike Brown, <em>How I Killed Pluto and Why It Had It Coming</em>, 2010.</li>
+          <li>Albert Camus, <em>La Chute</em>, 1956.</li>
+          <li>Gaston Leroux, <em>Le Fantôme de l’Opéra</em>, 1910.</li>
+          <li>Hannah Arendt, <em>La crise de la culture</em>, 1961.</li>
+          <li>Jean-Marie Souriau, <em>La géométrisation de la physique</em>, 1969.</li>
+        </ul>
       </div>
     </details>
   </div>
 </section>
 
-   <section>
-    <div class="card">
-      <details>
-        <summary><span class="caret"></span> Liens en tout genre <span class="meta"></span></summary>
-        <div class="body">
-          <ul>
-            <li><a href="https://www.youtube.com/@Ca-se-passe-la-hautFr" target="_blank" rel="noopener">Ça se passe là-haut</a> — "Journaliste" Astronomie, Astrophysique, Astroparticules, Cosmologie.</li>
-            <li><a href="https://math.univ-lyon1.fr/irem/IMG/pdf/LatexPourLeProfDeMaths.pdf" rel="noopener"> LaTex pour les maths </a> — Très bonne documentation.</li>
-            <li><a href="https://www.chasse-aux-livres.fr/">La chasse aux livres</a> — Site pour trouver un livre au meilleur prix.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-  </section>
+<section>
+  <div class="card">
+    <details>
+      <summary><span class="caret"></span> Liens en tout genre <span class="meta"></span></summary>
+      <div class="body">
+        <ul>
+          <li><a href="https://www.youtube.com/@Ca-se-passe-la-hautFr" target="_blank" rel="noopener">Ça se passe là-haut</a> — "Journaliste" Astronomie, Astrophysique, Astroparticules, Cosmologie.</li>
+          <li><a href="https://math.univ-lyon1.fr/irem/IMG/pdf/LatexPourLeProfDeMaths.pdf" rel="noopener"> LaTex pour les maths </a> — Très bonne documentation.</li>
+          <li><a href="https://www.chasse-aux-livres.fr/">La chasse aux livres</a> — Site pour trouver un livre au meilleur prix.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</section>
 </main>
 
 <footer>
