@@ -1,0 +1,173 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.1cm]{geometry} % Marges réduites
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{parskip}
+\usepackage{mathpazo}
+\usepackage[sfdefault]{FiraSans}
+\usepackage{array}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+\usepackage{hyperref}
+\definecolor{mainblue}{HTML}{2E86C1}
+\definecolor{graytext}{HTML}{555555}
+\usepackage{sectsty}
+\sectionfont{\color{mainblue}\fontsize{11}{11}\selectfont}
+\subsectionfont{\color{mainblue}\fontsize{10}{10}\selectfont}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=mainblue,
+    urlcolor=mainblue,
+    citecolor=mainblue
+}
+% Espacement vertical entre les sections réduit
+\titlespacing*{\section}{0pt}{5pt}{5pt}
+\titlespacing*{\subsection}{0pt}{3pt}{3pt}
+\setlist[itemize]{leftmargin=*, topsep=1pt, itemsep=1pt}
+\linespread{0.98} % Légère compression verticale du texte
+
+\begin{document}
+
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\sloppy
+
+% === En-tête : bloc horizontal bien aligné ===
+\begin{flushleft}
+    {\Large \textbf{Neyl GASMI}} \\[0.2em]
+    {\small 29 rue Villiers, Neuilly-Sur-Seine  \\
+    \href{mailto:neylgasmi@gmail.com}{neylgasmi@gmail.com}} \\
+\end{flushleft}
+
+
+
+\vspace{0.5em}
+
+\hrule
+\vspace{1em}
+
+% === Corps du CV en deux colonnes ===
+\begin{minipage}[t]{0.45\textwidth}
+
+
+\section*{Education}
+
+\textit{2025–2026} \textbf{Université Paris-Dauphine — Paris} \\
+Bachelor in Mathematics, Finance \& Actuarial Science \\
+\textit{Focus:} Optimisation, Derivatives, Statistical Modelling, Machine Learning, Linear Programming, Microeconomics, Quantitative Methods for Finance, R \& Python programming
+
+\vspace{0.8em}
+
+\textit{2024–2028} \textbf{EDHEC Business School — Lille} \\
+Msc Grande École Programme  \\
+\textit{Focus:} Corporate Finance, Equity Valuation, Mergers \& Acquisitions, Financial Statement Analysis, Capital Markets Economics
+
+\vspace{0.8em}
+
+\textit{2024–2025} \textbf{Université de Lille} \\
+Bachelor in Mathematics — Advanced Research Track \\
+Ranked 2/57
+\textit{Focus:} Probability, Statistics, Numerical Analysis, Optimisation, Differential Equations
+
+\vspace{0.8em}
+
+\textit{2021–2024} \textbf{Classes Préparatoires — Lycée Notre-Dame de Sion, Marseille} \\
+Intensive programme in Mathematics \& Physics (MPSI/MP) \\
+\textit{Ranked top 10\% of cohort; prepared for France’s Grandes Écoles competitive exams}
+
+\vspace{0.8em}
+
+\textit{2020–2021} \textbf{Lycée Périer — Marseille} \\
+French Scientific Baccalauréat — \textit{Mention Bien} (Honours)
+
+\section*{Skills}
+
+\noindent
+\textbf{Finance:} Market microstructure, equities/ETFs trading dynamics, derivatives pricing, execution quality, and liquidity fragmentation analysis.  
+
+\vspace{0.3em}
+
+\noindent
+\textbf{Analytical \& Technical:} Large-scale Data Analysis (Python, SQL, PySpark), Research with high-frequency datasets, Machine Learning (Scikit-Learn, Clustering), and data visualisation (Matplotlib, Power BI), R.
+
+\vspace{0.3em}
+
+\noindent
+\textbf{Mathematics:} Probability and statistics, stochastic processes, optimisation, econometrics, and quantitative methods for finance.  
+
+\vspace{0.3em}
+
+\noindent
+\textbf{Languages:} French (native), English (C1), Arabic (conversational), Spanish (intermediate).  
+
+
+\section*{Personal Qualities}
+\begin{itemize}[leftmargin=*]
+   \item \textbf{Analytical mindset} — able to synthesise complex financial data into clear insights for decision-making.  
+   \item \textbf{Rigour and attention to detail} — ensuring accuracy under tight deadlines and high transaction volumes.  
+   \item \textbf{Adaptability} — quickly integrate into fast-paced deal environments and cross-border teams.  
+   \item \textbf{Communication skills} — confident in presenting ideas and collaborating with diverse stakeholders.  
+   \item \textbf{Initiative and reliability} — proactive in problem-solving, dependable in team delivery.  
+\end{itemize}
+
+
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.5\textwidth}
+
+\section*{Professional Experience}
+
+{\bfseries Research Intern – EuroCTP, ESMA Consolidated Tape Candidate for Equities \& ETFs, Amsterdam}~% 
+\\
+\textit{June–August 2025}
+\begin{itemize}
+    \item Researched predictive microstructure signals by extracting and analysing \textbf{Level 1–3 datasets} (billions of daily order book updates), applying time-series statistics to study liquidity fragmentation, volatility clustering, and trading cost dynamics.  
+\item Analaysed microstructure behaviour across \textbf{20+ European venues}, quantifying latency asymmetries, liquidity fragmentation, and volume concentration to generate systematic insights into market efficiency.
+    \item Developed \textbf{Python pipelines and research tools} to process large-scale structured/unstructured data, enabling reproducible signal testing and scalable performance benchmarking by MIC and instrument.  
+    \item Implemented \textbf{machine learning–inspired anomaly detection and clustering} methods to validate data integrity and uncover patterns in market activity, improving robustness of research inputs.  
+    \item Enhanced the research infrastructure by building automated dashboards and libraries for throughput, latency, and cross-venue attribution, supporting both regulatory analysis and systematic strategy development.  
+\end{itemize}
+
+
+
+\vspace{0.6em}
+\textbf{Client Advisor – Galeries Lafayette, Marseille} \\
+\textit{Summers 2022–2024}
+\begin{itemize}
+    \item Managed relationships with high-value clients, delivering discretion, service quality, and commercial outcomes.
+\end{itemize}
+
+\vspace{0.4em}
+\textbf{Mathematics Tutor}  \\
+\textit{2019 – Today} 
+\begin{itemize}
+	\item Prepared students for competitive exams and university-level quantitative courses.
+\end{itemize}
+
+\section*{Certifications}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{CFA Level I Candidate} — Exam scheduled February 2026  
+    \item \textbf{TOEIC} 915/990  
+    \item \textbf{TOSA Excel} 700/1000  
+    \item \textbf{PIX} (Numerical Skills)  
+\end{itemize}
+\vspace{0.4em}
+
+\section*{Interests}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Astronomy:} Strong interest in celestial phenomena and long-term observational cycles.  
+\item \textbf{Mathematics:} Attended advanced conferences at CIRM — often beyond my grasp, but always inspiring.  
+\item \textbf{Reading:} Regular commitment to reading, averaging 10 books per year across diverse genres.  
+\item \textbf{Sailing:} Experienced navigator in the Calanques National Park.  
+
+   \end{itemize}
+
+
+
+\end{minipage}
+
+\end{document}
