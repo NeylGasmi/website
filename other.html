@@ -6,33 +6,74 @@
   <title>Neyl Gasmi — Other</title>
   <meta name="description" content="Autres ressources — musique et créations.">
   <style>
-    :root{
-      --ink:#111; --bg:#fff; --muted:#555; --link:#0645ad; --rule:#e6e6e6;
-    }
-    html,body{ background:var(--bg); color:var(--ink); margin:0; padding:0; height:100%; }
-    body{
-      max-width:1100px; margin:0 auto; padding:16px;
-      font:16px/1.6 Georgia, "Times New Roman", serif;
-      display:flex; flex-direction:column; min-height:100vh;
-    }
-    header{ border-bottom:1px solid var(--rule); margin-bottom:18px; }
-    h1{ font-size:24px; line-height:1.2; margin:0 0 4px; }
-    .sub{ color:var(--muted); font-size:14px; margin-bottom:8px; }
-    nav{ font-size:15px; margin:10px 0; }
-    nav a{ color:var(--link); text-decoration:none; margin-right:12px; }
-    nav a:hover{ text-decoration:underline; }
-    main{ flex:1; }
-    main section{ margin:26px 0; }
-    h2{ font-size:20px; margin:0 0 10px; padding-top:8px; border-top:1px solid var(--rule); }
-    .track{ margin:14px 0 20px; }
-    .title{ font-weight:700; }
-    .links a{ margin-right:16px; color:var(--link); text-decoration:underline; font-size:14px; }
-    audio{ display:block; margin:8px 0; width:100%; max-width:400px; }
-    footer{
-      border-top:1px solid var(--rule);
-      margin-top:28px; padding-top:10px;
-      font-size:14px; color:var(--muted); text-align:center;
-    }
+    /* --- nicer audio cards --- */
+.track {
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 14px 0 18px;
+  background: var(--bg);
+}
+
+.track-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.track-title {
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.track-links a { margin-left: 14px; color: var(--link); text-decoration: underline; font-size: 14px; }
+
+.controls {
+  display: grid;
+  grid-template-columns: 40px 1fr 70px;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.playbtn {
+  width: 36px; height: 36px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  font: inherit;
+}
+
+.playbtn:active { transform: translateY(1px); }
+
+.seek {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%; height: 4px; border-radius: 4px; background: #e9e9e9; outline: none;
+}
+.seek::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #444; cursor: pointer;
+}
+.seek::-moz-range-thumb {
+  width: 14px; height: 14px; border: 0; border-radius: 50%;
+  background: #444; cursor: pointer;
+}
+
+.time { font-size: 12px; color: var(--muted); text-align: right; }
+
+/* hide native */
+.track audio { display: none; }
+
+/* responsive tweak */
+@media (max-width: 600px) {
+  .track-header { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .track-links { margin-top: 2px; }
+}
+
   </style>
 </head>
 <body>
