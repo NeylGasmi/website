@@ -4,7 +4,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Neyl Gasmi — Page personnelle</title>
-  <meta name="description" content="Page personnelle de Neyl Gasmi">
+  <meta name="description" content="Index du site personnel de Neyl Gasmi : enseignement, CV, papers, projets numériques, mathématiques et finance.">
+  <meta name="author" content="Neyl Gasmi">
+  <link rel="canonical" href="https://neylgasmi.fr/">
+
+  <!-- Données structurées Schema.org pour le référencement -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Neyl Gasmi",
+    "url": "https://neylgasmi.fr",
+    "sameAs": [
+      "https://www.linkedin.com/in/neylgasmi/"
+    ],
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Université Paris Dauphine – PSL"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "EDHEC Business School"
+      }
+    ],
+    "knowsAbout": ["Mathématiques", "Actuariat", "Finance", "Physique", "Cosmologie", "Programmation", "Marchés financiers"]
+  }
+  </script>
+
   <style>
     :root{
       --ink:#111; --bg:#fff; --muted:#555; --link:#0645ad; --rule:#e6e6e6; --highlight:#dd2f2f;
@@ -54,7 +81,7 @@
         PGE EDHEC Business School
       </div>
       <nav aria-label="Navigation principale">
-        <a href="index.html">Home</a>
+        <a href="index.html" style="font-weight:bold;">Home</a>
         <a href="Enseignement.html">Enseignement</a>
         <a href="CV.html">CV</a>
         <a href="papers.html">Papers</a>
@@ -66,25 +93,26 @@
 </header>
 
 
-  <main>
-    <section id="home">
-      <p>Bienvenue sur ma page personnelle. J'utilise cet espace pour partager des papiers sur des sujets qui m'interessent, les exercices donnés à mes élèves tout au long de l'année, des projets numériques...</p>
-      <p class="highlight">Je donne des cours particuliers de mathématiques du collège jusqu'à la L3. N'hésitez pas à me contacter dans la perspective d'un travail commun.</p>
-      <p>Centres d'intérêt : Calcul Stochastique, Physique et Informatique Quantique, Astronomie, Cosmologie, Programmation, M&A.</p>
-    </section>
+<main>
+  <section id="home">
+     <h2>Index</h2>
+    <p><strong>Index :</strong> Retrouvez ici mes cours, exercices, projets numériques et notes personnelles en mathématiques, finance et physique.</p>
+    <p>Bienvenue sur ma page personnelle. J'utilise cet espace pour partager des papiers sur des sujets qui m'intéressent, les exercices donnés à mes élèves tout au long de l'année, ainsi que divers projets numériques.</p>
+    <p class="highlight">Je donne des cours particuliers de mathématiques du collège jusqu'à la L3. N'hésitez pas à me contacter dans la perspective d'un travail commun.</p>
+    <p>Centres d'intérêt : Calcul stochastique, Physique et Informatique quantique, Astronomie, Cosmologie, Programmation, M&A.</p>
+  </section>
 
-     <section id="cv">
+  <section id="cv">
     <h2>CV</h2>
     <p>Vous pouvez télécharger mon curriculum vitae en cliquant ci-dessous :</p>
     <p>
       <a href="Curriculum Vitae.pdf" target="_blank" rel="noopener">Voir mon CV (PDF)</a>
     </p>
   </section>
+</main>
 
-  </main>
-
-  <footer>
-    © <span>2025</span> — Neyl Gasmi &nbsp;&middot;&nbsp; Paris
-  </footer>
+<footer>
+  © <span>2025</span> — Neyl Gasmi &nbsp;&middot;&nbsp; Paris
+</footer>
 </body>
 </html>
