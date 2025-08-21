@@ -5,41 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Neyl Gasmi — Enseignement</title>
   <meta name="description" content="Ressources (3ème et 2nde).">
+
+  <!-- Import de la police Fira Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --ink:#111; --bg:#fff; --muted:#555; --link:#0645ad; --rule:#e6e6e6;
     }
     html,body{
-      background:var(--bg); color:var(--ink);
-      margin:0; padding:0;
-      height:100%;
+      background:var(--bg); color:var(--ink); margin:0; padding:0; height:100%;
     }
     body{
-      max-width:1100px; margin:0 auto; padding:16px;
-      font:16px/1.6 Georgia, "Times New Roman", serif;
-      display:flex; flex-direction:column;
-      min-height:100vh;
+      max-width:1100px; margin:0 auto; padding:20px;
+      font:15px/1.55 'Fira Sans', sans-serif;
+      display:flex; flex-direction:column; min-height:100vh;
     }
-    header{border-bottom:1px solid var(--rule); margin-bottom:18px;}
-    h1{font-size:24px; line-height:1.2; margin:0 0 4px;}
-    .sub{color:var(--muted); font-size:14px; margin-bottom:8px;}
-    nav{font-size:15px; margin:10px 0;}
-    nav a{color:var(--link); text-decoration:none; margin-right:12px;}
+    header{border-bottom:1px solid var(--rule); margin-bottom:20px;}
+    h1{font-size:28px; margin:0 0 6px; line-height:1.2;}
+    .sub{color:var(--muted); font-size:16px; margin-bottom:10px;}
+    nav{font-size:15px; margin:12px 0;}
+    nav a{color:var(--link); text-decoration:none; margin-right:14px;}
     nav a:hover{text-decoration:underline;}
-    main{ flex:1; }
+
+    /* === Contenu principal hiérarchisé === */
+    main{flex:1; font-size:15px; line-height:1.55;}
     main section{margin:26px 0;}
-    h2{font-size:20px; margin:0 0 6px; padding-top:8px; border-top:1px solid var(--rule);}
+    
+    /* Titre principal (ex: Enseignement) */
+    #intro h2 {
+      font-size:22px; font-weight:600;
+      margin:0 0 8px; padding-top:10px;
+      border-top:1px solid var(--rule);
+    }
+
+    /* Sous-sections (ex: 3e, 2nde) */
+    #troisieme h2, #seconde h2 {
+      font-size:19px; font-weight:600;
+      margin:0 0 8px; padding-top:10px;
+      border-top:1px solid var(--rule);
+    }
+
     ul{margin:8px 0 0 1.1rem; list-style:disc;}
-    li{margin:10px 0;}
+    li{margin:10px 0; display:flex; align-items:baseline; justify-content:space-between;}
     .muted{color:var(--muted);}
     a{color:var(--link); text-decoration:underline;}
-    .links{display:block; margin-top:4px; font-size:14px; color:var(--muted);}
-    .links a{margin-right:16px;}
+    .links {margin-left:16px; font-size:14px;}
+    .links a {margin-right:10px;}
+
     footer{
-      border-top:1px solid var(--rule);
-      margin-top:28px; padding-top:10px;
-      font-size:14px; color:var(--muted);
-      text-align:center;
+      border-top:1px solid var(--rule); margin-top:28px; padding-top:10px;
+      font-size:14px; color:var(--muted); text-align:center;
     }
   </style>
 </head>
@@ -49,8 +65,7 @@
     <div>
       <h1>Neyl Gasmi</h1>
       <div class="sub">
-        Parcours Mathématiques, Actuariat, Finance à l'Université Paris Dauphine & 
-        PGE EDHEC Business School
+        Parcours Mathématiques, Actuariat, Finance à l'Université Paris Dauphine &amp; PGE EDHEC Business School
       </div>
       <nav aria-label="Navigation principale">
         <a href="index.html">Home</a>
@@ -66,86 +81,56 @@
 
 <main>
   <section id="intro">
-    <h2>Enseignement</h2>
     <p class="muted">
       Vous trouverez ici un recueil d'exercices. Je m'inspire notamment des travaux de 
-      <a href="https://www.normalesup.org/~sage/Enseignement/index.html" target="_blank" rel="noopener">Marc Sage</a> et de <a href="https://maths-france.fr/" target="_blank" rel="noopener">Jean Louis Rouget</a>.
+      <a href="https://www.normalesup.org/~sage/Enseignement/index.html" target="_blank" rel="noopener">Marc Sage</a> et de 
+      <a href="https://maths-france.fr/" target="_blank" rel="noopener">Jean Louis Rouget</a>.
     </p>
   </section>
 
-<section id="troisieme">
-  <h2>3<sup>ème</sup></h2>
-  <ul>
-    <li>
-      Travail de pré-rentrée — 36 exercices
-      <div class="links">
-        <a href="Rentree3e.pdf" target="_blank" rel="noopener">Voir le PDF</a>
-        <a href="Rentree3e.tex" download>LaTeX</a>
-      </div>
-    </li>
-  </ul>
-</section>
-
+  <section id="troisieme">
+    <h2>3<sup>ème</sup></h2>
+    <ul>
+      <li>
+        Travail de pré-rentrée — 36 exercices
+        <span class="links">
+          <a href="Rentree3e.pdf" target="_blank" rel="noopener">Voir le PDF</a>
+          <a href="Rentree3e.tex" download>LaTeX</a>
+        </span>
+      </li>
+    </ul>
+  </section>
 
   <section id="seconde">
-  <h2>2<sup>nde</sup></h2>
-  <ul>
-    <li>
-      Exercices de rentrée 1 à 10 - Calcul fractionnel, Puissances.
-      <div class="links">
-        <a href="3e_1-10.pdf" target="_blank" rel="noopener">Voir le PDF</a>
-        <a href="3e_1-10.tex" download>LaTeX</a>
-      </div>
-    </li>
-    <li>
-      Exercices de rentrée 11 à 18 - Puissancs, Nombres entiers 
-      <div class="links">
-        <a href="3e_11-18.pdf" target="_blank" rel="noopener">Voir le PDF</a>
-        <a href="3e_11-18.tex" download>LaTeX</a>
-      </div>
-    </li>
-    <li>
-      Exercices de rentrée 19 à 27 - Calcul littéral 
-      <div class="links">
-        <a href="3e_19_27.pdf" target="_blank" rel="noopener">Voir le PDF</a>
-        <a href="3e_19_27.tex" download>LaTeX</a>
-      </div>
-    </li>
-    <li>
-      Exercices de rentrée 28 à 35 - Équations
-      <div class="links">
-        <a href="3e_28_35.pdf" target="_blank" rel="noopener">Voir le PDF</a>
-        <a href="3e_28_35.tex" download>LaTeX</a>
-      </div>
-    </li>
-    <li>
-      Exercices de rentrée 36 à 43 - Inéquations, Début géométrie
-      <div class="links">
-        <a href="3e_36_43.pdf" target="_blank" rel="noopener">Voir le PDF</a>
-        <a href="3e_36_43.tex" download>LaTeX</a>
-      </div>
-    </li>
-    <li>
-      Exercices de rentrée 44 à 50 - Fonctions
-      <div class="links">
-        <a href="3e_44_50.pdf" target="_blank" rel="noopener">Voir le PDF</a>
-        <a href="3e_44_50.tex" download>LaTeX</a>
-      </div>
-    </li>
-    <li>
-      Exercices de rentrée 51 à 53 - Probabilités
-      <div class="links">
-        <a href="3e_51_53.pdf" target="_blank" rel="noopener">Voir le PDF</a>
-        <a href="3e_51_53.tex" download>LaTeX</a>
-      </div>
-    </li>
-  </ul>
-</section>
-
+    <h2>2<sup>nde</sup></h2>
+    <ul>
+      <li>Exercices de rentrée 1 à 10 — Calcul fractionnel, Puissances
+        <span class="links"><a href="3e_1-10.pdf">Voir le PDF</a> <a href="3e_1-10.tex" download>LaTeX</a></span>
+      </li>
+      <li>Exercices de rentrée 11 à 18 — Puissances, Nombres entiers
+        <span class="links"><a href="3e_11-18.pdf">Voir le PDF</a> <a href="3e_11-18.tex" download>LaTeX</a></span>
+      </li>
+      <li>Exercices de rentrée 19 à 27 — Calcul littéral
+        <span class="links"><a href="3e_19_27.pdf">Voir le PDF</a> <a href="3e_19_27.tex" download>LaTeX</a></span>
+      </li>
+      <li>Exercices de rentrée 28 à 35 — Équations
+        <span class="links"><a href="3e_28_35.pdf">Voir le PDF</a> <a href="3e_28_35.tex" download>LaTeX</a></span>
+      </li>
+      <li>Exercices de rentrée 36 à 43 — Inéquations, Début géométrie
+        <span class="links"><a href="3e_36_43.pdf">Voir le PDF</a> <a href="3e_36_43.tex" download>LaTeX</a></span>
+      </li>
+      <li>Exercices de rentrée 44 à 50 — Fonctions
+        <span class="links"><a href="3e_44_50.pdf">Voir le PDF</a> <a href="3e_44_50.tex" download>LaTeX</a></span>
+      </li>
+      <li>Exercices de rentrée 51 à 53 — Probabilités
+        <span class="links"><a href="3e_51_53.pdf">Voir le PDF</a> <a href="3e_51_53.tex" download>LaTeX</a></span>
+      </li>
+    </ul>
+  </section>
 </main>
 
 <footer>
-  © <span>2025</span> — Neyl Gasmi &nbsp;&middot;&nbsp; Paris
+  © 2025 — Neyl Gasmi · Paris
 </footer>
 </body>
 </html>
