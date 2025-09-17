@@ -12,9 +12,11 @@
   <style>
     :root{
       --ink:#111; --bg:#fff; --muted:#555; --link:#0645ad; --rule:#e6e6e6;
+      --card:#fafafa;
     }
     html,body{
-      background:var(--bg); color:var(--ink); margin:0; padding:0; height:100%;
+      background:var(--bg); color:var(--ink);
+      margin:0; padding:0; height:100%;
     }
     body{
       max-width:1100px; margin:0 auto; padding:20px;
@@ -28,30 +30,23 @@
     nav a{color:var(--link); text-decoration:none; margin-right:14px;}
     nav a:hover{text-decoration:underline;}
 
-    /* === Contenu principal hiérarchisé === */
-    main{flex:1; font-size:15px; line-height:1.55;}
+    main{flex:1;}
     main section{margin:26px 0;}
-    
-    /* Titre principal (ex: Enseignement) */
-    #intro h2 {
-      font-size:22px; font-weight:600;
-      margin:0 0 8px; padding-top:10px;
-      border-top:1px solid var(--rule);
-    }
+    h2{font-size:19px; font-weight:600; margin:0 0 10px; padding-top:8px; border-top:1px solid var(--rule);}
 
-    /* Sous-sections (ex: 3e, 2nde) */
-    #troisieme h2, #seconde h2 {
-      font-size:19px; font-weight:600;
-      margin:0 0 8px; padding-top:10px;
-      border-top:1px solid var(--rule);
-    }
-
-    ul{margin:8px 0 0 1.1rem; list-style:disc;}
-    li{margin:10px 0; display:flex; align-items:baseline; justify-content:space-between;}
-    .muted{color:var(--muted);}
-    a{color:var(--link); text-decoration:underline;}
+    /* --- Style des boîtes ouvrables --- */
+    .card{background:var(--card); border:1px solid var(--rule); border-radius:8px; padding:10px 12px; margin-top:12px;}
+    details summary{cursor:pointer; display:flex; align-items:center; gap:8px; font-weight:600;}
+    details summary::-webkit-details-marker{display:none}
+    .caret{width:10px;height:10px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(-45deg);transition:.2s}
+    details[open] .caret{transform:rotate(45deg);}
+    .meta{color:var(--muted); font-size:13px;}
+    .body{margin-top:10px; padding-top:8px; border-top:1px dashed var(--rule);}
+    ul{margin:0; padding-left:18px;}
+    li{margin:6px 0; display:flex; justify-content:space-between;}
     .links {margin-left:16px; font-size:14px;}
-    .links a {margin-right:10px;}
+    .links a {margin-right:10px; color:var(--link); text-decoration:underline;}
+    .muted{color:var(--muted);}
 
     footer{
       border-top:1px solid var(--rule); margin-top:28px; padding-top:10px;
@@ -61,21 +56,20 @@
 </head>
 <body>
 <header>
-  <div style="display:flex; align-items:flex-start; justify-content:space-between;">
-    <div>
-      <h1>Neyl Gasmi</h1>
-      <div class="sub">
-        Parcours Mathématiques, Actuariat, Finance à l'Université Paris Dauphine &amp; PGE EDHEC Business School
-      </div>
-      <nav aria-label="Navigation principale">
-        <a href="index.html">Home</a>
-        <a href="Enseignement.html" style="font-weight:bold;">Enseignement</a>
-        <a href="CV.html">CV</a>
-        <a href="papers.html">Papers</a>
-        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
-        <a href="other.html">Others</a>
-      </nav>
+  <div>
+    <h1>Neyl Gasmi</h1>
+    <div class="sub">
+      Parcours Mathématiques, Actuariat, Finance à l'Université Paris Dauphine &amp; 
+      PGE EDHEC Business School
     </div>
+    <nav aria-label="Navigation principale">
+      <a href="index.html">Home</a>
+      <a href="Enseignement.html" style="font-weight:bold;">Enseignement</a>
+      <a href="CV.html">CV</a>
+      <a href="papers.html">Papers</a>
+      <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener" target="_blank">LinkedIn</a>
+      <a href="other.html">Others</a>
+    </nav>
   </div>
 </header>
 
@@ -88,6 +82,7 @@
     </p>
   </section>
 
+  <!-- 3e -->
   <section id="troisieme">
     <h2>3<sup>ème</sup></h2>
     <ul>
@@ -99,36 +94,70 @@
         </span>
       </li>
     </ul>
+    <div class="card">
+      <details>
+        <summary><span class="caret"></span> Pré-Rentrée <span class="meta"></span></summary>
+        <div class="body">
+          <ul>
+            <li>
+              Travail de pré-rentrée — 36 exercices
+              <span class="links">
+                <a href="Rentree3e.pdf">Voir le PDF</a>
+                <a href="Rentree3e.tex" download>LaTeX</a>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </details>
+    </div>
   </section>
 
+  <!-- 2nde -->
   <section id="seconde">
     <h2>2<sup>nde</sup></h2>
     <ul>
-      <li>Exercices de rentrée 1 à 10 — Calcul fractionnel, Puissances
-        <span class="links"><a href="3e_1-10.pdf">Voir le PDF</a> <a href="3e_1-10.tex" download>LaTeX</a></span>
-      </li>
-      <li>Exercices de rentrée 11 à 18 — Puissances, Nombres entiers
-        <span class="links"><a href="3e_11-18.pdf">Voir le PDF</a> <a href="3e_11-18.tex" download>LaTeX</a></span>
-      </li>
-      <li>Exercices de rentrée 19 à 27 — Calcul littéral
-        <span class="links"><a href="3e_19_27.pdf">Voir le PDF</a> <a href="3e_19_27.tex" download>LaTeX</a></span>
-      </li>
-      <li>Exercices de rentrée 28 à 35 — Équations
-        <span class="links"><a href="3e_28_35.pdf">Voir le PDF</a> <a href="3e_28_35.tex" download>LaTeX</a></span>
-      </li>
-      <li>Exercices de rentrée 36 à 43 — Inéquations, Début géométrie
-        <span class="links"><a href="3e_36_43.pdf">Voir le PDF</a> <a href="3e_36_43.tex" download>LaTeX</a></span>
-      </li>
-      <li>Exercices de rentrée 44 à 50 — Fonctions
-        <span class="links"><a href="3e_44_50.pdf">Voir le PDF</a> <a href="3e_44_50.tex" download>LaTeX</a></span>
-      </li>
-      <li>Exercices de rentrée 51 à 53 — Probabilités
-        <span class="links"><a href="3e_51_53.pdf">Voir le PDF</a> <a href="3e_51_53.tex" download>LaTeX</a></span>
+      <li>
+        Exercices de rentrée (1 à 53)
+        <span class="links">
+          <a href="3e_1-53.pdf">Voir le PDF</a>
+          <a href="3e_1-53.tex" download>LaTeX</a>
+        </span>
       </li>
     </ul>
+    <div class="card">
+      <details>
+        <summary><span class="caret"></span> Pré-Rentrée <span class="meta"></span></summary>
+        <div class="body">
+          <ul>
+            <li>Exercices de rentrée 1 à 10 — Calcul fractionnel, Puissances
+              <span class="links"><a href="3e_1-10.pdf">Voir le PDF</a> <a href="3e_1-10.tex" download>LaTeX</a></span>
+            </li>
+            <li>Exercices de rentrée 11 à 18 — Puissances, Nombres entiers
+              <span class="links"><a href="3e_11-18.pdf">Voir le PDF</a> <a href="3e_11-18.tex" download>LaTeX</a></span>
+            </li>
+            <li>Exercices de rentrée 19 à 27 — Calcul littéral
+              <span class="links"><a href="3e_19_27.pdf">Voir le PDF</a> <a href="3e_19_27.tex" download>LaTeX</a></span>
+            </li>
+            <li>Exercices de rentrée 28 à 35 — Équations
+              <span class="links"><a href="3e_28_35.pdf">Voir le PDF</a> <a href="3e_28_35.tex" download>LaTeX</a></span>
+            </li>
+            <li>Exercices de rentrée 36 à 43 — Inéquations, Début géométrie
+              <span class="links"><a href="3e_36_43.pdf">Voir le PDF</a> <a href="3e_36_43.tex" download>LaTeX</a></span>
+            </li>
+            <li>Exercices de rentrée 44 à 50 — Fonctions
+              <span class="links"><a href="3e_44_50.pdf">Voir le PDF</a> <a href="3e_44_50.tex" download>LaTeX</a></span>
+            </li>
+            <li>Exercices de rentrée 51 à 53 — Probabilités
+              <span class="links"><a href="3e_51_53.pdf">Voir le PDF</a> <a href="3e_51_53.tex" download>LaTeX</a></span>
+            </li>
+          </ul>
+        </div>
+      </details>
+    </div>
   </section>
 
-    <section id="olympiades">
+  <!-- Olympiades -->
+  <section id="olympiades">
     <h2>Olympiades</h2>
     <ul>
       <li>
