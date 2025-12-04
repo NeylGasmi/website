@@ -7,272 +7,195 @@
   <meta name="description" content="Curriculum Vitae de Neyl Gasmi">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --ink:#111;
-      --bg:#fff;
-      --muted:#555;
-      --link:#0645ad;
-    }
-    html,body{
-      margin:0;
-      padding:0;
-      background:var(--bg);
-      color:var(--ink);
-    }
+    :root{ --ink:#111; --bg:#fff; --muted:#666; --rule:#e6e6e6; --link:#0645ad; }
+    html,body{ background:var(--bg); color:var(--ink); margin:0; padding:0; height:100%; }
     body{
-      font-family:'Fira Sans',sans-serif;
-      font-size:14px;
-      line-height:1.2;
-      max-width:800px;
-      margin:0 auto;
-      padding:40px 40px; 
+      max-width:1100px; margin:0 auto; padding:20px;
+      font:15.5px/1.55 'Fira Sans', sans-serif;
+      display:flex; flex-direction:column; min-height:100vh;
     }
-
-    a{
-      color:var(--link);
-      text-decoration:none;
+    header{border-bottom:1px solid var(--rule); margin-bottom:20px;}
+    h1{font-size:28px; margin:0 0 6px; line-height:1.2;}
+    .sub{color:var(--muted); font-size:16px; margin-bottom:10px;}
+    nav{font-size:15px; margin:12px 0;}
+    nav a{color:var(--link); text-decoration:none; margin-right:14px;}
+    nav a:hover{text-decoration:underline;}
+    main{ flex:1; font-size:15.5px; line-height:1.55; }
+    main section{ margin:24px 0; }
+    main h2{
+      font-size:20px; font-weight:600;
+      margin:0 0 8px; padding-top:10px;
+      border-top:1px solid var(--rule);
     }
-    a:hover{
-      text-decoration:underline;
-    }
-
- 
-    header{
-      text-align:center;
-      margin-bottom:24px;
-    }
-    header h1{
-      font-size:32px;
-      margin:0 0 6px;
-      font-weight:700;
-    }
-    .contact-line{
-      font-size:12px;
-      margin-bottom:10px;
-    }
-    .contact-line span{
-      margin:0 4px;
-    }
-    .tagline{
-      font-size:18px;
-      font-variant:small-caps;
-      margin-top:8px;
-    }
-
-
-    h2{
-      font-size:18px;
-      font-weight:600;
-      margin:18px 0 6px;
-      padding:0;
-    }
-    .section-note{
-      float:right;
-      font-size:12px;
-      font-variant:small-caps;
-      font-weight:400;
-      color:var(--muted);
-    }
-
-    ul{
-      margin:0 0 0.6em 1.2em;
-      padding:0;
-    }
-    li{
-      margin-bottom:0.15em;
-    }
-
-    .entry-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      margin-bottom:2px;
-    }
-    .entry-left{
-      font-weight:600;
-    }
-    .entry-location{
-      font-weight:400;
-    }
-    .entry-date{
-      font-style:italic;
-      white-space:nowrap;
-      margin-left:12px;
-    }
-    .entry-role{
-      font-variant:small-caps;
-      margin-bottom:2px;
-    }
-
-    .section-block{
-      margin-bottom:8px;
-    }
-
-
-    .spacer{
-      height:0.5em;
-    }
+    .entry { margin-bottom:18px; }
+    .topline { display:flex; justify-content:space-between; align-items:baseline; }
+    .institution { font-weight:600; }
+    .city { color:var(--muted); font-size:14px; margin-left:6px; }
+    .date { font-size:14.5px; font-weight:600; color:var(--ink); white-space:nowrap; }
+    .role { font-size:14.5px; color:var(--ink); margin:2px 0 4px 0; }
+    .item{ position:relative; margin:5px 0 5px 20px; }
+    .item::before{ content:"–"; position:absolute; left:-14px; top:0;
+      color:#999; font-size:14px; font-weight:400; }
+    footer{ border-top:1px solid var(--rule);
+      margin-top:24px; padding-top:8px;
+      font-size:14px; color:var(--muted); text-align:center; }
   </style>
 </head>
 <body>
-
 <header>
-  <h1>Neyl Gasmi</h1>
-  <div class="contact-line">
-    <a href="mailto:neylgasmi@gmail.com">neylgasmi@gmail.com</a>
-    <span>·</span>
-    <a href="tel:+33647218590">06.47.21.85.90</a>
-    <span>·</span>
-    <a href="https://neylgasmi.github.io/website/index.html" target="_blank">My page</a>
-  </div>
-  <div class="tagline">
-    Quantitative Research • Financial engineering • Applied Mathematics
+  <div style="text-align:center;">
+    <h1>Neyl Gasmi</h1>
+    <div class="sub">
+      <a href="mailto:neylgasmi@gmail.com">neylgasmi@gmail.com</a> ·
+      <a href="tel:+33647218590">06.47.21.85.90</a> ·
+      <a href="https://neylgasmi.github.io/website/index.html" target="_blank">My page</a>
+    </div>
+    <div class="sub">
+      Quantitative Research • Financial engineering • Applied Mathematics
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="Enseignement.html">Enseignement</a>
+      <a href="CV.html" style="font-weight:bold;">CV</a>
+      <a href="papers.html">Papers</a>
+      <a href="https://www.linkedin.com/in/neylgasmi/" target="_blank">LinkedIn</a>
+      <a href="other.html">Others</a>
+    </nav>
   </div>
 </header>
 
 <main>
 
-
+  <!-- PROFESSIONAL EXPERIENCE -->
   <section>
     <h2>Professional Experience</h2>
 
-    <div class="section-block">
-      <div class="entry-header">
-        <div class="entry-left">
-          EuroCTP — <span class="entry-location">Amsterdam, Netherlands</span>
+    <div class="entry">
+      <div class="topline">
+        <div>
+          <span class="institution">EuroCTP</span>
+          <span class="city"> — Amsterdam, Netherlands</span>
         </div>
-        <div class="entry-date">Jun – Aug 2025</div>
+        <div class="date">Jun – Aug 2025</div>
       </div>
-      <div class="entry-role">Microstructure Research Intern</div>
-      <ul>
-        <li>Processed and analysed 2×10<sup>9</sup> L1–L3/APA market events across 30+ EU venues, building EBBO/CBBO reconstruction pipelines and throughput estimators.</li>
-        <li>Modelled quote and trade arrival processes using liquidity buckets and short-term volatility microstates for TCA scalability analysis.</li>
-        <li>Applied statistical inference to order-book update intensities and market-state propagation under RTS 1/2 publication rules.</li>
-        <li>Delivered a 60-page research study shaping EuroCTP’s ESMA-compliant data-integrity framework for its CTP tender submission.</li>
-      </ul>
+      <div class="role">Microstructure Research Intern</div>
+      <p class="item">Processed and analysed 2×10<sup>9</sup> L1–L3/APA market events across 30+ EU venues, building EBBO/CBBO reconstruction pipelines and throughput estimators.</p>
+      <p class="item">Modelled quote and trade arrival processes using liquidity buckets and short-term volatility microstates for TCA scalability analysis.</p>
+      <p class="item">Applied statistical inference to order-book update intensities and market-state propagation under RTS 1/2 publication rules.</p>
+      <p class="item">Delivered a 60-page research study shaping EuroCTP’s ESMA-compliant data-integrity framework for its CTP tender submission.</p>
     </div>
 
-    <div class="spacer"></div>
-
-    <div class="section-block">
-      <div class="entry-header">
-        <div class="entry-left">
-          Galeries Lafayette — <span class="entry-location">Marseille, France</span>
+    <div class="entry">
+      <div class="topline">
+        <div>
+          <span class="institution">Galeries Lafayette</span>
+          <span class="city"> — Marseille, France</span>
         </div>
-        <div class="entry-date">Summers 2022 to 2024</div>
+        <div class="date">Summers 2022 to 2024</div>
       </div>
-      <div class="entry-role">Sales &amp; Client Advisor</div>
-      <ul>
-        <li>Managed premium client relationships with discretion, service quality, and commercial outcomes.</li>
-      </ul>
+      <div class="role">Sales &amp; Client Advisor</div>
+      <p class="item">Managed premium client relationships with discretion, service quality, and commercial outcomes.</p>
     </div>
 
-    <div class="spacer"></div>
-
-    <div class="section-block">
-      <div class="entry-header">
-        <div class="entry-left">
-          Maths Teacher
+    <div class="entry">
+      <div class="topline">
+        <div>
+          <span class="institution">Maths Teacher</span>
         </div>
-        <div class="entry-date">Since 2021</div>
+        <div class="date">Since 2021</div>
       </div>
-      <div class="entry-role">Independant</div>
-      <ul>
-        <li>Teaching 20+ students with an average grade improvement of +4 points per trimester.</li>
-      </ul>
+      <div class="role">Independant</div>
+      <p class="item">Teaching 20+ students with an average grade improvement of +4 points per trimester.</p>
     </div>
   </section>
 
-
+  <!-- EDUCATION -->
   <section>
-    <h2>
-      Education
-      <span class="section-note">Currently enrolled in three concurrent programs</span>
-    </h2>
+    <h2>Education <span style="float:right; font-size:14px; font-style:italic;">Currently enrolled in three concurrent programs</span></h2>
 
-    <div class="section-block">
-      <div class="entry-header">
-        <div class="entry-left">
-          Université Paris 1 — <span class="entry-location">Paris, France</span>
+    <div class="entry">
+      <div class="topline">
+        <div>
+          <span class="institution">Université Paris 1</span>
+          <span class="city"> — Paris, France</span>
         </div>
-        <div class="entry-date">Sep 2025 – May 2026</div>
+        <div class="date">Sep 2025 – May 2026</div>
       </div>
-      <div>Master 1 in Applied Mathematics to Economy and Finance</div>
-      <div><em>Courses:</em> Stochastic Calculus, Econometrics, Convex Optimisation, Hilbert spaces.</div>
+      <div class="role">Master 1 in Applied Mathematics to Economy and Finance</div>
+      <p class="item"><em>Courses:</em> Stochastic Calculus, Econometrics, Convex Optimisation, Hilbert spaces.</p>
     </div>
 
-    <div class="spacer"></div>
-
-    <div class="section-block">
-      <div class="entry-header">
-        <div class="entry-left">
-          EDHEC Business School — <span class="entry-location">Lille, France</span>
+    <div class="entry">
+      <div class="topline">
+        <div>
+          <span class="institution">EDHEC Business School</span>
+          <span class="city"> — Lille, France</span>
         </div>
-        <div class="entry-date">Sep 2024 – May 2028</div>
+        <div class="date">Sep 2024 – May 2028</div>
       </div>
-      <div>Master in Management, Grande École Programme</div>
-      <div><em>Courses:</em> Fixed Income, Mergers &amp; Acquisitions, Derivate pricing, Regulation.</div>
+      <div class="role">Master in Management, Grande École Programme</div>
+      <p class="item"><em>Courses:</em> Fixed Income, Mergers &amp; Acquisitions, Derivate pricing, Regulation.</p>
     </div>
 
-    <div class="spacer"></div>
-
-    <div class="section-block">
-      <div class="entry-header">
-        <div class="entry-left">
-          Université Paris-Dauphine — <span class="entry-location">Paris, France</span>
+    <div class="entry">
+      <div class="topline">
+        <div>
+          <span class="institution">Université Paris-Dauphine</span>
+          <span class="city"> — Paris, France</span>
         </div>
-        <div class="entry-date">Sep 2025 – May 2026</div>
+        <div class="date">Sep 2025 – May 2026</div>
       </div>
-      <div>Bachelor in Mathematics, Finance &amp; Actuarial Science</div>
-      <div><em>Courses:</em> General Relativity, Quantum Mechanics, Measure Theory, Machine Learning, EDP.</div>
+      <div class="role">Bachelor in Mathematics, Finance &amp; Actuarial Science</div>
+      <p class="item"><em>Courses:</em> General Relativity, Quantum Mechanics, Measure Theory, Machine Learning, EDP.</p>
     </div>
 
-    <div class="spacer"></div>
-
-    <div class="section-block">
-      <div class="entry-header">
-        <div class="entry-left">
-          Université de Lille — <span class="entry-location">Lille, France</span>
+    <div class="entry">
+      <div class="topline">
+        <div>
+          <span class="institution">Université de Lille</span>
+          <span class="city"> — Lille, France</span>
         </div>
-        <div class="entry-date">Sep 2024 – May 2025</div>
+        <div class="date">Sep 2024 – May 2025</div>
       </div>
-      <div>Bachelor in Mathematics and Statistics, Research Track (Ranked 2/57)</div>
-      <div><em>Courses:</em> Advanced Topology, Differential Calculus &amp; Optimization, Measure Theory, Statistical Estimates.</div>
+      <div class="role">Bachelor in Mathematics and Statistics, Research Track (Ranked 2/57)</div>
+      <p class="item"><em>Courses:</em> Advanced Topology, Differential Calculus &amp; Optimization, Measure Theory, Statistical Estimates.</p>
     </div>
 
-    <div class="spacer"></div>
-
-    <div class="section-block">
-      <div class="entry-header">
-        <div class="entry-left">
-          Lycée Notre-Dame de Sion — <span class="entry-location">Marseille, France</span>
+    <div class="entry">
+      <div class="topline">
+        <div>
+          <span class="institution">Lycée Notre-Dame de Sion</span>
+          <span class="city"> — Marseille, France</span>
         </div>
-        <div class="entry-date">Sep 2021 – May 2024</div>
+        <div class="date">Sep 2021 – May 2024</div>
       </div>
-      <div>Preparatory Classes MPSI/MP</div>
-      <div><em>Courses:</em> Mathematics, Physics &amp; Chemistry, Literature, Python.</div>
+      <div class="role">Preparatory Classes MPSI/MP</div>
+      <p class="item"><em>Courses:</em> Mathematics, Physics &amp; Chemistry, Literature, Python.</p>
     </div>
   </section>
 
-
+  <!-- LANGUAGES / IT / PROJECTS / CERTIFICATIONS / INTERESTS -->
   <section>
     <h2>Languages, IT Skills, Projects, Certifications &amp; Interests</h2>
-    <ul>
-      <li><strong>Languages:</strong> French (Native), English (C1), Arabic (B2).</li>
-      <li><strong>IT Skills:</strong> Python, Jupyter, PySpark, SQL, LaTeX, HTML,
-        <a href="https://github.com/NeylGasmi" target="_blank">Git</a>, Excel.
-      </li>
-      <li><strong>Projects:</strong>
-        <a href="https://neylgasmi.github.io/website/Kelly.pdf" target="_blank">Betting Strategy</a>,
-        <a href="https://neylgasmi.github.io/website/ISING.pdf" target="_blank">Ising Model</a>,
-        <a href="https://neylgasmi.github.io/website/PHOTO.pdf" target="_blank">Photovoltaic Power Forecasting</a>
-      </li>
-      <li><strong>Certifications:</strong> TOEIC 915/990; TOSA Excel 700/1000.</li>
-      <li><strong>Interests:</strong> Astronomy, Cosmology, AI agents, Sailing, Comics, Pokémon, Grothendieck.</li>
-    </ul>
+    <p class="item"><b>Languages:</b> French (Native), English (C1), Arabic (B2).</p>
+    <p class="item">
+      <b>IT Skills:</b> Python, Jupyter, PySpark, SQL, LaTeX, HTML,
+      <a href="https://github.com/NeylGasmi" target="_blank">Git</a>, Excel
+    </p>
+    <p class="item">
+      <b>Projects:</b>
+      <a href="https://neylgasmi.github.io/website/Kelly.pdf" target="_blank">Betting Strategy</a>,
+      <a href="https://neylgasmi.github.io/website/ISING.pdf" target="_blank">Ising Model</a>,
+      <a href="https://neylgasmi.github.io/website/PHOTO.pdf" target="_blank">Photovoltaic Power Forecasting</a>
+    </p>
+    <p class="item"><b>Certifications:</b> TOEIC 915/990; TOSA Excel 700/1000.</p>
+    <p class="item"><b>Interests:</b> Astronomy, Cosmology, AI agents, Sailing, Comics, Pokémon, Grothendieck.</p>
   </section>
 
 </main>
 
+<footer>
+  © 2025 — Neyl Gasmi · Paris
+</footer>
 </body>
 </html>
