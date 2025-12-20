@@ -5,49 +5,163 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Neyl Gasmi — CV</title>
   <meta name="description" content="Curriculum Vitae de Neyl Gasmi">
+
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
-    :root{ --ink:#111; --bg:#fff; --muted:#666; --rule:#e6e6e6; --link:#0645ad; }
-    html,body{ background:var(--bg); color:var(--ink); margin:0; padding:0; height:100%; }
+    :root{
+      --ink:#111;
+      --bg:#fff;
+      --muted:#666;
+      --rule:#e6e6e6;
+      --link:#0645ad;
+    }
+
+    html,body{
+      background:var(--bg);
+      color:var(--ink);
+      margin:0;
+      padding:0;
+      height:100%;
+    }
+
     body{
-      max-width:1100px; margin:0 auto; padding:20px;
-      font:15.5px/1.55 'Fira Sans', sans-serif;
-      display:flex; flex-direction:column; min-height:100vh;
+      max-width:1100px;
+      margin:0 auto;
+      padding:20px;
+      font:15.5px/1.45 'Fira Sans', sans-serif;
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
     }
-    header{border-bottom:1px solid var(--rule); margin-bottom:20px;}
-    h1{font-size:28px; margin:0 0 6px; line-height:1.2;}
-    .sub{color:var(--muted); font-size:16px; margin-bottom:10px;}
-    nav{font-size:15px; margin:12px 0;}
-    nav a{color:var(--link); text-decoration:none; margin-right:14px;}
-    nav a:hover{text-decoration:underline;}
-    main{ flex:1; font-size:15.5px; line-height:1.55; }
-    main section{ margin:24px 0; }
+
+    header{
+      border-bottom:1px solid var(--rule);
+      margin-bottom:18px;
+    }
+
+    h1{
+      font-size:28px;
+      margin:0 0 6px;
+      line-height:1.15;
+    }
+
+    .sub{
+      color:var(--muted);
+      font-size:16px;
+      margin-bottom:10px;
+    }
+
+    nav{
+      font-size:15px;
+      margin:12px 0;
+    }
+
+    nav a{
+      color:var(--link);
+      text-decoration:none;
+      margin-right:14px;
+    }
+
+    nav a:hover{
+      text-decoration:underline;
+    }
+
+    main{
+      flex:1;
+      font-size:15.5px;
+      line-height:1.45;
+    }
+
+    main section{
+      margin:18px 0 22px;
+    }
+
     main h2{
-      font-size:20px; font-weight:600;
-      margin:0 0 8px; padding-top:10px;
-      border-top:1px solid var(--rule);
+      font-size:18px;
+      font-weight:600;
+      margin:0 0 10px;
+      padding-bottom:6px;
+      border-bottom:1px solid var(--rule);
     }
-    .entry { margin-bottom:18px; }
-    .topline { display:flex; justify-content:space-between; align-items:baseline; }
-    .institution { font-weight:600; }
-    .city { color:var(--muted); font-size:14px; margin-left:6px; }
-    .date { font-size:14.5px; font-weight:600; color:var(--ink); white-space:nowrap; }
-    .role { font-size:14.5px; color:var(--ink); margin:2px 0 4px 0; }
-    .item{ position:relative; margin:5px 0 5px 20px; }
-    .item::before{ content:"–"; position:absolute; left:-14px; top:0;
-      color:#999; font-size:14px; font-weight:400; }
-    footer{ border-top:1px solid var(--rule);
-      margin-top:24px; padding-top:8px;
-      font-size:14px; color:var(--muted); text-align:center; }
+
+    .entry{
+      margin-bottom:14px;
+    }
+
+    .topline{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:12px;
+    }
+
+    .institution{
+      font-weight:600;
+    }
+
+    .city{
+      color:var(--muted);
+      font-size:14px;
+      margin-left:6px;
+    }
+
+    .date{
+      font-size:14px;
+      font-weight:600;
+      white-space:nowrap;
+    }
+
+    .role{
+      font-size:14.5px;
+      margin:2px 0 3px;
+    }
+
+    .item{
+      position:relative;
+      margin:3px 0 3px 16px;
+    }
+
+    .item::before{
+      content:"•";
+      position:absolute;
+      left:-12px;
+      top:0;
+      color:#444;
+      font-size:13px;
+    }
+
+    p{
+      margin:0;
+    }
+
+    .note-right{
+      float:right;
+      font-size:13.5px;
+      font-style:italic;
+      color:var(--muted);
+      font-weight:400;
+    }
+
+    footer{
+      border-top:1px solid var(--rule);
+      margin-top:18px;
+      padding-top:8px;
+      font-size:14px;
+      color:var(--muted);
+      text-align:center;
+    }
   </style>
 </head>
+
 <body>
+
 <header>
   <div>
     <h1>Neyl Gasmi</h1>
     <div class="sub">
       <a href="mailto:neylgasmi@gmail.com">neylgasmi@gmail.com</a> ·
-      <a href="Curriculum Vitae.pdf" target="_blank"> PDF Version</a>
+      <a href="Curriculum Vitae.pdf" target="_blank">PDF Version</a>
     </div>
 
     <nav>
@@ -59,16 +173,15 @@
       <a href="astro.html">Astronomy</a>
       <a href="other.html">Others</a>
     </nav>
-
-
   </div>
 </header>
 
-
 <main>
-    <div class="sub" style="margin-top:5px; font-size:17px; color:#444;">
-      Quantitative Research • Financial engineering • Applied Mathematics
-    </div>
+
+  <div class="sub" style="margin-top:2px; font-size:16.5px; color:#444;">
+    Quantitative Research • Financial engineering • Applied Mathematics
+  </div>
+
   <section>
     <h2>Professional Experience</h2>
 
@@ -81,10 +194,10 @@
         <div class="date">Jun – Aug 2025</div>
       </div>
       <div class="role">Microstructure Research Intern</div>
-      <p class="item">Processed and analysed 2×10<sup>9</sup> L1–L3/APA market events across 30+ EU venues, building EBBO/CBBO reconstruction pipelines and throughput estimators.</p>
+      <p class="item">Processed and analysed 2×10<sup>9</sup> L1–L3/APA market events across 30+ EU venues; built EBBO/CBBO reconstruction pipelines and throughput estimators.</p>
       <p class="item">Modelled quote and trade arrival processes using liquidity buckets and short-term volatility microstates for TCA scalability analysis.</p>
       <p class="item">Applied statistical inference to order-book update intensities and market-state propagation under RTS 1/2 publication rules.</p>
-      <p class="item">Delivered a 60-page research study shaping EuroCTP’s ESMA-compliant data-integrity framework for its CTP tender submission.</p>
+      <p class="item">Delivered a 60-page research study supporting EuroCTP’s ESMA-compliant data-integrity framework for its CTP tender submission.</p>
     </div>
 
     <div class="entry">
@@ -93,26 +206,27 @@
           <span class="institution">Galeries Lafayette</span>
           <span class="city"> — Marseille, France</span>
         </div>
-        <div class="date">Summers 2022 to 2024</div>
+        <div class="date">Summers 2022 – 2024</div>
       </div>
       <div class="role">Sales &amp; Client Advisor</div>
-      <p class="item">Managed premium client relationships with discretion, service quality, and commercial outcomes.</p>
+      <p class="item">Managed premium client relationships with discretion, high service standards, and commercial outcomes.</p>
     </div>
 
     <div class="entry">
       <div class="topline">
-        <div>
-          <span class="institution">Maths Teacher</span>
-        </div>
+        <div><span class="institution">Maths Teacher</span></div>
         <div class="date">Since 2021</div>
       </div>
-      <div class="role">Independant</div>
-      <p class="item">Teaching 20+ students with an average grade improvement of +4 points per trimester.</p>
+      <div class="role">Independent</div>
+      <p class="item">Tutored 20+ students; average improvement +4 points per trimester.</p>
     </div>
   </section>
 
   <section>
-    <h2>Education <span style="float:right; font-size:14px; font-style:italic;">Currently enrolled in three concurrent programs</span></h2>
+    <h2>
+      Education
+      <span class="note-right">Currently enrolled in three concurrent programs</span>
+    </h2>
 
     <div class="entry">
       <div class="topline">
@@ -135,7 +249,7 @@
         <div class="date">Sep 2024 – May 2028</div>
       </div>
       <div class="role">Master in Management, Grande École Programme</div>
-      <p class="item"><em>Courses:</em> Fixed Income, Mergers &amp; Acquisitions, Derivate pricing, Regulation.</p>
+      <p class="item"><em>Courses:</em> Fixed Income, Mergers &amp; Acquisitions, Derivative pricing, Regulation.</p>
     </div>
 
     <div class="entry">
@@ -177,16 +291,13 @@
 
   <section>
     <h2>Languages, IT Skills, Projects, Certifications &amp; Interests</h2>
+
     <p class="item"><b>Languages:</b> French (Native), English (C1), Arabic (B2).</p>
-    <p class="item">
-      <b>IT Skills:</b> Python, Jupyter, PySpark, SQL, LaTeX, HTML,
-      <a href="https://github.com/NeylGasmi" target="_blank">Git</a>, Excel
-    </p>
-    <p class="item">
-      <b>Projects:</b>
-      <a href="https://neylgasmi.github.io/website/PHOTO.pdf" target="_blank">Photovoltaic Power Forecasting</a>,
+    <p class="item"><b>IT Skills:</b> Python, Jupyter, PySpark, SQL, LaTeX, HTML, <a href="https://github.com/NeylGasmi" target="_blank">Git</a>, Excel.</p>
+    <p class="item"><b>Projects:</b>
       <a href="https://neylgasmi.github.io/website/ISING.pdf" target="_blank">Ising Model</a>,
-       <a href="https://neylgasmi.github.io/website/Kelly.pdf" target="_blank">Betting Strategy</a>
+      <a href="https://neylgasmi.github.io/website/PHOTO.pdf" target="_blank">Photovoltaic Power Forecasting</a>,
+      <a href="https://neylgasmi.github.io/website/Kelly.pdf" target="_blank">Betting Strategy</a>.
     </p>
     <p class="item"><b>Certifications:</b> TOEIC 915/990; TOSA Excel 700/1000.</p>
     <p class="item"><b>Interests:</b> Astronomy, Cosmology, AI agents, Sailing, Comics, Pokémon, Grothendieck.</p>
@@ -197,5 +308,6 @@
 <footer>
   © 2025 — Neyl Gasmi · Paris
 </footer>
+
 </body>
 </html>
