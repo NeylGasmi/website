@@ -1,0 +1,35 @@
+
+.intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.id-photo {
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.intro-text {
+  flex: 1;
+}
+
+
+.intro-secondary {
+  margin-top: 8px;
+}
+
+
+@media (max-width: 600px) {
+  .intro {
+    flex-wrap: wrap;
+  }
+
+  .intro-secondary {
+    width: 100%;
+    margin-left: -176px; 
+    margin-top: 12px;
+  }
+}
