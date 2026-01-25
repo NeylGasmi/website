@@ -12,9 +12,10 @@
   flex-shrink: 0;
 }
 
-.intro-text {
+.intro-right {
   flex: 1;
 }
+
 
 
 .intro-secondary {
@@ -24,12 +25,15 @@
 
 @media (max-width: 600px) {
   .intro {
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* ⬅️ clé : on empêche le wrap général */
   }
 
-  .intro-secondary {
-    width: 100%;
-    margin-left: -176px; 
+  .intro-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .intro-rest {
     margin-top: 12px;
   }
 }
