@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neyl Gasmi</title>
+  <meta name="description" content="Neyl Gasmi">
+
+
+  <meta property="og:title"       content="Neyl Gasmi">
+  <meta property="og:description" content="M2MO student at ENSAE — quant research, stochastic modelling, market microstructure.">
+  <meta property="og:image"       content="https://neylgasmi.github.io/og-image.png">
+  <meta property="og:url"         content="https://neylgasmi.github.io/">
+  <meta property="og:type"        content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <a class="site-name" href="index.html">Neyl Gasmi</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="pages/research.html">Research</a>
+        <a href="pages/projects.html">Projects</a>
+        <a href="pages/cv.html">CV</a>
+        <a href="pages/teaching.html">Teaching</a>
+        <a href="pages/references.html">Références</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <h1>Neyl Gasmi</h1>
+
+      <p class="positioning">
+        Mathematics and quantitative finance student in Paris.
+        Currently a research intern at the
+        <a href="https://samm.univ-paris1.fr/" rel="noopener">SAMM Lab</a>
+        (Université Paris 1) working on self-supervised learning for
+        irregularly sampled time series with <a href="https://scholar.google.com/citations?user=cY-jmHAAAAAJ&hl=fr" rel="noopener">Alain Celisse</a>.
+        Previously at <a href="https://euroctp.eu/" rel="noopener">EuroCTP</a>,
+        Amsterdam, on the EU equity consolidated tape.
+        <span class="internship-line">
+        </span>
+      </p>
+
+
+      
+      <h2>Selected work</h2>
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">SAMM — Self-supervised classification of variable stars</span>
+            <span class="card-year">2026, ongoing</span>
+          </div>
+          <p>Contrastive learning on Selective State Space Models (Mamba) for irregularly
+          sampled photometric light curves (OGLE-IV). Supervised by Alain Celisse.</p>
+          <div class="card-links">
+            <a href="pages/research.html">Details →</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">EuroCTP — EU Consolidated Tape reconstruction</span>
+            <span class="card-year">2025</span>
+          </div>
+          <p>Event-driven pipeline reconstructing the EU equity consolidated tape from
+          multi-venue feeds; quantified inter-venue desynchronisation biases.
+          Research note supported the ESMA tender response.</p>
+          <div class="card-links">
+            <a href="pages/research.html">Details →</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">Sports betting under the Kelly criterion</span>
+            <span class="card-year">2024</span>
+          </div>
+          <p>Expected-value analysis on bookmaker odds, bankroll dynamics under
+          variance constraints, drawdown simulation via Monte Carlo.</p>
+          <div class="card-links">
+            <a href="pages/projects.html">Details →</a>
+            <a href="pdfs/Kelly.pdf">PDF</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="card-title">2D Ising model — Monte Carlo simulation</span>
+            <span class="card-year">2025</span>
+          </div>
+          <p>Metropolis–Hastings simulation, critical temperature estimation,
+          finite-size scaling near the Curie point.</p>
+          <div class="card-links">
+            <a href="pages/projects.html">Details →</a>
+            <a href="pdfs/ISING.pdf">PDF</a>
+          </div>
+        </div>
+
+      </div>
+
+
+    </main>
+
+    <footer>
+      <div class="footer-contact">
+        <a href="mailto:neylgasmi@gmail.com">neylgasmi@gmail.com</a> ·
+        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener">LinkedIn</a> ·
+        <a href="https://github.com/hndrxxw" rel="noopener">GitHub</a> ·
+        <a href="pages/cv.html">CV</a>
+      </div>
+<div class="footer-copy">
+        © <span id="yr"></span> Neyl Gasmi
+      </div>
+    </footer>
+
+  </div>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

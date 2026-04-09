@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research — Neyl Gasmi</title>
+  <meta name="description" content="Research by Neyl Gasmi: self-supervised learning for variable stars at SAMM Lab, EU consolidated tape at EuroCTP.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <a class="site-name" href="../index.html">Neyl Gasmi</a>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="projects.html">Projects</a>
+        <a href="cv.html">CV</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="references.html">Références</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <div class="page-header">
+        <h1>Research</h1>
+      </div>
+
+      <!-- ── Ongoing ─────────────────────────────────────── -->
+      <h2>Ongoing</h2>
+
+      <div class="research-block">
+        <h3>Self-supervised classification of variable stars</h3>
+        <p class="research-meta">
+          SAMM Lab, Université Paris 1 · 2026, ongoing ·
+          Supervised by <a href="https://scholar.google.com/citations?user=cY-jmHAAAAAJ&hl=fr" rel="noopener">Alain Celisse</a>
+        </p>
+
+        <p><strong>Problem.</strong> Variable stars (e.g. Cepheids, RR Lyrae, eclipsing binaries)
+        are classified from photometric light curves — brightness measurements taken at
+        irregular intervals over months or years. Standard supervised classifiers require
+        large labelled datasets, which are expensive to produce for new surveys.</p>
+
+        <p><strong>Method.</strong> We adapt contrastive self-supervised learning to
+        Selective State Space Models (Mamba), which handle irregular sampling natively
+        without interpolation. The encoder is pre-trained on unlabelled OGLE-IV light
+        curves via a contrastive objective, then fine-tuned with a small labelled set.</p>
+
+        <p><strong>Current state.</strong> Pre-training pipeline in PyTorch. Evaluating
+        representations on the OGLE-IV benchmark (Udalski et al.) against baseline RNN
+        and Transformer encoders.</p>
+
+        <p class="refs">
+          Key references:
+          <a href="https://arxiv.org/abs/2312.00752" rel="noopener">Mamba (Gu &amp; Dao, 2023)</a> ·
+          <a href="https://arxiv.org/abs/2002.05709" rel="noopener">SimCLR (Chen et al., 2020)</a> ·
+          <a href="https://arxiv.org/abs/1907.05321" rel="noopener">GRU-ODE (De Brouwer et al., 2019)</a> ·
+          <a href="https://arxiv.org/abs/2010.02803" rel="noopener">Raindrop (Zhang et al., 2021)</a>
+        </p>
+      </div>
+
+      <hr>
+
+      <div class="research-block">
+        <h3>Jump detection in asset prices via sequential FDR control</h3>
+        <p class="research-meta">
+          Ongoing · 2026
+        </p>
+
+        <p><strong>Problem.</strong> High-frequency asset price processes exhibit occasional
+        large discontinuities (jumps) driven by news arrivals, liquidity shocks, or
+        microstructure effects. Reliably separating jumps from continuous Brownian variation
+        requires testing thousands of intraday intervals simultaneously — a multiple-testing
+        problem that naive thresholding handles poorly, inflating false discoveries under
+        market stress.</p>
+
+        <p><strong>Method.</strong> We frame jump detection as an online multiple-testing
+        problem and work entirely in the e-value framework. At each intraday interval a
+        local e-value is constructed from a bipower-variation or truncated-variance
+        statistic; e-values compose multiplicatively and remain valid under arbitrary
+        stopping and dependence, making them natural for sequential price data. FDR is
+        controlled via the e-BH procedure (Wang &amp; Ramdas 2022) and online variants
+        such as e-LOND, without requiring a p-value conversion that would distort the
+        test under heavy-tailed returns.</p>
+
+        <p><strong>Current state.</strong> Simulation study on Bates and Merton jump-diffusion
+        models. Benchmarking power and FDR against the Lee-Mykland and Aït-Sahalia-Jacod
+        statistics.</p>
+
+        <p class="refs">
+          Key references:
+          <a href="https://arxiv.org/abs/2009.02824" rel="noopener">e-BH procedure (Wang &amp; Ramdas, 2022)</a> ·
+          <a href="https://arxiv.org/abs/2106.05457" rel="noopener">e-values: calibration &amp; properties (Vovk &amp; Wang, 2021)</a> ·
+          <a href="https://doi.org/10.1111/j.1467-9965.2007.00312.x" rel="noopener">Lee-Mykland jump test (2008)</a> ·
+          <a href="https://doi.org/10.3982/ECTA7439" rel="noopener">Aït-Sahalia &amp; Jacod (2009)</a>
+        </p>
+      </div>
+
+      <hr>
+
+      <!-- ── Past ───────────────────────────────────────── -->
+      <h2>Past</h2>
+
+      <div class="research-block">
+        <h3>EU Consolidated Tape reconstruction</h3>
+        <p class="research-meta">
+          EuroCTP, Amsterdam · Jun–Aug 2025 · Internship
+        </p>
+
+        <p><strong>Context.</strong> MiFID II fragmented European equity trading across
+        dozens of venues, destroying the consolidated view of best prices that a
+        centralised exchange would provide. MiFIR Article 22a mandates a Consolidated
+        Tape Provider (CTP) for equities; EuroCTP responded to the ESMA tender in 2025.</p>
+
+        <p><strong>Work.</strong> Built an event-driven pipeline in Python/PySpark that
+        reconstructs the EU equity consolidated tape by merging time-stamped trade and
+        quote feeds from multiple venues (Euronext, CBOE Europe, Turquoise, dark pools).
+        The pipeline quantified inter-venue timestamp desynchronisation biases that affect
+        EBBO (European Best Bid and Offer) computation. Findings fed into the technical
+        annex of EuroCTP's ESMA submission.</p>
+
+        <p><strong>Tools.</strong> Python, PySpark, SQL, Clustering. Data: BMLL Data Lab.</p>
+      </div>
+
+      <hr>
+
+      
+      <h2>Research interests</h2>
+
+      <div class="tags">
+        <span class="tag">Market microstructure</span>
+        <span class="tag">Self-supervised learning for time series</span>
+        <span class="tag">Multiple testing &amp; FDR control</span>
+        <span class="tag">Jump processes in finance</span>
+      </div>
+
+    </main>
+
+    <footer>
+      <div class="footer-contact">
+        <a href="mailto:neylgasmi@gmail.com">neylgasmi@gmail.com</a> ·
+        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener">LinkedIn</a> ·
+        <a href="https://github.com/hndrxxw" rel="noopener">GitHub</a> ·
+        <a href="cv.html">CV</a>
+      </div>
+      <div class="footer-copy">© <span id="yr"></span> Neyl Gasmi</div>
+    </footer>
+
+  </div>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
