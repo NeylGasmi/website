@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research — Neyl Gasmi</title>
+  <meta name="description" content="Research by Neyl Gasmi: self-supervised learning for variable stars at SAMM Lab, EU consolidated tape at EuroCTP.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="layout">
+
+    <aside>
+      <a class="site-name" href="../index.html">Neyl Gasmi</a>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="research.html" class="active">Research</a>
+        <a href="cv.html">CV</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="references.html">Références</a>
+      </nav>
+
+      <div class="contact">
+        <a href="mailto:neylgasmi@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/neylgs" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+
+    <main>
+
+      <div class="page-header">
+        <h1>Research</h1>
+      </div>
+
+      <h2>2026</h2>
+
+      <div class="research-block">
+        <h3>State Space Models for Astrophysics</h3>
+        <p class="research-meta">
+          Supervised by <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">Alain Celisse</a> 
+        </p>
+
+        <p class="refs">
+          <a href="https://arxiv.org/abs/2312.00752" rel="noopener">Mamba (Gu &amp; Dao, 2023)</a>
+          <a href="https://arxiv.org/abs/1504.05966" rel="noopener"> OGLE IV </a>
+        </p>
+      </div>
+
+      <div class="research-block">
+        <h3>Jump detection via sequential FDR control</h3>
+        <p class="research-meta">
+          Supervised by <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">Alain Celisse</a> 
+        </p>
+
+        <p class="refs">
+          <a href="https://arxiv.org/pdf/2311.06412" rel="noopener">Multiple testing with e-values (Xu &amp; Ramdas, 2023)</a>
+        </p>
+      </div>
+
+      <h2>2026</h2>
+
+      <div class="research-block">
+        <h3>EU Consolidated Tape</h3>
+        <p class="research-meta">
+          EuroCTP, Amsterdam · Jun–Aug 2025 · Internship
+        </p>
+
+        <p><strong>Context.</strong> MiFID II fragmented European equity trading across
+        dozens of venues, destroying the consolidated view of best prices that a
+        centralised exchange would provide. MiFIR Article 22a mandates a Consolidated
+        Tape Provider (CTP) for equities; on 19 December 2025, ESMA selected EuroCTP
+        as the first equities CTP for the EU, with a target go-live in July 2026.</p>
+
+        <p><strong>Work.</strong> Exploratory research on BMLL Level 3
+        order book data to inform the design of the equity consolidated tape. Mapped
+        market events and microstructure biases capable of distorting the EBBO (European
+        Best Bid and Offer) and proposed data-quality checks and acceptance
+        thresholds to filter them. Research report submitted to ESMA.</p>
+
+        <p><strong>Tools.</strong> Pandas, PySpark, SQL, Clustering. Data: BMLL Data Lab.</p>
+      </div>
+
+      <h2>Research interests</h2>
+
+      <div class="tags">
+        <span class="tag">State Space Models</span>
+        <span class="tag">Multiple testing &amp; FDR control</span>
+        <span class="tag">Astronomy</span>
+      </div>
+
+            <footer>
+        <div class="footer-contact">
+
+          <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener">LinkedIn</a> 
+         
+        </div>
+        <div class="footer-copy">© <span id="yr"></span> Neyl Gasmi</div>
+      </footer>
+
+    </main>
+
+  </div>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
+
