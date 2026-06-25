@@ -91,9 +91,11 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 .positioning { max-width: 64ch; margin-bottom: 2.75rem; padding-bottom: 2.75rem; border-bottom: 1px solid var(--rule); }
 
 
-.work { display: grid; grid-template-columns: 1fr 95px; gap: 2rem; padding: 2.1rem 0; border-top: 1px solid var(--rule); }
+.work { display: grid; grid-template-columns: 1fr 60px; gap: 2rem; padding: 2.1rem 0; border-top: 1px solid var(--rule); }
 .work-title { font-size: 1.2rem; font-weight: 600; margin-bottom: .5rem; }
-.work-image { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); margin-top: .5rem; }
+.work-figure { margin: .5rem 0 0; }
+.work-image { display: block; width: 360px; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); }
+.work-figure figcaption { font-family: 'Inter', sans-serif; font-size: .72rem; color: var(--muted); margin-top: .4rem; }
 .work-meta { font-family: 'Inter', sans-serif; font-size: .78rem; color: var(--muted); text-align: right; padding-top: .35rem; }
 .work-meta .work-year { display: block; margin-bottom: .6rem; }
 .work-meta a { display: block; color: var(--muted); margin-bottom: .25rem; font-size: .78rem; }
