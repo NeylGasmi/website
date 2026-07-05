@@ -144,6 +144,35 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 .doc-links a { color: var(--muted); }
 
 
+/* ─── Research: intro/context figures (SSM astrophysics page) ─── */
+abbr[title] { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; }
+
+.class-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.class-card { border: 1px solid var(--border); border-radius: 4px; padding: 1rem 1.15rem; background: var(--surface); }
+.class-card .class-code {
+  display: block; font-family: 'Inter', sans-serif; font-size: .7rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .09em; color: var(--accent); margin-bottom: .3rem;
+}
+.class-card h4 { font-size: 1.02rem; font-weight: 600; margin-bottom: .35rem; }
+.class-card p { font-size: .87rem; color: #44403a; max-width: none; margin: 0; }
+
+.fig { margin: 1.5rem 0; }
+.fig img { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 4px; background: #fff; }
+.fig figcaption { font-family: 'Inter', sans-serif; font-size: .78rem; color: var(--muted); margin-top: .55rem; line-height: 1.55; max-width: 64ch; }
+.fig figcaption strong { color: #44403a; }
+
+.fig-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; align-items: start; }
+.fig-grid .fig { margin: 0; }
+.fig-grid .fig--wide { grid-column: 1 / -1; }
+
+.callout {
+  border-left: 3px solid var(--accent); padding: .2rem 0 .2rem 1.15rem; margin: 1.5rem 0;
+  max-width: 64ch; color: var(--ink);
+}
+.callout p { margin-bottom: 0; }
+
+.math { font-style: italic; font-size: 1.1rem; text-align: center; margin: 1.75rem 0; color: var(--ink); }
+
 footer {
   border-top: 1px solid var(--rule); margin-top: 1rem; padding: 1.75rem 0;
   font-family: 'Inter', sans-serif; font-size: .8rem; color: var(--subtle);

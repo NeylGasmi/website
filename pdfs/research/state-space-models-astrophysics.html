@@ -8,19 +8,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 </head>
 <body>
   <div class="layout">
 
     <aside>
-      <a class="site-name" href="../index.html">Neyl Gasmi</a>
+      <a class="site-name" href="../../index.html">Neyl Gasmi</a>
       <nav>
-        <a href="../index.html">Home</a>
-        <a href="../pages/research.html" class="active">Research</a>
-        <a href="../pages/cv.html">CV</a>
-        <a href="../pages/teaching.html">Teaching</a>
-        <a href="../pages/references.html">Références</a>
+        <a href="../../index.html">Home</a>
+        <a href="../../pages/research.html" class="active">Research</a>
+        <a href="../../pages/cv.html">CV</a>
+        <a href="../../pages/teaching.html">Teaching</a>
+        <a href="../../pages/references.html">Références</a>
       </nav>
 
       <div class="contact">
@@ -32,14 +36,535 @@
 
     <main>
 
-      <p class="research-meta"><a href="../pages/research.html">← Research</a></p>
+      <p class="research-meta"><a href="../../pages/research.html">← Research</a></p>
 
       <div class="page-header">
         <h1>State Space Models for Astrophysics</h1>
         <p class="subtitle">Supervised by <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">Alain Celisse</a> · SAMM Lab, Paris 1 · 2026, ongoing</p>
       </div>
 
-      <h2>Incoming</h2>
+<h2>1 · Pourquoi des étoiles variables ?</h2>
+
+      <p>Une étoile variable est une étoile dont la luminosité apparente varie
+      mesurablement au cours du temps. Les mécanismes sous-jacents sont physiquement
+      distincts : pulsations radiales entretenues, occultations mutuelles au sein d'un
+      système binaire, modulations d'origine géométrique, et chacun imprime une
+      signature propre dans la photométrie. Ces variations comptent parmi les rares
+      observables qui contraignent directement la structure interne et l'état évolutif
+      d'une étoile. L'objet d'étude élémentaire est la <em>courbe de lumière</em> : une
+      série temporelle de triplets (<em>t</em>, <em>m</em>, <em>σ</em>),
+      <abbr title="Jour julien : nombre de jours écoulés depuis une origine fixe (1er janvier 4713 av. J.-C.) ; le format temporel standard en astronomie, insensible aux fuseaux horaires et aux calendriers.">date julienne</abbr>,
+      magnitude apparente, incertitude photométrique à échantillonnage irrégulier.</p>
+
+      <p><strong>Les données.</strong> OGLE-IV (Optical Gravitational Lensing
+      Experiment, quatrième phase ; Udalski et al., 2015) est un relevé photométrique
+      au sol mené depuis 2010 avec le télescope de 1,3&nbsp;m de Las Campanas (Chili),
+      qui suit notamment les Nuages de Magellan en bande <em>I</em> et <em>V</em>. Son catalogue
+      dérivé, l'OGLE Collection of Variable Stars (OCVS), fournit pour chaque étoile
+      une classification experte, une période de référence et la photométrie complète.
+      Le présent travail porte sur un sous-ensemble d'environ 150&nbsp;000 étoiles
+      réparties en six classes : céphéides classiques (<code>cep</code>), céphéides
+      anormales (<code>acep</code>), céphéides de type&nbsp;II (<code>t2cep</code>),
+      RR Lyrae (<code>rrlyr</code>), Delta Scuti (<code>dsct</code>) et binaires à
+      éclipses (<code>ecl</code>).</p>
+
+      <figure class="fig">
+        <img src="../../docs/fig_raw_lightcurves.png" alt="Trois courbes de lumière brutes (RR Lyrae, Céphéide, binaire à éclipses), magnitude I en fonction du temps, sur toute la durée du relevé.">
+        <figcaption><strong>Figure 1 — Courbes de lumière brutes.</strong> Magnitude en bande
+        I en fonction du temps pour trois classes représentatives, sur
+        ~14&nbsp;ans de suivi. Périodes et morphologies diffèrent d'une classe à
+        l'autre, mais la fonction d'échantillonnage est commune : segments denses en
+        saison d'observation, séparés par de longues lacunes (§5). Le repliement en
+        phase (§3) révèle la signature propre à chaque classe (§2).</figcaption>
+      </figure>
+
+<h2>2 · Les six classes</h2>
+
+      <p>Repliée sur sa période (§3), chaque classe présente une morphologie
+      caractéristique, trace directe du mécanisme physique qui engendre la
+      variabilité. Les six classes de l'OCVS se répartissent en deux familles :
+      cinq classes de pulsateurs, et les binaires à éclipses où la variation est
+      purement géométrique.</p>
+
+      <div class="class-grid">
+        <div class="class-card">
+          <span class="class-code">cep</span>
+          <h4>Céphéides classiques</h4>
+          <p>Étoiles massives et jeunes en pulsation radiale, entretenue par le
+          <abbr title="Une couche d'ionisation partielle (He⁺/He²⁺) devient plus opaque quand elle est comprimée : elle emmagasine de la chaleur à la compression et la relâche à la détente, entretenant l'oscillation au lieu de l'amortir.">mécanisme&nbsp;κ</abbr>.
+          Périodes de ~1 à plus de 100&nbsp;jours ; asymétrie montée rapide /
+          descente lente typique.</p>
+        </div>
+        <div class="class-card">
+          <span class="class-code">acep</span>
+          <h4>Céphéides anormales</h4>
+          <p>Même mécanisme de pulsation, mais sur des étoiles de plus faible masse
+          dont la position dans la bande d'instabilité s'explique par une origine
+          binaire (fusion ou transfert de masse). Périodes de ~0,4 à 2,5&nbsp;jours.</p>
+        </div>
+        <div class="class-card">
+          <span class="class-code">t2cep</span>
+          <h4>Céphéides de type II</h4>
+          <p>Pulsateurs radiaux évolués, de faible masse et de population ancienne.
+          Trois sous-classes par période croissante : BL&nbsp;Her (1–4&nbsp;j),
+          W&nbsp;Vir (4–20&nbsp;j), RV&nbsp;Tau (&gt;20&nbsp;j, minima alternés).</p>
+        </div>
+        <div class="class-card">
+          <span class="class-code">rrlyr</span>
+          <h4>RR Lyrae</h4>
+          <p>Pulsateurs radiaux âgés et pauvres en métaux, sur la branche
+          horizontale. Périodes de ~0,2 à 1&nbsp;jour ; sous-types RRab (mode
+          fondamental, courbe asymétrique) et RRc (premier harmonique, courbe
+          quasi sinusoïdale).</p>
+        </div>
+        <div class="class-card">
+          <span class="class-code">dsct</span>
+          <h4>Delta Scuti</h4>
+          <p>Étoiles de type A/F proches de la séquence principale, périodes
+          inférieures à ~0,3&nbsp;jour. Pulsation fréquemment multimode, combinant
+          modes radiaux et non radiaux (cf. figure&nbsp;3).</p>
+        </div>
+        <div class="class-card">
+          <span class="class-code">ecl</span>
+          <h4>Binaires à éclipses</h4>
+          <p>Variabilité d'origine géométrique : occultations mutuelles de deux
+          étoiles en orbite. Morphologie gouvernée par la configuration du système
+          (détachée, semi-détachée, à contact) et l'inclinaison orbitale.</p>
+        </div>
+      </div>
+
+      <figure class="fig">
+        <img src="../../docs/fig_phasefold_classes.png" alt="Grille de 12 courbes de lumière repliées en phase couvrant les 6 classes et leurs principaux sous-types.">
+        <figcaption><strong>Figure 2 — Morphologies repliées par classe.</strong>
+        Magnitude bande I (axe inversé : vers le haut = plus brillant) en fonction
+        de la phase <em>φ</em> ; chaque cycle est tracé deux fois pour la continuité
+        visuelle. Sont représentés les six classes et leurs sous-types dominants :
+        RR Lyrae (RRab/RRc), céphéides classique et anormale, céphéide de
+        type&nbsp;II (BL&nbsp;Her/W&nbsp;Vir/RV&nbsp;Tau), Delta Scuti, binaire à
+        éclipses (à contact/détachée), ainsi que les variables ellipsoïdales et
+        « heartbeat » apparentées. Le panneau RV&nbsp;Tau illustre une limite du
+        repliement simple, minima profonds et secondaires alternés, discutée
+        au §5.</figcaption>
+      </figure>
+
+      <div class="fig-grid">
+        <figure class="fig">
+          <img src="../../docs/fig_phasefold_multimode.png" alt="Courbes repliées séparément sur chacune des deux périodes d'étoiles pulsant en mode double (RR Lyrae RRd et céphéide F/1O).">
+          <figcaption><strong>Figure 3 — Pulsation multimode.</strong> Certaines
+          étoiles pulsent simultanément dans deux modes de périodes voisines mais
+          incommensurables : une RR Lyrae double-mode (RRd) et une céphéide F/1O,
+          chacune repliée séparément sur son mode fondamental puis sur son premier
+          harmonique. Aucun repliement sur une période unique ne représente
+          fidèlement ces objets ; le phénomène est courant chez les Delta Scuti,
+          souvent avec plus de deux modes.</figcaption>
+        </figcaption>
+      </div>
+
+      <h2>3 · Le repliement en phase</h2>
+
+      <p>Pour un signal de période <em>P</em> connue, chaque date d'observation se
+      réduit à une phase
+      <em>φ</em> = ((<em>t</em> − <em>t</em>₀) / <em>P</em>) mod 1 ∈ [0, 1),
+      où <em>t</em>₀ est une époque de référence. Cette reparamétrisation superpose
+      l'ensemble des cycles sur un intervalle unique : c'est le
+      <abbr title="Reprojeter chaque cycle sur l'intervalle [0,1) une fois la période connue, pour superposer toutes les répétitions d'un signal périodique et en révéler la forme moyenne.">repliement en phase</abbr>.
+      Plusieurs centaines de mesures bruitées, dispersées sur une décennie,
+      se condensent en une estimation de la forme moyenne du cycle, l'opération
+      qui produit les morphologies de la figure&nbsp;2.</p>
+
+      <p>La qualité du repliement dépend entièrement de celle de la période. Une
+      période erronée ne produit pas une version bruitée de la vraie forme : elle
+      superpose des portions de cycle sans correspondance, et détruit la structure
+      au lieu de la révéler. La figure&nbsp;4 illustre les régimes d'erreur
+      typiques: sous-multiple, période correcte, multiple.</p>
+
+      <figure class="fig">
+        <img src="../../docs/fig_period_influence.png" alt="En haut, cinq céphéides classiques de périodes croissantes repliées correctement. En bas, une même étoile repliée à P/2, à sa vraie période P, et à 2P.">
+        <figcaption><strong>Figure 4 — Sensibilité du repliement à la période.</strong>
+        Rangée inférieure : une même céphéide classique (OGLE-LMC-CEP-0139) repliée à
+        <em>P</em>/2,
+        à sa période de référence <em>P</em>, puis à 2<em>P</em>. Rangée supérieure : cinq
+        céphéides classiques de périodes croissantes, correctement repliées ; le bump
+        secondaire se déplace le long du cycle avec la période; la progression de
+        Hertzsprung, indiquant que la morphologie du repli encode elle-même de
+        l'information physique, exploitée au §4.</figcaption>
+      </figure>
+
+      <p>L'opération a toutefois une limite structurelle : le repliement estime une
+      moyenne sur les cycles. Toute variabilité cycle-à-cycle: modulation
+      d'amplitude, alternance de minima, battement multimode, est éliminée par
+      construction. Cette perte d'information motive l'approche développée à
+      partir du §5.</p>
+
+<h2>4 · Classification par features : les espaces de paramètres classiques</h2>
+
+      <p>Au-delà de l'inspection morphologique, la classification traditionnelle
+      repose sur un petit nombre de descripteurs scalaires extraits de la courbe
+      repliée: période, amplitude, coefficients de Fourier, dans lesquels les
+      classes occupent des régions distinctes et physiquement interprétables.
+      Trois plans de projection résument l'essentiel de ce pouvoir discriminant.</p>
+
+      <div class="fig-grid">
+        <figure class="fig">
+          <img src="../../docs/fig_bailey.png" alt="Diagramme de Bailey : amplitude en fonction du log de la période, RRab et RRc.">
+          <figcaption><strong>Figure 5 - Diagramme de
+          <abbr title="Diagramme période–amplitude ; utilisé depuis Bailey (1902) pour séparer les sous-types de RR Lyrae, puis étendu à d'autres pulsateurs.">Bailey</abbr>
+          (période–amplitude).</strong> Amplitude en fonction de
+          log<sub>10</sub><em>P</em> (Bailey, 1902) : les sous-types RRab et RRc
+          forment deux clusters (presque) disjoints, reflet de leurs modes de pulsation
+          respectifs. Le même plan sépare plus généralement la plupart des classes
+          de pulsateurs.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="../../docs/fig_pl_diagram.png" alt="Diagramme période-luminosité (Wesenheit) pour l'ensemble des classes de pulsateurs.">
+          <figcaption><strong>Figure 6 - Relation période–luminosité.</strong>
+          Indice de
+          <abbr title="Combinaison linéaire de magnitudes dans deux bandes, construite pour être insensible à l'extinction interstellaire.">Wesenheit</abbr>
+          en fonction de log<sub>10</sub><em>P</em>. À classe fixée, la période
+          contraint fortement la luminosité (Leavitt, 1908 ; Leavitt &amp;
+          Pickering, 1912), chaque famille de pulsateurs suit sa propre séquence,
+          fondement de l'échelle des distances extragalactiques.</figcaption>
+        </figure>
+        <figure class="fig fig--wide">
+          <img src="../../docs/fig_fourier_params.png" alt="Paramètres de phase de Fourier phi21 et phi31 en fonction du log de la période, par classe.">
+          <figcaption><strong>Figure 7 - Paramètres de phase de Fourier.</strong>
+          La courbe repliée est ajustée par une
+          <abbr title="m(φ) ≈ A₀ + Σᵢ Aᵢ sin(2πiφ + φᵢ) ; les combinaisons Rᵢ₁ = Aᵢ/A₁ et φᵢ₁ = φᵢ − i·φ₁ résument la forme indépendamment de l'origine des phases.">série de Fourier tronquée</abbr>,
+          dont les combinaisons invariantes φ<sub>21</sub> et φ<sub>31</sub>
+          (Simon &amp; Lee, 1981) quantifient la morphologie fine, dont la
+          progression de Hertzsprung de la figure&nbsp;4 et affinent la
+          séparation au-delà du seul plan période-amplitude.</figcaption>
+        </figure>
+      </div>
+
+      <div class="callout">
+        <p>Ces descripteurs: période, amplitude, coefficients de Fourier
+        tronqués, sont des features construites à la main. Discriminantes et
+        interprétables, elles reposent néanmoins sur des hypothèses structurelles
+        fortes : une période unique, une forme strictement répétée d'un cycle à
+        l'autre, un nombre d'harmoniques fixé a priori. Les sections suivantes
+        examinent ce que ces hypothèses excluent, et comment s'en affranchir.</p>
+      </div>
+
+<h2>5 · Limites de l'approche par repliement</h2>
+
+      <p>Deux limitations distinctes motivent l'abandon du pipeline
+      repliement-features au profit d'une représentation apprise sur la
+      séquence brute.</p>
+
+      <p><strong>Perte de l'information cycle-à-cycle.</strong> Le panneau
+      RV&nbsp;Tau de la figure&nbsp;2 en fournit l'exemple canonique : minima
+      profonds et secondaires alternent d'un cycle au suivant. Une fois la courbe
+      repliée sur sa période fondamentale, a fortiori une fois résumée en période,
+      amplitude et coefficients de Fourier tabulés, cette alternance disparaît
+      intégralement. La moyenne estimée est correcte, mais tout écart systématique
+      à cette moyenne (alternance, modulation d'amplitude, battement multimode de
+      la figure&nbsp;3) est éliminé par construction, conformément à l'hypothèse
+      de forme strictement répétée identifiée au §4.</p>
+
+      <p><strong>Structure de l'échantillonnage.</strong> La fonction
+      d'échantillonnage d'un relevé au sol est fortement bimodale
+      (figure&nbsp;8) : la cible n'étant observable qu'une partie de l'année, la
+      cadence intra-saison de quelques jours alterne avec des lacunes
+      inter-saisons de plusieurs mois. Toute méthode opérant sur la séquence
+      brute doit représenter cette information temporelle explicitement, la
+      traiter comme une simple suite de valeurs indexées par leur rang revient à
+      confondre un écart de 2&nbsp;jours et un écart de 120&nbsp;jours.</p>
+
+      <figure class="fig">
+        <img src="../../docs/fig_gaps_histogram.jpg" alt="Histogrammes des écarts temporels entre mesures consécutives pour deux étoiles, avec un seuil marqué à 50 jours séparant la cadence intra-saison des trous inter-saisons.">
+        <figcaption><strong>Figure 8 — Distribution des écarts temporels entre
+        mesures consécutives.</strong> Histogrammes en échelle logarithmique pour
+        OGLE-SMC-T2CEP-53 (la céphéide de type&nbsp;II de la figure&nbsp;2) et
+        OGLE-LMC-CEP-0002. Deux régimes nettement séparés par un seuil à
+        50&nbsp;jours : cadence de 1 à 3&nbsp;jours en saison d'observation, puis
+        lacunes de 90 à 160&nbsp;jours lorsque les Nuages de Magellan ne sont pas
+        observables depuis Las Campanas.</figcaption>
+      </figure>
+
+      <div class="callout">
+        <p>Ces deux limitations désignent la même alternative : encoder
+        directement la séquence brute (<em>t</em>, <em>m</em>, <em>σ</em>) et
+        confier au modèle la gestion de l'échantillonnage irrégulier. C'est
+        précisément ce que permet la lignée HiPPO → S4 → Mamba : une mémoire
+        récurrente dérivée d'une ODE en temps continu, dont la dynamique dépend
+        explicitement du temps physique écoulé entre deux mesures — et non du
+        seul rang dans la séquence. Les sections suivantes développent cette
+        approche.</p>
+      </div>
+
+      <!-- ============================================================
+           Sections §6–§8 : à coller à la place de <h2>Incoming</h2>
+           Les <figure> sont commentées en attendant les images —
+           décommenter au fur et à mesure.
+           ============================================================ -->
+
+      <h2>6 · State space models : la lignée HiPPO → S4 → Mamba</h2>
+
+      <p>Le problème de fond est celui de toute architecture récurrente : compresser
+      un passé de longueur arbitraire dans un état de taille fixe. Les state space
+      models structurés en donnent une formulation en temps continu. Un
+      <abbr title="State Space Model : système dynamique linéaire projetant un signal d'entrée sur un état latent de dimension fixe, dont on lit une sortie par projection linéaire.">SSM</abbr>
+      fait transiter un signal d'entrée \(u(t) \in \mathbb{R}\) par un état latent
+      \(x(t) \in \mathbb{R}^N\) selon le système linéaire</p>
+
+      $$
+      x'(t) = A\,x(t) + B\,u(t), \qquad y(t) = C\,x(t), \tag{1}
+      $$
+
+      <p>où \(A \in \mathbb{R}^{N \times N}\) gouverne la dynamique de l'état, et
+      \(B \in \mathbb{R}^{N \times 1}\), \(C \in \mathbb{R}^{1 \times N}\) les
+      projections d'entrée et de sortie ; en pratique, un tel système est appliqué
+      indépendamment à chaque canal d'une représentation de dimension \(D\).</p>
+
+      <p><strong>HiPPO.</strong> Le choix de \(A\) n'est pas arbitraire. Le cadre
+      <abbr title="High-order Polynomial Projection Operators (Gu et al., 2020) : cadre qui dérive la dynamique optimale d'une mémoire récurrente comme projection en ligne de l'historique du signal sur une base de polynômes orthogonaux.">HiPPO</abbr>
+      (Gu et al., 2020) cherche à déterminer des matrices \(A\) telles que l'état \(x(t)\)
+      maintienne, à chaque instant, les coefficients de la projection optimale de
+      l'historique \(u_{\le t}\) sur une base de polynômes orthogonaux (Legendre
+      pour HiPPO-LegS). La mémoire du système est ainsi <em>dérivée</em> plutôt
+      qu'apprise, et définie nativement en temps continu:  le point dont tout le
+      reste découle.</p>
+
+      <p><strong>S4 : discrétisation et dualité.</strong> Pour appliquer (1) à une
+      séquence échantillonnée, le système continu est discrétisé avec un pas
+      \(\Delta > 0\) par
+      <abbr title="Zero-Order Hold : schéma de discrétisation exact d'une ODE linéaire sous entrée constante par morceaux.">zero-order hold</abbr> :</p>
+
+      $$
+      \bar{A} = \exp(\Delta A), \qquad
+      \bar{B} = (\Delta A)^{-1}\left(\exp(\Delta A) - I\right)\Delta B, \tag{2}
+      $$
+
+      <p>ce qui donne la récurrence linéaire</p>
+
+      $$
+      x_k = \bar{A}\,x_{k-1} + \bar{B}\,u_k, \qquad y_k = C\,x_k. \tag{3}
+      $$
+
+      <p>La contribution de S4 (Gu, Goel &amp; Ré, 2022) est de rendre ce système
+      entraînable à grande échelle : paramétrisation stable de \(A\) (initialisée
+      par HiPPO), et exploitation de la double lecture du même modèle. Déroulée,
+      la récurrence (3) équivaut à une convolution par le noyau</p>
+
+      $$
+      \bar{K} = \left(C\bar{B},\; C\bar{A}\bar{B},\; \dots,\;
+      C\bar{A}^{L-1}\bar{B}\right), \qquad y = u * \bar{K}, \tag{4}
+      $$
+
+      <p>calculable en \(O(L \log L)\) sur une séquence de longueur \(L\) : la
+      récurrence sert à l'inférence (coût constant par mesure), la convolution à
+      l'entraînement (parallèle sur toute la séquence). La limite du modèle est
+      son caractère
+      <abbr title="Linéaire et invariant dans le temps : les matrices A, B, C et le pas Δ sont identiques quel que soit le contenu de l'entrée et la position dans la séquence.">LTI</abbr> :
+      \((\bar{A}, \bar{B}, C)\) sont fixes, les mêmes dynamiques s'appliquent à
+      toute entrée.</p>
+
+<p><strong>Mamba : sélection.</strong> La limite du LTI est qu'un même
+      filtre s'applique à toute la séquence : le modèle ne peut pas décider de
+      retenir une mesure importante et d'en ignorer une autre. Mamba
+      (Gu &amp; Dao, 2023) lève cette contrainte en faisant dépendre les
+      paramètres du contenu: chaque entrée \(u_k\) détermine, via des
+      projections linéaires apprises \(s_\Delta, s_B, s_C\), les paramètres
+      utilisés à ce pas précis :</p>
+
+      $$
+      \Delta_k = \operatorname{softplus}\!\left(s_\Delta(u_k)\right), \qquad
+      B_k = s_B(u_k), \qquad C_k = s_C(u_k). \tag{5}
+      $$
+
+      <p>La discrétisation (2) est alors recalculée à chaque pas :
+      \(\bar{A}_k = \exp(\Delta_k A)\). L'interprétation est directe. Un
+      \(\Delta_k\) grand fait beaucoup évoluer l'état, l'ancienne mémoire
+      s'estompe, la mesure courante pèse fort. Un \(\Delta_k\) petit fige l'état:
+      la mesure courante est presque ignorée. \(\Delta_k\) agit ainsi comme une
+      horloge interne pilotée par le contenu : le modèle règle lui-même, mesure
+      par mesure, l'équilibre entre mémoriser et oublier.</p>
+
+      <p>Cette flexibilité a un coût : les paramètres variant le long de la
+      séquence, la récurrence (3) n'est plus équivalente à une convolution fixe,
+      et l'entraînement parallèle via (4) n'est plus disponible. Mamba le
+      remplace par un scan parallèle, la récurrence est associative, donc
+      calculable en parallèle par blocs, implémenté au plus près de la mémoire
+      rapide du GPU. Mamba-2 (Dao &amp; Gu, 2024) referme la boucle en montrant,
+      via la <em>state space duality</em>, que ces récurrences sélectives et le
+      mécanisme d'attention sont deux exemples d'une même famille de
+      transformations.</p>
+
+      <div class="callout">
+        <p>Le lien avec le §5 tient dans l'équation (2) : \(\bar{A} = \exp(\Delta A)\)
+        dépend explicitement du pas de temps, et rien n'impose \(\Delta\) constant.
+        En substituant aux \(\Delta_k\) appris (5), ou en leur combinant, les
+        écarts réels \(\Delta t_k = t_k - t_{k-1}\) de l'échantillonnage OGLE, une
+        lacune inter-saison de 120 jours se traduit par une évolution longue de
+        l'état, quantitativement distincte d'un écart intra-saison de 2 jours,
+        là où tout modèle de séquence indexé par le rang confond les deux.</p>
+      </div>
+      <!--
+      <figure class="fig">
+        <img src="../../docs/fig_ssm_discretization.png" alt="Schéma : une ODE continue échantillonnée à pas irréguliers, avec la décroissance de l'état exp(ΔA) proportionnelle aux vrais écarts temporels.">
+        <figcaption><strong>Une horloge qui suit les données.</strong> La même ODE, vue
+        à travers l'échantillonnage réel du §5 : entre deux mesures rapprochées, l'état
+        évolue peu ; à travers un trou inter-saison, il évolue longuement. Le pas Δ
+        encode l'écart temporel réel au lieu de l'ignorer.</figcaption>
+      </figure>
+      -->
+
+<h2>7 · Méthode : représentation et objectifs d'entraînement</h2>
+
+      <p><strong>Entrée.</strong> Le modèle opère sur la courbe brute du §1, sans
+      repliement ni extraction de features. Chaque étoile est représentée par la
+      séquence</p>
+
+      $$
+      u_k = \left(\Delta t_k,\; \tilde{m}_k,\; \sigma_k\right),
+      \qquad k = 1, \dots, L, \tag{6}
+      $$
+
+      <p>où \(\Delta t_k = t_k - t_{k-1}\) est l'écart temporel avec la mesure
+      précédente, \(\tilde{m}_k\) la magnitude normalisée par étoile et
+      \(\sigma_k\) l'incertitude photométrique. Aucun label n'est
+      fourni: ni période, ni coefficients de Fourier, tout ce que les
+      descripteurs du §4 encodent, le modèle doit l'apprendre, y compris ce que
+      le repliement élimine (§5).</p>
+
+      <p><strong>Encodeur.</strong> Un backbone Mamba traite cette séquence et
+      produit une représentation \(z = f_\theta(u) \in \mathbb{R}^d\), sur
+      laquelle portent deux objectifs complémentaires.</p>
+
+      <p><strong>Objectif de classification.</strong> Une tête linéaire prédit
+      l'une des six classes de l'OCVS par entropie croisée :</p>
+
+      $$
+      \mathcal{L}_{\mathrm{ce}}
+      = -\log p_\theta\!\left(y \mid z\right), \tag{7}
+      $$
+
+      <p>où \(y\) est l'étiquette de classe. Cet objectif fournit le point de
+      comparaison direct avec la littérature (§8), mais ne contraint que la
+      frontière de décision : deux représentations très différentes peuvent
+      produire le même classifieur.</p>
+
+      <p><strong>Objectif contrastif supervisé par la forme.</strong> Une perte
+      triplet structure l'espace latent au-delà des frontières de classe. Pour
+      une ancre \(z_a\), un positif \(z_p\) et un négatif \(z_n\),</p>
+
+      $$
+      \mathcal{L}_{\mathrm{tri}}
+      = \max\!\left(0,\;
+      \left\lVert z_a - z_p \right\rVert^2
+      - \left\lVert z_a - z_n \right\rVert^2
+      + \alpha\right), \tag{8}
+      $$
+
+      <p>avec \(\alpha > 0\) la marge. Le point décisif est le choix des paires :
+      positifs et négatifs ne sont pas définis par la seule étiquette de classe,
+      mais par la
+      <abbr title="Dynamic Time Warping : distance entre séquences qui autorise des déformations locales de l'axe temporel, et mesure donc une similarité de forme robuste aux décalages de phase et aux différences de cadence.">distance DTW</abbr>
+      entre courbes repliées, le positif est une courbe de faible distance DTW à
+      l'ancre, le négatif une courbe de distance élevée. Le repliement, dont le §5
+      a établi les limites comme représentation, est ainsi réemployé comme
+      superviseur de similarité : la notion de proximité injectée dans (8) est
+      une similarité de forme physique, et non un artefact d'augmentation de
+      données.</p>
+
+      <p>L'objectif total combine les deux termes,</p>
+
+      $$
+      \mathcal{L} = \mathcal{L}_{\mathrm{ce}}
+      + \lambda\, \mathcal{L}_{\mathrm{tri}}, \tag{9}
+      $$
+
+      <p>où \(\lambda > 0\) règle le poids relatif de la structure contrastive.</p>
+
+      <div class="callout">
+        <p>La division du travail entre (7) et (8) est délibérée : la
+        classification garantit que l'espace latent <em>sépare</em> les classes,
+        le terme contrastif garantit qu'il les <em>organise</em>. Deux courbes de
+        même classe mais de morphologies distinctes, une RRab et une RRc, une
+        BL&nbsp;Her et une RV&nbsp;Tau, devraient occuper des régions différentes
+        de l'espace latent, sans qu'aucune étiquette de sous-classe ne soit
+        jamais fournie au modèle. Le §8 quantifie précisément cette propriété.</p>
+      </div>
+
+      <!--
+      <figure class="fig">
+        <img src="../../docs/fig_pipeline.png" alt="Schéma du pipeline : séquence brute (Δt, magnitude, erreur) → backbone Mamba → espace latent, avec la double supervision classification + triplet DTW.">
+        <figcaption><strong>Vue d'ensemble.</strong> La courbe brute entre telle quelle ;
+        la double supervision — étiquettes de classe d'un côté, similarité DTW de
+        l'autre — sculpte un même espace latent.</figcaption>
+      </figure>
+      -->
+
+<h2>8 · Évaluation : au-delà de l'accuracy, la géométrie du latent</h2>
+
+      <p>Le point de comparaison est fixé par la littérature récente sur la
+      classification de courbes de lumière, en particulier les approches
+      multimodales telles qu'AstroM³, avec un objectif quantitatif : dépasser
+      91,5&nbsp;% de précision sur les six classes d'OGLE-IV pour le Grand Nuage
+      de Magellan. L'accuracy reste toutefois un résumé pauvre de ce qu'un modèle
+      a appris : deux modèles au même score peuvent produire des représentations
+      internes radicalement différentes. L'évaluation porte donc, au-delà du
+      score, sur trois propriétés de l'espace latent.</p>
+
+      <p><strong>Alignment et uniformity.</strong> Wang &amp; Isola (2020)
+      décomposent la qualité d'une représentation contrastive, normalisée sur la
+      sphère unité, en deux quantités. L'alignment mesure la proximité des paires
+      positives,</p>
+
+      $$
+      \mathcal{L}_{\mathrm{align}}
+      = \mathbb{E}_{(x, x^{+}) \sim p_{\mathrm{pos}}}
+      \left\lVert f(x) - f(x^{+}) \right\rVert^2, \tag{10}
+      $$
+
+      <p>et l'uniformity le degré d'occupation de la sphère par l'ensemble des
+      représentations,</p>
+
+      $$
+      \mathcal{L}_{\mathrm{unif}}
+      = \log \, \mathbb{E}_{x, x' \sim p_{\mathrm{data}}}
+      \exp\!\left(-2 \left\lVert f(x) - f(x') \right\rVert^2\right). \tag{11}
+      $$
+
+      <p>Une bonne représentation minimise les deux : paires similaires proches
+      (10), sans effondrement de l'ensemble sur quelques directions (11). Dans
+      notre cadre, \(p_{\mathrm{pos}}\) est définie par la similarité DTW du §7 et
+      les deux métriques évaluent donc directement ce que l'objectif (8) était
+      censé produire.</p>
+
+      <p><strong>Cohérence des voisinages.</strong> Pour chaque étoile, la
+      fraction de ses \(k\) plus proches voisins dans l'espace latent partageant
+      sa classe, sa sous-classe ou sa gamme de période. Ce diagnostic local
+      complète les deux quantités globales (10)–(11) : il détecte les régions où
+      la géométrie est localement incohérente même lorsque les statistiques
+      d'ensemble sont bonnes.</p>
+
+      <p><strong>Émergence des sous-classes.</strong> Le test le plus exigeant :
+      projeter l'espace latent en deux dimensions
+      (<abbr title="Uniform Manifold Approximation and Projection : méthode de réduction de dimension non linéaire qui préserve la structure de voisinage locale.">UMAP</abbr>)
+      et examiner si les sous-types du §2: RRab/RRc,
+      BL&nbsp;Her/W&nbsp;Vir/RV&nbsp;Tau, binaires à contact/détachées, forment
+      des régions distinctes, alors qu'aucune étiquette de sous-classe n'a été
+      fournie à l'entraînement. Une séparation émergente indiquerait que la
+      représentation capture une structure plus fine que la supervision reçue :
+      la géométrie latente refléterait la physique sous-jacente, et non la seule
+      taxonomie imposée.</p>
+
+      <div class="callout">
+        <p>C'est la question qui motive le projet au-delà du score : dans quelle
+        mesure la structure physique d'un système dynamique: modes de pulsation,
+        période, configuration orbitale, se lit-elle dans la géométrie de la
+        représentation apprise par une architecture séquentielle ? Les étoiles
+        variables constituent un terrain d'essai privilégié : la vérité physique
+        y est connue, cataloguée, et indépendante du modèle évalué.</p>
+      </div>
+
+      <h2>Résultats à venir</h2>
+
+      <p>Cette section présentera les courbes
+      d'apprentissage, les projections UMAP de l'espace latent et la comparaison
+      quantitative avec les baselines.</p>
 
       <footer>© <span id="yr"></span> Neyl Gasmi</footer>
 
