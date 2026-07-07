@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>State Space Models for Astrophysics — Neyl Gasmi</title>
+  <meta name="description" content="Applying Mamba (SSM) architectures to OGLE-IV light curves for variable star classification.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
+</head>
+<body>
+  <div class="layout">
+
+    <aside>
+      <a class="site-name" href="../../index.html">Neyl Gasmi</a>
+      <nav>
+        <a href="../../index.html">Home</a>
+        <a href="../../pages/research.html" class="active">Research</a>
+        <a href="../../pages/cv.html">CV</a>
+        <a href="../../pages/teaching.html">Teaching</a>
+        <a href="../../pages/references.html">Références</a>
+      </nav>
+
+      <div class="contact">
+        <a href="mailto:neylgasmi@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/neylgasmi/" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/neylgs" rel="noopener">GitHub</a>
+      </div>
+    </aside>
+
+    <main>
+
+      <p class="research-meta"><a href="../../pages/research.html">← Research</a><span class="lang-switch"><a href="state-space-models-astrophysics.html">Version française</a></span></p>
+
+      <div class="page-header">
+        <h1>State Space Models for Astrophysics</h1>
+        <p class="subtitle">Supervised by <a href="https://www.pantheonsorbonne.fr/page-perso/alain.celisse%40" rel="noopener">Alain Celisse</a> · SAMM Lab, Paris 1 · 2026, ongoing</p>
+      </div>
+
+<h2>1 · Why variable stars?</h2>
+
+      <p>A variable star is a star whose apparent brightness varies
+      measurably over time. The underlying mechanisms are physically
+      distinct: sustained radial pulsations, mutual eclipses within a
+      binary system, geometric modulations, and each imprints a
+      distinctive signature on the photometry. These variations are among the few
+      observables that directly constrain the internal structure and evolutionary state
+      of a star. The elementary object of study is the <em>light curve</em>: a
+      time series of triplets (<em>t</em>, <em>m</em>, <em>σ</em>),
+      <abbr title="Julian date: number of days elapsed since a fixed origin (January 1, 4713 BCE); the standard time format in astronomy, independent of time zones and calendars.">Julian date</abbr>,
+      apparent magnitude, photometric uncertainty, at irregular sampling.</p>
+
+      <p><strong>The data.</strong> OGLE-IV (Optical Gravitational Lensing
+      Experiment, fourth phase; Udalski et al., 2015) is a ground-based photometric
+      survey conducted since 2010 with the 1.3&nbsp;m telescope at Las Campanas
+      (Chile), which notably monitors the Magellanic Clouds in the <em>I</em> and <em>V</em> bands.
+      Its derived catalog, the OGLE Collection of Variable Stars (OCVS), provides for each star
+      an expert classification, a reference period, and the complete photometry.
+      The present work focuses on a subset of about 150,000 stars
+      spread across six classes: classical Cepheids (<code>cep</code>), anomalous
+      Cepheids (<code>acep</code>), type&nbsp;II Cepheids (<code>t2cep</code>),
+      RR Lyrae (<code>rrlyr</code>), Delta Scuti (<code>dsct</code>), and eclipsing
+      binaries (<code>ecl</code>).</p>
+
+      <figure class="fig">
+        <img src="../../docs/fig_raw_lightcurves.png" alt="Three raw light curves (RR Lyrae, Cepheid, eclipsing binary), I-band magnitude versus time, over the full survey duration.">
+        <figcaption><strong>Figure 1 — Raw light curves.</strong> Magnitude in the
+        I band as a function of time for three representative classes, over
+        ~14&nbsp;years of monitoring. Periods and morphologies differ from one class to
+        another, but the sampling function is shared: dense segments during
+        observing seasons, separated by long gaps (§5). Phase folding
+        (§3) reveals the signature specific to each class (§2).</figcaption>
+      </figure>
+
+<h2>2 · The six classes</h2>
+
+      <p>Once folded on its period (§3), each class displays a
+      characteristic morphology, a direct trace of the physical mechanism driving
+      the variability. The six OCVS classes fall into two families:
+      five classes of pulsators, and eclipsing binaries, where the variation is
+      purely geometric.</p>
+
+      <div class="class-grid">
+        <div class="class-card">
+          <span class="class-code">cep</span>
+          <h4>Classical Cepheids</h4>
+          <p>Massive, young stars undergoing radial pulsation, sustained by the
+          <abbr title="A partial ionization layer (He⁺/He²⁺) becomes more opaque when compressed: it stores heat during compression and releases it during expansion, sustaining the oscillation instead of damping it.">κ mechanism</abbr>.
+          Periods from ~1 to more than 100&nbsp;days; typical fast-rise,
+          slow-decline asymmetry.</p>
+        </div>
+        <div class="class-card">
+          <span class="class-code">acep</span>
+          <h4>Anomalous Cepheids</h4>
+          <p>Same pulsation mechanism, but in lower-mass stars
+          whose position in the instability strip is explained by a binary
+          origin (merger or mass transfer). Periods from ~0.4 to 2.5&nbsp;days.</p>
+        </div>
+        <div class="class-card">
+          <span class="class-code">t2cep</span>
+          <h4>Type II Cepheids</h4>
+          <p>Evolved radial pulsators of low mass and old population.
+          Three subclasses by increasing period: BL&nbsp;Her (1–4&nbsp;d),
+          W&nbsp;Vir (4–20&nbsp;d), RV&nbsp;Tau (&gt;20&nbsp;d, alternating minima).</p>
+        </div>
+        <div class="class-card">
+          <span class="class-code">rrlyr</span>
+          <h4>RR Lyrae</h4>
+          <p>Old, metal-poor radial pulsators, on the
+          horizontal branch. Periods from ~0.2 to 1&nbsp;day; RRab (fundamental
+          mode, asymmetric curve) and RRc (first overtone, near-sinusoidal
+          curve) subtypes.</p>
+        </div>
+        <div class="class-card">
+          <span class="class-code">dsct</span>
+          <h4>Delta Scuti</h4>
+          <p>A/F-type stars near the main sequence, periods
+          below ~0.3&nbsp;day. Pulsation is frequently multimode, combining
+          radial and non-radial modes (cf. figure&nbsp;3).</p>
+        </div>
+        <div class="class-card">
+          <span class="class-code">ecl</span>
+          <h4>Eclipsing binaries</h4>
+          <p>Variability of geometric origin: mutual eclipses of two
+          orbiting stars. Morphology governed by the system's configuration
+          (detached, semi-detached, contact) and orbital inclination.</p>
+        </div>
+      </div>
+
+      <figure class="fig">
+        <img src="../../docs/fig_phasefold_classes.png" alt="Grid of 12 phase-folded light curves covering the 6 classes and their main subtypes.">
+        <figcaption><strong>Figure 2 — Phase-folded morphologies by class.</strong>
+        Magnitude in the I band (inverted axis: up = brighter) as a function
+        of phase <em>φ</em>; each cycle is plotted twice for visual
+        continuity. Shown are the six classes and their dominant subtypes:
+        RR Lyrae (RRab/RRc), classical and anomalous Cepheids, type&nbsp;II
+        Cepheid (BL&nbsp;Her/W&nbsp;Vir/RV&nbsp;Tau), Delta Scuti, eclipsing
+        binary (contact/detached), and the related ellipsoidal and
+        "heartbeat" variables. The RV&nbsp;Tau panel illustrates a limit
+        of simple folding, deep and alternating secondary minima, discussed
+        in §5.</figcaption>
+      </figure>
+
+      <div class="fig-grid">
+        <figure class="fig">
+          <img src="../../docs/fig_phasefold_multimode.png" alt="Curves folded separately on each of the two periods of double-mode pulsating stars (RR Lyrae RRd and Cepheid F/1O).">
+          <figcaption><strong>Figure 3 — Multimode pulsation.</strong> Some
+          stars pulsate simultaneously in two modes with close but
+          incommensurable periods: a double-mode RR Lyrae (RRd) and an F/1O
+          Cepheid, each folded separately on its fundamental mode and then on its first
+          overtone. No single-period folding faithfully represents these objects;
+          the phenomenon is common among Delta Scuti stars,
+          often with more than two modes.</figcaption>
+        </figure>
+      </div>
+
+      <h2>3 · Phase folding</h2>
+
+      <p>For a signal of known period <em>P</em>, each observation date reduces to a phase
+      <em>φ</em> = ((<em>t</em> − <em>t</em>₀) / <em>P</em>) mod 1 ∈ [0, 1),
+      where <em>t</em>₀ is a reference epoch. This reparametrization superimposes
+      all cycles onto a single interval: this is
+      <abbr title="Reprojecting each cycle onto the interval [0,1) once the period is known, in order to superimpose all repetitions of a periodic signal and reveal its average shape.">phase folding</abbr>.
+      Several hundred noisy measurements, scattered over a decade,
+      condense into an estimate of the average shape of the cycle, the operation
+      that produces the morphologies of figure&nbsp;2.</p>
+
+      <p>The quality of the folding depends entirely on that of the period. An
+      incorrect period does not produce a noisy version of the true shape: it
+      superimposes unrelated portions of the cycle, destroying the structure
+      rather than revealing it. Figure&nbsp;4 illustrates the typical error
+      regimes: sub-multiple, correct period, multiple.</p>
+
+      <figure class="fig">
+        <img src="../../docs/fig_period_influence.png" alt="Top, five classical Cepheids of increasing period correctly folded. Bottom, the same star folded at P/2, at its true period P, and at 2P.">
+        <figcaption><strong>Figure 4 — Sensitivity of folding to the period.</strong>
+        Bottom row: the same classical Cepheid (OGLE-LMC-CEP-0139) folded at
+        <em>P</em>/2,
+        at its reference period <em>P</em>, then at 2<em>P</em>. Top row: five
+        classical Cepheids of increasing period, correctly folded; the secondary
+        bump shifts along the cycle with the period, the Hertzsprung
+        progression, indicating that the folded morphology itself encodes
+        physical information, exploited in §4.</figcaption>
+      </figure>
+
+      <p>The operation nevertheless has a structural limitation: folding estimates a
+      mean over cycles. Any cycle-to-cycle variability: amplitude
+      modulation, alternating minima, multimode beating, is eliminated by
+      construction. This loss of information motivates the approach developed
+      from §5 onward.</p>
+
+<h2>4 · Feature-based classification: classical parameter spaces</h2>
+
+      <p>Beyond morphological inspection, traditional classification
+      relies on a small number of scalar descriptors extracted from the
+      folded curve: period, amplitude, Fourier coefficients, in which classes
+      occupy distinct and physically interpretable regions.
+      Three projection planes summarize the bulk of this discriminative power.</p>
+
+      <div class="fig-grid">
+        <figure class="fig">
+          <img src="../../docs/fig_bailey.png" alt="Bailey diagram: amplitude versus log period, RRab and RRc.">
+          <figcaption><strong>Figure 5 —
+          <abbr title="Period-amplitude diagram; used since Bailey (1902) to separate RR Lyrae subtypes, later extended to other pulsators.">Bailey</abbr>
+          diagram (period–amplitude).</strong> Amplitude as a function of
+          log<sub>10</sub><em>P</em> (Bailey, 1902): the RRab and RRc
+          subtypes form two (nearly) disjoint clusters, reflecting their respective
+          pulsation modes. The same plane more generally separates most
+          pulsator classes.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="../../docs/fig_pl_diagram.png" alt="Period-luminosity (Wesenheit) diagram for all pulsator classes.">
+          <figcaption><strong>Figure 6 — Period–luminosity relation.</strong>
+          <abbr title="Linear combination of magnitudes in two bands, constructed to be insensitive to interstellar extinction.">Wesenheit</abbr>
+          index as a function of log<sub>10</sub><em>P</em>. At fixed class, the period
+          strongly constrains luminosity (Leavitt, 1908; Leavitt &amp;
+          Pickering, 1912), each family of pulsators follows its own sequence,
+          the foundation of the extragalactic distance scale.</figcaption>
+        </figure>
+        <figure class="fig fig--wide">
+          <img src="../../docs/fig_fourier_params.png" alt="Fourier phase parameters phi21 and phi31 versus log period, by class.">
+          <figcaption><strong>Figure 7 — Fourier phase parameters.</strong>
+          The folded curve is fit with a
+          <abbr title="m(φ) ≈ A₀ + Σᵢ Aᵢ sin(2πiφ + φᵢ); the invariant combinations Rᵢ₁ = Aᵢ/A₁ and φᵢ₁ = φᵢ − i·φ₁ summarize the shape independently of the phase origin.">truncated Fourier series</abbr>,
+          whose invariant combinations φ<sub>21</sub> and φ<sub>31</sub>
+          (Simon &amp; Lee, 1981) quantify the fine morphology, including the
+          Hertzsprung progression of figure&nbsp;4, and refine the
+          separation beyond the period-amplitude plane alone.</figcaption>
+        </figure>
+      </div>
+
+      <div class="callout">
+        <p>These descriptors: period, amplitude, truncated Fourier
+        coefficients, are hand-crafted features. Discriminative and
+        interpretable, they nonetheless rest on strong structural
+        assumptions: a single period, a strictly repeated shape from one cycle to
+        the next, a number of harmonics fixed a priori. The following sections
+        examine what these assumptions exclude, and how to move beyond them.</p>
+      </div>
+
+<h2>5 · Limitations of the folding approach</h2>
+
+      <p>Two distinct limitations motivate abandoning the
+      folding-features pipeline in favor of a representation learned directly on the
+      raw sequence.</p>
+
+      <p><strong>Loss of cycle-to-cycle information.</strong> The
+      RV&nbsp;Tau panel of figure&nbsp;2 provides the canonical example: deep
+      and secondary minima alternate from one cycle to the next. Once the curve is
+      folded on its fundamental period, and even more so once summarized into period,
+      amplitude, and tabulated Fourier coefficients, this alternation
+      disappears entirely. The estimated mean is correct, but any systematic
+      deviation from that mean (alternation, amplitude modulation, multimode beating
+      of figure&nbsp;3) is eliminated by construction, consistent with
+      the strictly repeated shape assumption identified in §4.</p>
+
+      <p><strong>Sampling structure.</strong> The
+      sampling function of a ground-based survey is strongly bimodal
+      (figure&nbsp;8): since the target is only observable part of the year, an
+      intra-season cadence of a few days alternates with inter-season gaps
+      of several months. Any method operating on the raw
+      sequence must represent this temporal information explicitly, treating
+      it as a plain sequence of values indexed by rank amounts to
+      conflating a 2-day gap with a 120-day gap.</p>
+
+      <figure class="fig">
+        <img src="../../docs/fig_gaps_histogram.jpg" alt="Histograms of time gaps between consecutive measurements for two stars, with a threshold marked at 50 days separating intra-season cadence from inter-season gaps.">
+        <figcaption><strong>Figure 8 — Distribution of time gaps between
+        consecutive measurements.</strong> Histograms on a logarithmic scale for
+        OGLE-SMC-T2CEP-53 (the type&nbsp;II Cepheid of figure&nbsp;2) and
+        OGLE-LMC-CEP-0002. Two regimes clearly separated by a
+        50&nbsp;day threshold: a cadence of 1 to 3&nbsp;days during the observing
+        season, then gaps of 90 to 160&nbsp;days when the Magellanic Clouds are
+        not observable from Las Campanas.</figcaption>
+      </figure>
+
+      <div class="callout">
+        <p>These two limitations point to the same alternative:
+        directly encode the raw sequence (<em>t</em>, <em>m</em>, <em>σ</em>) and
+        let the model handle irregular sampling itself. This is
+        precisely what the HiPPO → S4 → Mamba lineage enables: a recurrent
+        memory derived from a continuous-time ODE, whose dynamics depend
+        explicitly on the physical time elapsed between two measurements, not on the
+        sequence rank alone. The following sections develop this
+        approach.</p>
+      </div>
+
+      <!-- ============================================================
+           Sections §6–§8: paste in place of <h2>Incoming</h2>
+           <figure> elements are commented out pending images —
+           uncomment as they become available.
+           ============================================================ -->
+
+      <h2>6 · State space models: the HiPPO → S4 → Mamba lineage</h2>
+
+      <p>The underlying problem is that of any recurrent architecture: compressing
+      a past of arbitrary length into a fixed-size state. Structured state space
+      models give a continuous-time formulation of this. A
+      <abbr title="State Space Model: a linear dynamical system projecting an input signal onto a fixed-dimension latent state, from which an output is read by linear projection.">SSM</abbr>
+      passes an input signal \(u(t) \in \mathbb{R}\) through a latent state
+      \(x(t) \in \mathbb{R}^N\) according to the linear system</p>
+
+      $$
+      x'(t) = A\,x(t) + B\,u(t), \qquad y(t) = C\,x(t), \tag{1}
+      $$
+
+      <p>where \(A \in \mathbb{R}^{N \times N}\) governs the state dynamics, and
+      \(B \in \mathbb{R}^{N \times 1}\), \(C \in \mathbb{R}^{1 \times N}\) are the
+      input and output projections; in practice, such a system is applied
+      independently to each channel of a representation of dimension \(D\).</p>
+
+      <p><strong>HiPPO.</strong> The choice of \(A\) is not arbitrary. The
+      <abbr title="High-order Polynomial Projection Operators (Gu et al., 2020): a framework that derives the optimal dynamics of a recurrent memory as an online projection of the signal's history onto a basis of orthogonal polynomials.">HiPPO</abbr>
+      framework (Gu et al., 2020) seeks matrices \(A\) such that the state \(x(t)\)
+      maintains, at every instant, the coefficients of the optimal projection of
+      the history \(u_{\le t}\) onto a basis of orthogonal polynomials (Legendre
+      for HiPPO-LegS). The system's memory is thus <em>derived</em> rather
+      than learned, and defined natively in continuous time: the starting point
+      from which everything else follows.</p>
+
+      <p><strong>S4: discretization and duality.</strong> To apply (1) to a
+      sampled sequence, the continuous system is discretized with a step
+      \(\Delta > 0\) using
+      <abbr title="Zero-Order Hold: an exact discretization scheme for a linear ODE under piecewise-constant input.">zero-order hold</abbr>:</p>
+
+      $$
+      \bar{A} = \exp(\Delta A), \qquad
+      \bar{B} = (\Delta A)^{-1}\left(\exp(\Delta A) - I\right)\Delta B, \tag{2}
+      $$
+
+      <p>which gives the linear recurrence</p>
+
+      $$
+      x_k = \bar{A}\,x_{k-1} + \bar{B}\,u_k, \qquad y_k = C\,x_k. \tag{3}
+      $$
+
+      <p>The contribution of S4 (Gu, Goel &amp; Ré, 2022) is to make this system
+      trainable at scale: a stable parametrization of \(A\) (initialized
+      from HiPPO), and exploitation of the same model's dual reading. Unrolled,
+      the recurrence (3) is equivalent to a convolution with the kernel</p>
+
+      $$
+      \bar{K} = \left(C\bar{B},\; C\bar{A}\bar{B},\; \dots,\;
+      C\bar{A}^{L-1}\bar{B}\right), \qquad y = u * \bar{K}, \tag{4}
+      $$
+
+      <p>computable in \(O(L \log L)\) over a sequence of length \(L\): the
+      recurrence is used at inference (constant cost per measurement), the convolution at
+      training time (parallel over the whole sequence). The model's limitation is
+      its
+      <abbr title="Linear and time-invariant: the matrices A, B, C and the step Δ are identical regardless of input content and position in the sequence.">LTI</abbr>
+      character: \((\bar{A}, \bar{B}, C)\) are fixed, the same dynamics apply to
+      every input.</p>
+
+<p><strong>Mamba: selection.</strong> The limitation of LTI is that a single
+      filter applies to the entire sequence: the model cannot choose to
+      keep an important measurement while discarding another. Mamba
+      (Gu &amp; Dao, 2023) lifts this constraint by making the parameters content-dependent:
+      each input \(u_k\) determines, through learned
+      linear projections \(s_\Delta, s_B, s_C\), the parameters
+      used at that specific step:</p>
+
+      $$
+      \Delta_k = \operatorname{softplus}\!\left(s_\Delta(u_k)\right), \qquad
+      B_k = s_B(u_k), \qquad C_k = s_C(u_k). \tag{5}
+      $$
+
+      <p>The discretization (2) is then recomputed at every step:
+      \(\bar{A}_k = \exp(\Delta_k A)\). The interpretation is direct. A
+      large \(\Delta_k\) drives the state to evolve rapidly, old memory
+      fades, and the current measurement dominates. A small \(\Delta_k\) freezes the state:
+      the current measurement is nearly ignored. \(\Delta_k\) thus acts as an
+      internal, content-driven clock: the model tunes, measurement by
+      measurement, the balance between remembering and forgetting.</p>
+
+      <p>This flexibility comes at a cost: since the parameters vary along the
+      sequence, the recurrence (3) is no longer equivalent to a fixed
+      convolution, and the parallel training route via (4) is no longer available. Mamba
+      replaces it with a parallel scan; the recurrence is associative, and thus
+      computable in parallel by blocks, implemented close to the GPU's
+      fast memory. Mamba-2 (Dao &amp; Gu, 2024) closes the loop by showing,
+      via <em>state space duality</em>, that these selective recurrences and the
+      attention mechanism are two instances of the same family of
+      transformations.</p>
+
+      <div class="callout">
+        <p>The connection to §5 lies in equation (2): \(\bar{A} = \exp(\Delta A)\)
+        depends explicitly on the time step, and nothing forces \(\Delta\) to be constant.
+        By substituting for the learned \(\Delta_k\) (5), or combining with them, the
+        actual gaps \(\Delta t_k = t_k - t_{k-1}\) of the OGLE sampling, an
+        inter-season gap of 120 days translates into a long evolution
+        of the state, quantitatively distinct from an intra-season gap of 2 days,
+        whereas any rank-indexed sequence model conflates the two.</p>
+      </div>
+      <!--
+      <figure class="fig">
+        <img src="../../docs/fig_ssm_discretization.png" alt="Diagram: a continuous ODE sampled at irregular steps, with state decay exp(ΔA) proportional to the true time gaps.">
+        <figcaption><strong>A clock that follows the data.</strong> The same ODE, viewed
+        through the actual sampling of §5: between two close measurements, the state
+        evolves little; across an inter-season gap, it evolves for a long time. The step Δ
+        encodes the real time gap instead of ignoring it.</figcaption>
+      </figure>
+      -->
+
+<h2>7 · Method: representation and training objectives</h2>
+
+      <p><strong>Input.</strong> The model operates on the raw curve of §1, without
+      folding or feature extraction. Each star is represented by the
+      sequence</p>
+
+      $$
+      u_k = \left(\Delta t_k,\; \tilde{m}_k,\; \sigma_k\right),
+      \qquad k = 1, \dots, L, \tag{6}
+      $$
+
+      <p>where \(\Delta t_k = t_k - t_{k-1}\) is the time gap from the
+      previous measurement, \(\tilde{m}_k\) the per-star normalized magnitude, and
+      \(\sigma_k\) the photometric uncertainty. No label is
+      provided: neither period nor Fourier coefficients, everything the
+      descriptors of §4 encode must be learned by the model, including what
+      folding eliminates (§5).</p>
+
+      <p><strong>Encoder.</strong> A Mamba backbone processes this sequence and
+      produces a representation \(z = f_\theta(u) \in \mathbb{R}^d\), on
+      which two complementary objectives are defined.</p>
+
+      <p><strong>Classification objective.</strong> A linear head predicts
+      one of the six OCVS classes via cross-entropy:</p>
+
+      $$
+      \mathcal{L}_{\mathrm{ce}}
+      = -\log p_\theta\!\left(y \mid z\right), \tag{7}
+      $$
+
+      <p>where \(y\) is the class label. This objective provides the direct
+      point of comparison with the literature (§8), but only constrains the
+      decision boundary: two very different representations can
+      produce the same classifier.</p>
+
+      <p><strong>Shape-supervised contrastive objective.</strong> A triplet
+      loss structures the latent space beyond class boundaries. For
+      an anchor \(z_a\), a positive \(z_p\), and a negative \(z_n\),</p>
+
+      $$
+      \mathcal{L}_{\mathrm{tri}}
+      = \max\!\left(0,\;
+      \left\lVert z_a - z_p \right\rVert^2
+      - \left\lVert z_a - z_n \right\rVert^2
+      + \alpha\right), \tag{8}
+      $$
+
+      <p>with \(\alpha > 0\) the margin. The decisive point is how pairs are
+      chosen: positives and negatives are not defined solely by the class
+      label, but by the
+      <abbr title="Dynamic Time Warping: a distance between sequences that allows local warping of the time axis, and thus measures shape similarity robust to phase shifts and cadence differences.">DTW distance</abbr>
+      between folded curves, the positive is a curve with low DTW distance to
+      the anchor, the negative one with high distance. Folding, whose
+      limitations as a representation were established in §5, is thus
+      redeployed as a similarity supervisor: the notion of proximity injected into (8) is
+      a physically meaningful shape similarity, not a data-augmentation
+      artifact.</p>
+
+      <p>The total objective combines both terms,</p>
+
+      $$
+      \mathcal{L} = \mathcal{L}_{\mathrm{ce}}
+      + \lambda\, \mathcal{L}_{\mathrm{tri}}, \tag{9}
+      $$
+
+      <p>where \(\lambda > 0\) sets the relative weight of the contrastive structure.</p>
+
+      <div class="callout">
+        <p>The division of labor between (7) and (8) is deliberate: classification
+        ensures that the latent space <em>separates</em> the classes,
+        the contrastive term ensures that it <em>organizes</em> them. Two curves of
+        the same class but distinct morphologies, an RRab and an RRc, a
+        BL&nbsp;Her and an RV&nbsp;Tau, should occupy different regions
+        of the latent space, without any subclass label ever being
+        provided to the model. §8 quantifies this property precisely.</p>
+      </div>
+
+      <!--
+      <figure class="fig">
+        <img src="../../docs/fig_pipeline.png" alt="Pipeline diagram: raw sequence (Δt, magnitude, error) → Mamba backbone → latent space, with dual supervision classification + DTW triplet.">
+        <figcaption><strong>Overview.</strong> The raw curve enters as is;
+        the dual supervision — class labels on one side, DTW similarity
+        on the other — sculpts a shared latent space.</figcaption>
+      </figure>
+      -->
+
+<h2>8 · Evaluation: beyond accuracy, the geometry of the latent space</h2>
+
+      <p>The point of comparison is set by recent literature on
+      light curve classification, in particular multimodal approaches
+      such as AstroM³, with a quantitative target: exceeding
+      91.5&nbsp;% accuracy on the six OGLE-IV classes for the Large
+      Magellanic Cloud. Accuracy, however, remains a poor summary of what a model
+      has learned: two models with the same score can produce radically
+      different internal representations. Evaluation therefore focuses, beyond the
+      score, on three properties of the latent space.</p>
+
+      <p><strong>Alignment and uniformity.</strong> Wang &amp; Isola (2020)
+      decompose the quality of a contrastive representation, normalized on the
+      unit sphere, into two quantities. Alignment measures the closeness of
+      positive pairs,</p>
+
+      $$
+      \mathcal{L}_{\mathrm{align}}
+      = \mathbb{E}_{(x, x^{+}) \sim p_{\mathrm{pos}}}
+      \left\lVert f(x) - f(x^{+}) \right\rVert^2, \tag{10}
+      $$
+
+      <p>and uniformity the degree to which the set of representations
+      occupies the sphere,</p>
+
+      $$
+      \mathcal{L}_{\mathrm{unif}}
+      = \log \, \mathbb{E}_{x, x' \sim p_{\mathrm{data}}}
+      \exp\!\left(-2 \left\lVert f(x) - f(x') \right\rVert^2\right). \tag{11}
+      $$
+
+      <p>A good representation minimizes both: similar pairs close together
+      (10), without the whole set collapsing onto a few directions (11). In
+      our setting, \(p_{\mathrm{pos}}\) is defined by the DTW similarity of §7, and
+      both metrics directly evaluate what objective (8) was
+      meant to produce.</p>
+
+      <p><strong>Neighborhood consistency.</strong> For each star, the
+      fraction of its \(k\) nearest neighbors in the latent space sharing
+      its class, subclass, or period range. This local diagnostic
+      complements the two global quantities (10)–(11): it detects regions where
+      the geometry is locally inconsistent even when the aggregate
+      statistics are good.</p>
+
+      <p><strong>Emergence of subclasses.</strong> The most demanding test:
+      projecting the latent space into two dimensions
+      (<abbr title="Uniform Manifold Approximation and Projection: a nonlinear dimensionality reduction method that preserves local neighborhood structure.">UMAP</abbr>)
+      and examining whether the subtypes of §2: RRab/RRc,
+      BL&nbsp;Her/W&nbsp;Vir/RV&nbsp;Tau, contact/detached binaries, form
+      distinct regions, even though no subclass label was
+      provided during training. An emergent separation would indicate that the
+      representation captures structure finer than the supervision received:
+      the latent geometry would reflect the underlying physics, rather than the
+      taxonomy imposed alone.</p>
+
+      <div class="callout">
+        <p>This is the question that motivates the project beyond the score: to what
+        extent does the physical structure of a dynamical system: pulsation modes,
+        period, orbital configuration, show up in the geometry of the
+        representation learned by a sequential architecture? Variable stars are a
+        privileged testbed: the physical ground truth
+        is known, catalogued, and independent of the model being evaluated.</p>
+      </div>
+
+      <h2>Results forthcoming</h2>
+
+      <p>This section will present the learning
+      curves, UMAP projections of the latent space, and quantitative comparison
+      with the baselines.</p>
+
+      <footer>© <span id="yr"></span> Neyl Gasmi</footer>
+
+    </main>
+
+  </div>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
