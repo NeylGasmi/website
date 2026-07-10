@@ -88,7 +88,7 @@ hr { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
 .page-header .subtitle { font-family: 'Inter', sans-serif; color: var(--muted); font-size: .9rem; margin-top: .5rem; }
 
 
-.positioning { max-width: 64ch; margin-bottom: 2.75rem; padding-bottom: 2.75rem; border-bottom: 1px solid var(--rule); }
+.positioning { max-width: 64ch; margin-bottom: 2.75rem; }
 
 
 .work { display: grid; grid-template-columns: 1fr 60px; gap: 2rem; padding: 2.1rem 0; border-top: 1px solid var(--rule); }
